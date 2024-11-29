@@ -1,0 +1,54 @@
+{
+    "en": {
+      "foundLots": "Found Lots",
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "cars": "cars",
+      "prev": "Prev",
+      "next": "Next",
+      "carFacts": [
+        "Did you know the first car with a gasoline engine was created by Karl Benz in 1885?",
+        "Did you know the fastest production car in the world is the Bugatti Chiron Super Sport 300+, reaching speeds up to 490 km/h?",
+        "Did you know Toyota is the largest automobile manufacturer by the number of cars sold?",
+        "Did you know the Tesla Model S has the fastest acceleration among production electric vehicles?",
+        "Did you know the first electric car was created in 1828 by Hungarian inventor Ányos Jedlik?"
+      ],
+      "loadingMessage": "Loading search data..."
+    },
+    "ru": {
+      "foundLots": "Найденные Лоты",
+      "showing": "Показываем",
+      "to": "по",
+      "of": "из",
+      "cars": "автомобилей",
+      "prev": "Пред",
+      "next": "След",
+      "carFacts": [
+        "А вы в курсе, что первый автомобиль с бензиновым двигателем был создан Карлом Бенцем в 1885 году?",
+        "А вы в курсе, что самая быстрая серийная машина в мире — Bugatti Chiron Super Sport 300+, разгоняется до 490 км/ч?",
+        "А вы в курсе, что Toyota является самой крупной автомобильной компанией по количеству проданных автомобилей?",
+        "А вы в курсе, что Tesla Model S имеет самый быстрый разгон среди серийных электромобилей?",
+        "А вы в курсе, что первый электрический автомобиль был создан в 1828 году венгерским изобретателем Ányos Jedlik?"
+      ],
+      "loadingMessage": "Загрузка данных поиска..."
+    },
+    "ua": {
+      "foundLots": "Знайдені Лоти",
+      "showing": "Показуємо",
+      "to": "до",
+      "of": "з",
+      "cars": "автомобілів",
+      "prev": "Попередній",
+      "next": "Наступний",
+      "carFacts": [
+        "Чи знали ви, що перший автомобіль з бензиновим двигуном був створений Карлом Бенцом у 1885 році?",
+        "Чи знали ви, що найшвидший серійний автомобіль у світі — Bugatti Chiron Super Sport 300+, розганяється до 490 км/год?",
+        "Чи знали ви, що Toyota є найбільшою автомобільною компанією за кількістю проданих автомобілів?",
+        "Чи знали ви, що Tesla Model S має найшвидший розгін серед серійних електромобілів?",
+        "Чи знали ви, що перший електричний автомобіль був створений у 1828 році угорським винахідником Ányos Jedlik?"
+      ],
+      "loadingMessage": "Завантаження даних пошуку..."
+    }
+  }
+  

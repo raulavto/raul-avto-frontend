@@ -1,0 +1,20 @@
+{
+  "en": {
+    "title": "Leave your number and we will call you back",
+    "subtitle": "If we don’t call you in 30 minutes - we’ll give you a $99 discount",
+    "input_placeholder": "Enter your phone number",
+    "button_text": "Send"
+  },
+  "ua": {
+    "title": "Залиште номер і ми передзвонимо вам",
+    "subtitle": "Не дзвонимо за 30 хвилин - даруємо знижку $99",
+    "input_placeholder": "Введіть Ваш номер",
+    "button_text": "Надіслати"
+  },
+  "ru": {
+    "title": "Оставьте свой номер, и мы перезвоним вам",
+    "subtitle": "Если мы не позвоним вам через 30 минут - дарим скидку $99",
+    "input_placeholder": "Введите ваш номер телефона",
+    "button_text": "Отправить"
+  }
+}

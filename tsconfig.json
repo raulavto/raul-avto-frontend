@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false, // Отключаем строгий режим
+    "noImplicitAny": false, // Разрешаем неявный any тип
+    "strictNullChecks": false, // Отключаем строгую проверку null
+    "strictFunctionTypes": false, // Отключаем строгую проверку типов функций
+    "strictBindCallApply": false, // Отключаем строгую проверку bind/call/apply
+    "strictPropertyInitialization": false, // Отключаем строгую инициализацию свойств
+    "noImplicitThis": false, // Разрешаем неявный this
+    "alwaysStrict": false, // Отключаем строгий режим
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/UI/LanguageSelection/LanguageSelection.jsx",
+    "src/app/zustand/useStore.js",
+    "src/components/Home/CarChoiceBody/CarChoiceBody.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

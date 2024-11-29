@@ -1,0 +1,20 @@
+{
+  "en": {
+    "contacts_title": "Contacts",
+    "email": "raulkogo@gmail.com",
+    "address": "Novopyrogivska 58",
+    "office": "Office"
+  },
+  "ua": {
+    "contacts_title": "Контакти",
+    "email": "raulkogo@gmail.com",
+    "address": "вул. Новопирогівська 58",
+    "office": "офіс"
+  },
+  "ru": {
+    "contacts_title": "Контакты",
+    "email": "raulkogo@gmail.com",
+    "address": "ул. Новопироговская 58",
+    "office": "офис"
+  }
+}

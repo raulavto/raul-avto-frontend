@@ -1,0 +1,35 @@
+{
+  "en": {
+    "order_title": "Order car selection",
+    "order_subtitle": "Our managers will contact you within a few minutes",
+    "input_name": "Name",
+    "input_phone": "Phone number",
+    "input_brand": "Brand",
+    "input_model": "Model",
+    "mileage_label": "Mileage",
+    "year_label": "Year of manufacture",
+    "submit_button": "Submit"
+  },
+  "ua": {
+    "order_title": "Замовте підбір авто",
+    "order_subtitle": "Наші менеджери зв’яжуться з вами протягом кількох хвилин",
+    "input_name": "Ім’я",
+    "input_phone": "Номер телефону",
+    "input_brand": "Марка",
+    "input_model": "Модель",
+    "mileage_label": "Пробіг",
+    "year_label": "Рік випуску",
+    "submit_button": "Надіслати"
+  },
+  "ru": {
+    "order_title": "Закажите подбор авто",
+    "order_subtitle": "Наши менеджеры свяжутся с вами в течение нескольких минут",
+    "input_name": "Имя",
+    "input_phone": "Номер телефона",
+    "input_brand": "Марка",
+    "input_model": "Модель",
+    "mileage_label": "Пробег",
+    "year_label": "Год выпуска",
+    "submit_button": "Отправить"
+  }
+}

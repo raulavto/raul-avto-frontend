@@ -1,0 +1,23 @@
+{
+    "ru": {
+        "deliver": "Доставим",
+        "car": "Машину",
+        "moto": "Мотоцикл",
+        "yacht": "Яхту",
+        "tractor": "Трактор"
+    },
+    "en": {
+        "deliver": "Deliver",
+        "car": "Car",
+        "moto": "Motorcycle",
+        "yacht": "Yacht",
+        "tractor": "Tractor"
+    },
+    "ua": {
+        "deliver": "Доставим",
+        "car": "Автомобіль",
+        "moto": "Мотоцикл",
+        "yacht": "Яхта",
+        "tractor": "Трактор"
+    }
+}

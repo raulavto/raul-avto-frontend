@@ -1,0 +1,44 @@
+{
+  "en": {
+    "auction_title": "We work with the best auctions",
+    "copart_name": "Copart",
+    "copart_description": "The most popular auction with thousands of trades daily. A large selection of cars, but requires special attention when picking.",
+    "manheim_name": "Manheim",
+    "manheim_description": "Manheim auction offers a large selection of complete cars and electric vehicles.",
+    "adesa_name": "Adesa",
+    "adesa_description": "A decent auction with an easy-to-use online auction system and less competition than the main platforms.",
+    "iaa_name": "IAA",
+    "iaa_description": "Vehicles from insurance with a transparent history and detailed lot descriptions.",
+    "impact_name": "Impact",
+    "impact_description": "Impact is a popular auction and online platform offering various types of vehicles for sale.",
+    "view_details": "View Details"
+  },
+  "ua": {
+    "auction_title": "Працюємо з найкращими аукціонами",
+    "copart_name": "Copart",
+    "copart_description": "Найпопулярніший аукціон, де щодня проходять тисячі торгів. Великий вибір авто, але підбір вимагає особливої уваги.",
+    "manheim_name": "Manheim",
+    "manheim_description": "Аукціон Manheim привабливий великим вибором цілих автомобілів та електромобілів.",
+    "adesa_name": "Adesa",
+    "adesa_description": "Непоганий аукціон із зручною системою онлайн-торгів та меншою конкуренцією, ніж на основних майданчиках.",
+    "iaa_name": "IAA",
+    "iaa_description": "Представлені автомобілі від страховок та прозорою історією та детальним описом лоту.",
+    "impact_name": "Impact",
+    "impact_description": "Impact – популярний аукціон і за сумісництвом онлайн-майданчик, який пропонує для продажу всілякі транспортні засоби.",
+    "view_details": "Переглянути"
+  },
+  "ru": {
+    "auction_title": "Работаем с лучшими аукционами",
+    "copart_name": "Copart",
+    "copart_description": "Самый популярный аукцион с тысячами торгов ежедневно. Большой выбор авто, но подбор требует особого внимания.",
+    "manheim_name": "Manheim",
+    "manheim_description": "Аукцион Manheim привлекает большим выбором целых автомобилей и электромобилей.",
+    "adesa_name": "Adesa",
+    "adesa_description": "Неплохой аукцион с удобной системой онлайн-торгов и меньшей конкуренцией, чем на основных площадках.",
+    "iaa_name": "IAA",
+    "iaa_description": "Автомобили от страховых компаний с прозрачной историей и детальными описаниями лотов.",
+    "impact_name": "Impact",
+    "impact_description": "Impact — популярный аукцион и онлайн-площадка, предлагающая к продаже различные транспортные средства.",
+    "view_details": "Посмотреть"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "en": {
+    "home_product_list_title": "This month we brought",
+    "car_price": "Price",
+    "car_usa_price": "USA Price",
+    "car_ukraine_price": "Ukraine Price",
+    "car_savings": "Savings with us 40%",
+    "view_details": "View Details"
+  },
+  "ua": {
+    "home_product_list_title": "Цього місяця ми привезли",
+    "car_price": "Ціна",
+    "car_usa_price": "Ціна в США",
+    "car_ukraine_price": "Ціна в Україні",
+    "car_savings": "Економія з нами 40%",
+    "view_details": "Переглянути"
+  },
+  "ru": {
+    "home_product_list_title": "В этом месяце мы привезли",
+    "car_price": "Цена",
+    "car_usa_price": "Цена в США",
+    "car_ukraine_price": "Цена в Украине",
+    "car_savings": "Экономия с нами 40%",
+    "view_details": "Посмотреть"
+  }
+}

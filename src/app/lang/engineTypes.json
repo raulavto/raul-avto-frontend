@@ -1,0 +1,65 @@
+{
+    "ru": {
+        "title": "Выбрать авто по двигателю:",
+        "types": [
+            {
+                "name": "Бензин",
+                "count": 8
+            },
+            {
+                "name": "Дизель",
+                "count": 467
+            },
+            {
+                "name": "Гибрид",
+                "count": 64
+            },
+            {
+                "name": "Электрика",
+                "count": 183
+            }
+        ]
+    },
+    "ua": {
+        "title": "Вибрати авто за двигуном:",
+        "types": [
+            {
+                "name": "Бензин",
+                "count": 8
+            },
+            {
+                "name": "Дизель",
+                "count": 467
+            },
+            {
+                "name": "Гібрид",
+                "count": 64
+            },
+            {
+                "name": "Електрика",
+                "count": 183
+            }
+        ]
+    },
+    "en": {
+        "title": "Choose a car by engine type:",
+        "types": [
+            {
+                "name": "Petrol",
+                "count": 8
+            },
+            {
+                "name": "Diesel",
+                "count": 467
+            },
+            {
+                "name": "Hybrid",
+                "count": 64
+            },
+            {
+                "name": "Electric",
+                "count": 183
+            }
+        ]
+    }
+}

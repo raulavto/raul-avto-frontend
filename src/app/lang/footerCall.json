@@ -1,0 +1,14 @@
+{
+  "en": {
+    "call_title": "Call us",
+    "call_button": "+38 073 772 7373"
+  },
+  "ua": {
+    "call_title": "Зателефонуйте нам",
+    "call_button": "+38 073 772 7373"
+  },
+  "ru": {
+    "call_title": "Позвоните нам",
+    "call_button": "+38 073 772 7373"
+  }
+}

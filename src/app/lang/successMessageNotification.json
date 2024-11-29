@@ -1,0 +1,11 @@
+{
+  "en": {
+    "success_message": "Application successfully sent"
+  },
+  "ua": {
+    "success_message": "Заявку успішно надіслано"
+  },
+  "ru": {
+    "success_message": "Заявка успешно отправлена"
+  }
+}

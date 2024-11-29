@@ -1,0 +1,44 @@
+{
+    "ru": {
+        "companyName": "Raulavto",
+        "calculator": "Калькулятор",
+        "partnership": "Сотрудничество",
+        "contacts": "Контакты",
+        "about": "О нас",
+        "copyEmail": "Копировать",
+        "copyAddress": "Копировать",
+        "emailCopied": "✓",
+        "addressCopied": "✓",
+        "email": "raulkogo@gmail.com",
+        "address": "ул. Новопираговская 58 офис 502",
+        "callUs": "Позвоните нам"
+    },
+    "en": {
+        "companyName": "Raulavto",
+        "calculator": "Calculator",
+        "partnership": "Partnership",
+        "contacts": "Contacts",
+        "about": "About Us",
+        "copyEmail": "Copy",
+        "copyAddress": "Copy",
+        "emailCopied": "✓",
+        "addressCopied": "✓",
+        "email": "raulkogo@gmail.com",
+        "address": "NovoPirogovskaya St, 58 office 502",
+        "callUs": "Call Us"
+    },
+    "ua": {
+        "companyName": "Raulavto",
+        "calculator": "Калькулятор",
+        "partnership": "Співпраця",
+        "contacts": "Контакти",
+        "about": "Про нас",
+        "copyEmail": "Копіювати",
+        "copyAddress": "Копіювати",
+        "emailCopied": "✓",
+        "addressCopied": "✓",
+        "email": "raulkogo@gmail.com",
+        "address": "вул. Новопирогівська 58 офіс 502",
+        "callUs": "Зателефонуйте нам"
+    }
+}

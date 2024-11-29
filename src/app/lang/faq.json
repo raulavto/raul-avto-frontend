@@ -1,0 +1,185 @@
+{
+  "en": {
+    "faq_title": "FAQ",
+    "faq_items": [
+      {
+        "question": "What are the benefits of buying a car from the USA, Canada, Korea, or Europe?",
+        "answer": [
+          "Honest Vehicle History: You can be sure that the mileage and repair data are completely transparent.",
+          "Price: In most cases, the cost of foreign cars, even with logistics and customs fees included, can be lower than the price of a similar car in the Ukrainian market.",
+          "Wide Selection and Configuration: Cars from abroad are often offered in better configurations, with more complete options and safety systems."
+        ]
+      },
+      {
+        "question": "What is the delivery time?",
+        "answer": [
+          "On average, car delivery from America takes 1.5 to 2.5 months.",
+          "This period includes:",
+          "- Auction participation and car purchase",
+          "- Transportation to the port",
+          "- Sea shipping",
+          "- Customs clearance and delivery to Ukraine"
+        ]
+      },
+      {
+        "question": "What are the benefits of buying with RAUL AVTO?",
+        "answer": [
+          "Transparent vehicle history",
+          "Quality inspection",
+          "Reliable logistics and timely delivery",
+          "Support at every stage, from choosing a car to restoration"
+        ]
+      },
+      {
+        "question": "What is the minimum budget for buying a car?",
+        "answer": [
+          "The minimum budget is $7000 'turnkey' for buying a car from the USA.",
+          "This includes all expenses: purchase, delivery, customs clearance, and restoration to ensure you get a reliable and checked car."
+        ]
+      },
+      {
+        "question": "How much does it cost to clear customs for a car?",
+        "answer": [
+          "Before purchasing any vehicle, the RAUL AVTO manager will provide you with full information about all necessary payments, including customs clearance costs.",
+          "We ensure transparency at every stage so that you know exactly your expenses."
+        ]
+      },
+      {
+        "question": "Is the deposit refunded if I can't find a car to match my needs?",
+        "answer": [
+          "The US car market is one of the largest in the world, so we will always find the right car for you.",
+          "If your plans change and the car has not yet been purchased at the auction, the deposit will be fully refunded."
+        ]
+      },
+      {
+        "question": "How to buy a car?",
+        "answer": [
+          "Leave a request on the RAUL AVTO website, and our manager will contact you to offer the best car options that match your budget and requirements.",
+          "We will help you choose a car that perfectly fits your needs."
+        ]
+      }
+    ]
+  },
+  "ua": {
+    "faq_title": "Часто задавані питання",
+    "faq_items": [
+      {
+        "question": "У чому переваги покупки авто з США, Канади, Кореї або Європи?",
+        "answer": [
+          "Чесна історія автомобіля: Ви можете бути впевнені, що дані про пробіг та ремонт повністю прозорі.",
+          "Ціна: У більшості випадків ціна на закордонні автомобілі з доставкою, навіть з урахуванням логістики та митних зборів, може бути нижчою, ніж вартість подібного автомобіля на українському ринку.",
+          "Широкий вибір і комплектація: Автомобілі з-за кордону часто пропонуються в кращих комплектаціях, з більш повним набором опцій і систем безпеки."
+        ]
+      },
+      {
+        "question": "Який строк доставки?",
+        "answer": [
+          "В середньому доставка автомобіля з Америки займає від 1,5 до 2,5 місяців.",
+          "Цей термін включає:",
+          "- Участь в аукціоні та купівлю автомобіля",
+          "- Транспортування до порту",
+          "- Морське перевезення",
+          "- Митне оформлення та доставка в Україну"
+        ]
+      },
+      {
+        "question": "Які переваги покупки в RAUL AVTO?",
+        "answer": [
+          "Прозору історію автомобіля",
+          "Перевірку якості",
+          "Надійну логістику та своєчасну доставку",
+          "Підтримку на всіх етапах, від вибору авто до відновлення"
+        ]
+      },
+      {
+        "question": "Який мінімальний бюджет для покупки авто?",
+        "answer": [
+          "Мінімальний бюджет від $7000 «під ключ» для покупки авто з США.",
+          "Це включає всі витрати: покупку, доставку, розмитнення та відновлення, щоб ви отримали надійне та перевірене авто."
+        ]
+      },
+      {
+        "question": "Скільки коштує розмитнити авто?",
+        "answer": [
+          "Перед покупкою будь-якого транспортного засобу менеджер RAUL AVTO заздалегідь надасть вам всю інформацію про необхідні платежі, включаючи вартість розмитнення.",
+          "Ми забезпечуємо прозорість на кожному етапі, щоб ви точно знали свої витрати."
+        ]
+      },
+      {
+        "question": "Чи повертається депозит, якщо не вийде знайти авто відповідно до моїх запитів?",
+        "answer": [
+          "Авторинок США є одним із найбільших у світі, тому ми завжди знайдемо підходящий автомобіль для вас.",
+          "Якщо ваші плани зміняться, і авто ще не було куплено на аукціоні, завдаток буде повернутий у повному обсязі."
+        ]
+      },
+      {
+        "question": "Як придбати авто?",
+        "answer": [
+          "Залиште заявку на сайті RAUL AVTO, і наш менеджер зв'яжеться з вами, щоб запропонувати найкращі варіанти автомобілів, які відповідають вашому бюджету та вимогам.",
+          "Ми допоможемо вибрати авто, яке ідеально підійде під ваші потреби."
+        ]
+      }
+    ]
+  },
+  "ru": {
+    "faq_title": "Часто задаваемые вопросы",
+    "faq_items": [
+      {
+        "question": "Чем выгодна покупка авто из США, Канады, Кореи или Европы?",
+        "answer": [
+          "Честная история автомобиля: Вы можете быть уверены, что данные о пробеге и ремонте полностью прозрачны.",
+          "Стоимость: В большинстве случаев цена на зарубежные автомобили с доставкой, даже с учётом логистики и таможенных сборов, может быть ниже, чем стоимость аналогичного автомобиля на украинском рынке.",
+          "Большой выбор и комплектация: Автомобили из-за рубежа часто предлагаются в лучших комплектациях, с более полным набором опций и систем безопасности."
+        ]
+      },
+      {
+        "question": "Какой срок доставки?",
+        "answer": [
+          "В среднем доставка автомобиля из Америки занимает от 1,5 до 2,5 месяцев.",
+          "Этот срок включает:",
+          "- Участие в аукционе и покупку автомобиля",
+          "- Транспортировку до порта",
+          "- Морскую перевозку",
+          "- Таможенное оформление и доставку в Украину"
+        ]
+      },
+      {
+        "question": "Какие преимущества покупки в RAUL AVTO?",
+        "answer": [
+          "Прозрачную историю автомобиля",
+          "Проверку качества",
+          "Надёжную логистику и своевременную доставку",
+          "Поддержку на всех этапах, от выбора автомобиля до восстановления"
+        ]
+      },
+      {
+        "question": "Какой минимальный бюджет для покупки авто?",
+        "answer": [
+          "Минимальный бюджет от $7000 «под ключ» для покупки авто из США.",
+          "Это включает все расходы: покупку, доставку, растаможку и восстановление, чтобы вы получили надёжный и проверенный автомобиль."
+        ]
+      },
+      {
+        "question": "Сколько стоит растаможить авто?",
+        "answer": [
+          "Перед покупкой любого транспортного средства менеджер RAUL AVTO заранее предоставит вам всю информацию о необходимых платежах, включая стоимость растаможки.",
+          "Мы обеспечиваем прозрачность на каждом этапе, чтобы вы точно знали свои расходы."
+        ]
+      },
+      {
+        "question": "Возвращается ли депозит, если не удастся найти автомобиль под мои запросы?",
+        "answer": [
+          "Авторынок США является одним из крупнейших в мире, поэтому мы всегда найдём подходящий автомобиль для вас.",
+          "Если ваши планы изменятся, и автомобиль ещё не был куплен на аукционе, залог будет полностью возвращён."
+        ]
+      },
+      {
+        "question": "Как купить авто?",
+        "answer": [
+          "Оставьте заявку на сайте RAUL AVTO, и наш менеджер свяжется с вами, чтобы предложить лучшие варианты автомобилей, соответствующие вашему бюджету и требованиям.",
+          "Мы поможем вам выбрать автомобиль, который идеально подойдёт под ваши нужды."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "ru": {
+    "callUs": "Позвоните нам",
+    "getConsultation": "и получите консультацию",
+    "callBackMessage": "Заявка на обратную связь. Телефон: ",
+    "callNow": "+38 073 772 7373",
+    "noCallBack": "Не перезвоним за 30 минут - подарим скидку $99",
+    "leaveNumber": "Оставьте номер и мы",
+    "willCallBack": "перезвоним Вам",
+    "enterNumber": "Введите ваш номер",
+    "submit": "Отправить"
+  },
+  "ua": {
+    "callUs": "Зателефонуйте нам",
+    "getConsultation": "і отримайте консультацію",
+    "callBackMessage": "Заявка на зворотний дзвінок. Телефон: ",
+    "callNow": "+38 073 772 7373",
+    "noCallBack": "Не дзвонимо за 30 хвилин - даруємо знижку $99",
+    "leaveNumber": "Залиште номер і ми",
+    "willCallBack": "передзвонимо вам",
+    "enterNumber": "Введіть ваш номер",
+    "submit": "Надіслати"
+  },
+  "en": {
+    "callUs": "Call us",
+    "getConsultation": "and get a consultation",
+    "callBackMessage": "Callback request. Phone: ",
+    "callNow": "+38 073 772 7373",
+    "noCallBack": "No back within 30 mins - get a $99 discount",
+    "leaveNumber": "Leave your number and we",
+    "willCallBack": "will call you back",
+    "enterNumber": "Enter your number",
+    "submit": "Submit"
+  }
+}

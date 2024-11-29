@@ -1,0 +1,20 @@
+{
+  "en": {
+    "automobile": "Automobile",
+    "motorcycle": "Motorcycle",
+    "yacht": "Yacht",
+    "special_tech": "Special Equipment"
+  },
+  "ua": {
+    "automobile": "Автомобіль",
+    "motorcycle": "Мотоцикл",
+    "yacht": "Яхта",
+    "special_tech": "Спецтехніка"
+  },
+  "ru": {
+    "automobile": "Автомобиль",
+    "motorcycle": "Мотоцикл",
+    "yacht": "Яхта",
+    "special_tech": "Спецтехника"
+  }
+}

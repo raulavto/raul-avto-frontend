@@ -1,0 +1,29 @@
+{
+    "en": {
+        "selection_title": "Car Selection Department",
+        "parts_title": "Parts Selection Department",
+        "logistics_title": "Car Logistics Department",
+        "phone": "+380 73 772 73 73",
+        "telegram_selection": "@raul_avto_search",
+        "telegram_parts": "@raul_avto_parts",
+        "telegram_logistics": "@raul_avto_transport"
+    },
+    "ru": {
+        "selection_title": "Отдел подбора автомобилей",
+        "parts_title": "Отдел подбора запчастей",
+        "logistics_title": "Отдел автомобильной логистики",
+        "phone": "+380 73 772 73 73",
+        "telegram_selection": "@raul_avto_search",
+        "telegram_parts": "@raul_avto_parts",
+        "telegram_logistics": "@raul_avto_transport"
+    },
+    "ua": {
+        "selection_title": "Відділ підбору автомобілів",
+        "parts_title": "Відділ підбору запчастин",
+        "logistics_title": "Відділ автомобільної логістики",
+        "phone": "+380 73 772 73 73",
+        "telegram_selection": "@raul_avto_search",
+        "telegram_parts": "@raul_avto_parts",
+        "telegram_logistics": "@raul_avto_transport"
+    }
+}

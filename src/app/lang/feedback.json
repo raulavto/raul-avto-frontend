@@ -1,0 +1,20 @@
+{
+  "en": {
+    "feedback_title": "Reviews",
+    "time_year_ago": "year ago",
+    "time_months_ago": "months ago",
+    "time_years_ago": "years ago"
+  },
+  "ua": {
+    "feedback_title": "Відгуки",
+    "time_year_ago": "рік тому",
+    "time_months_ago": "місяців тому",
+    "time_years_ago": "роки тому"
+  },
+  "ru": {
+    "feedback_title": "Отзывы",
+    "time_year_ago": "год назад",
+    "time_months_ago": "месяцев назад",
+    "time_years_ago": "лет назад"
+  }
+}

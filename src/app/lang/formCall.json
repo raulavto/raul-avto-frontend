@@ -1,0 +1,38 @@
+{
+  "en": {
+    "form_title": "We will call you back",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "phone_placeholder": "Phone number",
+    "phone_invalid": "Invalid phone number",
+    "phone_required": "Phone number is required",
+    "name_required": "the name field is required",
+    "brand_required": "brand field is required",
+    "model_required": "model field is required",
+    "waiting_for_call": "Waiting for a call"
+  },
+  "ua": {
+    "form_title": "ПЕРЕДЗВОНИМО ВАМ",
+    "today": "Сьогодні",
+    "tomorrow": "Завтра",
+    "phone_placeholder": "Номер телефону",
+    "phone_invalid": "Номер телефону не валідний",
+    "phone_required": "Номер телефону обов’язковий для заповнення",
+    "name_required": "Поле  ім'я обов'язкове",
+    "brand_required": "Поле марка обов'язково",
+    "model_required": "Поле модель обов'язкове",
+    "waiting_for_call": "Чекаю дзвінок"
+  },
+  "ru": {
+    "form_title": "Мы вам перезвоним",
+    "today": "Сегодня",
+    "tomorrow": "Завтра",
+    "phone_placeholder": "Номер телефона",
+    "phone_invalid": "Номер телефона невалидный",
+    "phone_required": "Номер телефона обязателен для заполнения",
+    "name_required": "Поле имя обязательно",
+    "brand_required": "Поле марка обязательно",
+    "model_required": "Поле модель обязательно",
+    "waiting_for_call": "Ожидаю звонка"
+  }
+}

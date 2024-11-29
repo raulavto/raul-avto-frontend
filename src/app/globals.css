@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000000;
+}
+
+main {
+  flex: 1;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Стили для всего скроллбара */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Стили для трека скроллбара */
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 17px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* Стили для ползунка скроллбара */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3e4146;
+  border-radius: 17px;
+  border: 2px solid #272a2e;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  -ms-border-radius: 17px;
+  -o-border-radius: 17px;
+}
+
+/* Стили для ползунка скроллбара при наведении */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #6a6969;
+}
+
+/* for input */
+.opacity-gradient {
+  background: linear-gradient(83deg, #333333 2.3%, #0f0f0f 70%);
+  opacity: 0.8;
+}
+
+.mobile-block-gradient {
+  background: radial-gradient(circle at top left, #660000 0%, transparent 40%),
+    radial-gradient(circle at bottom right, #660000 0%, transparent 40%),
+    #000000;
+}
+
+.mobile-block-gradient-proposition {
+  background: radial-gradient(circle at center, #660000 0%, transparent 70%),
+    radial-gradient(circle at bottom right, #660000 0%, transparent 50%),
+    #000000;
+}
+
+.mobile-block-gradient-for-proposition {
+  background: radial-gradient(circle at bottom center,
+      #660000 0%,
+      transparent 100%),
+    #000000;
+}
+
+.mobile-block-gradient-for-proposition-left {
+  background: linear-gradient(to top right, #660000 0%, transparent 50%),
+    #000000;
+}
+
+/* Скрывает скролл для всех браузеров */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari и Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE и Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* стили ползунков в форме */
+input[type='range'] {
+  -webkit-appearance: none;
+  /* Убирает стандартный стиль */
+  width: 100%;
+  height: 2px;
+  /* Высота линии */
+  background: red;
+  position: relative;
+}
+
+/* Линия */
+input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background-color: red;
+  border-radius: 2px;
+}
+
+/* Бегунок */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  border: 1px solid white;
+}
+
+/* Точки по краям */
+input[type='range']::before,
+input[type='range']::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 16px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px white;
+}
+
+input[type='range']::before {
+  left: 0;
+}
+
+input[type='range']::after {
+  right: 0;
+}
+
+.input-order-bg {
+  background: rgba(212, 212, 216, 0.4);
+}
+
+.bg-input-for-form-call {
+  background: rgba(212, 212, 216, 0.4);
+}
+
+/* плавное появление формы модалки */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.bg-fade {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Используйте более специфичный селектор для переопределения стиля */
+.group[data-has-value='true'] .group-data-\[has-value\=true\]\:text-default-foreground {
+  color: white !important;
+  /* Белый цвет и использование !important, чтобы переопределить стиль */
+}
+
+/* Убираем эффект ховера */
+button[data-hover='true'] {
+  background: rgba(212, 212, 216, 0.4) !important;
+  /* Убираем фоновый цвет при ховере */
+}
+
+/* Можно также убрать любые другие стили, связанные с hover, если необходимо */
+button[data-hover='true']:hover {
+  background: rgba(212, 212, 216, 0.4) !important;
+  /* Убираем фон при наведении */
+  box-shadow: none !important;
+  /* Убираем тень при наведении */
+}
+
+/* .bg-content1 {
+  background-color: transparent;
+} */
+
+@keyframes loaderForApiAnimation {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(10deg) scale(1.1);
+    /* Наклон вправо */
+  }
+
+  50% {
+    transform: rotate(-10deg) scale(1.1);
+    /* Наклон влево */
+  }
+
+  75% {
+    transform: rotate(10deg) scale(1.1);
+    /* Наклон вправо */
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.api-loader {
+  animation: loaderForApiAnimation 1s infinite;
+  -webkit-animation: loaderForApiAnimation 1s infinite;
+}
+
+.notification {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation:
+    fadeIn 1s ease-out forwards,
+    fadeOut 1s ease-out forwards 4s;
+  /* Плавное исчезновение после 4 секунд */
+  pointer-events: none;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

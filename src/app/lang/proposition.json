@@ -1,0 +1,20 @@
+{
+  "en": {
+    "title": "Daily Offers for Cars from the USA",
+    "subtitle": "Join us!",
+    "description": "Receive great offers for auction lots in the USA. We publish only relevant cars with cost calculations in Ukraine.",
+    "button_text": "Telegram"
+  },
+  "ua": {
+    "title": "Щоденні пропозиції по авто з США",
+    "subtitle": "Приєднуйтесь до нас!",
+    "description": "Отримуйте вигідні пропозиції по лотах на аукціонах США. Публікуємо тільки актуальні автомобілі з розрахунком вартості в Україні.",
+    "button_text": "Telegram"
+  },
+  "ru": {
+    "title": "Ежедневные предложения по авто из США",
+    "subtitle": "Присоединяйтесь к нам!",
+    "description": "Получайте выгодные предложения по лотам на аукционах США. Публикуем только актуальные автомобили с расчетом стоимости в Украине.",
+    "button_text": "Telegram"
+  }
+}

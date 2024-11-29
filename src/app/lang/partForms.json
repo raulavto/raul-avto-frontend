@@ -1,0 +1,47 @@
+{
+    "en": {
+        "form_phone": "Phone number",
+        "form_name": "Name",
+        "form_comment": "Comment",
+        "form_phone_placeholder": "+ 380 000 00 00",
+        "form_name_placeholder": "Surname Name",
+        "form_comment_placeholder": "Comment",
+        "form_submit": "Submit",
+        "form_telegram": "Telegram",
+        "form_name_contact": "What's your name?",
+        "form_or": "Or",
+        "form_heading_line1": "Leave your contact details,",
+        "form_heading_line2": "and our team will contact",
+        "form_heading_line3": "you shortly"
+    },
+    "ru": {
+        "form_phone": "Номер телефона",
+        "form_name": "Имя",
+        "form_comment": "Комментарий",
+        "form_phone_placeholder": "+ 380 000 00 00",
+        "form_name_placeholder": "Фамилия Имя",
+        "form_comment_placeholder": "Комментарий",
+        "form_submit": "Отправить",
+        "form_telegram": "Telegram",
+        "form_name_contact": "Как вас зовут?",
+        "form_or": "Или",
+        "form_heading_line1": "Оставь свои контакты,",
+        "form_heading_line2": "и наша команда свяжется",
+        "form_heading_line3": "с тобой в ближайшее время"
+    },
+    "ua": {
+        "form_phone": "Номер телефону",
+        "form_name": "Ім'я",
+        "form_comment": "Коментар",
+        "form_phone_placeholder": "+ 380 000 00 00",
+        "form_name_placeholder": "Прізвище Ім'я",
+        "form_comment_placeholder": "Коментар",
+        "form_submit": "Надіслати",
+        "form_telegram": "Telegram",
+        "form_name_contact": "Як вас звати?",
+        "form_or": "Або",
+        "form_heading_line1": "Залиште свої контакти,",
+        "form_heading_line2": "і наша команда зв'яжеться",
+        "form_heading_line3": "з вами найближчим часом"
+    }
+}

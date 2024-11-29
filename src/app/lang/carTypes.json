@@ -1,0 +1,134 @@
+{
+    "ru": {
+        "carTypes": [
+            {
+                "name": "Внедорожники",
+                "count": 8,
+                "imgSrc": "/SUV.png"
+            },
+            {
+                "name": "Пикапы",
+                "count": 467,
+                "imgSrc": "/pikap.png"
+            },
+            {
+                "name": "Кроссоверы",
+                "count": 64,
+                "imgSrc": "/crossover.png"
+            },
+            {
+                "name": "Минивены",
+                "count": 167,
+                "imgSrc": "/miniven.png"
+            },
+            {
+                "name": "Седаны",
+                "count": 2587,
+                "imgSrc": "/sedan.png"
+            },
+            {
+                "name": "Хетчбеки",
+                "count": 280,
+                "imgSrc": "/hatchback.png"
+            },
+            {
+                "name": "Кабриолеты",
+                "count": 43,
+                "imgSrc": "/kabriolet.png"
+            },
+            {
+                "name": "Купе",
+                "count": 174,
+                "imgSrc": "/cupe.png"
+            }
+        ]
+    },
+    "ua": {
+        "carTypes": [
+            {
+                "name": "Позашляховики",
+                "count": 8,
+                "imgSrc": "/SUV.png"
+            },
+            {
+                "name": "Пікапи",
+                "count": 467,
+                "imgSrc": "/pikap.png"
+            },
+            {
+                "name": "Кросовери",
+                "count": 64,
+                "imgSrc": "/crossover.png"
+            },
+            {
+                "name": "Мінівени",
+                "count": 167,
+                "imgSrc": "/miniven.png"
+            },
+            {
+                "name": "Седани",
+                "count": 2587,
+                "imgSrc": "/sedan.png"
+            },
+            {
+                "name": "Хетчбеки",
+                "count": 280,
+                "imgSrc": "/hatchback.png"
+            },
+            {
+                "name": "Кабріолети",
+                "count": 43,
+                "imgSrc": "/kabriolet.png"
+            },
+            {
+                "name": "Купе",
+                "count": 174,
+                "imgSrc": "/cupe.png"
+            }
+        ]
+    },
+    "en": {
+        "carTypes": [
+            {
+                "name": "SUVs",
+                "count": 8,
+                "imgSrc": "/SUV.png"
+            },
+            {
+                "name": "Pickups",
+                "count": 467,
+                "imgSrc": "/pikap.png"
+            },
+            {
+                "name": "Crossovers",
+                "count": 64,
+                "imgSrc": "/crossover.png"
+            },
+            {
+                "name": "Minivans",
+                "count": 167,
+                "imgSrc": "/miniven.png"
+            },
+            {
+                "name": "Sedans",
+                "count": 2587,
+                "imgSrc": "/sedan.png"
+            },
+            {
+                "name": "Hatchbacks",
+                "count": 280,
+                "imgSrc": "/hatchback.png"
+            },
+            {
+                "name": "Convertibles",
+                "count": 43,
+                "imgSrc": "/kabriolet.png"
+            },
+            {
+                "name": "Coupes",
+                "count": 174,
+                "imgSrc": "/cupe.png"
+            }
+        ]
+    }
+}

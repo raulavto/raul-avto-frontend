@@ -1,0 +1,113 @@
+{
+    "ru": {
+        "title": "Процесс покупки авто из США",
+        "steps": [
+            {
+                "title": "Заказ авто",
+                "description": "Связь с менеджером для уточнения ваших пожеланий и бюджета на транспортное средство"
+            },
+            {
+                "title": "Договор",
+                "description": "Ознакомление и подписание договора. Это закрепляет стороны к выполнению условий."
+            },
+            {
+                "title": "Поиск подходящего ТС",
+                "description": "Поиск и проверка и просчет цены транспортного средства, соответствующего запросам клиента"
+            },
+            {
+                "title": "Аукцион",
+                "description": "Процесс покупки автомобиля и общение с клиентом в прямом эфире аукциона, дает доступ к корректировке пожеланий"
+            },
+            {
+                "title": "Оплата",
+                "description": "Оплата всех необходимых процессов производиться в течение 2 рабочих дней после покупки авто, любым удобным для клиента способом"
+            },
+            {
+                "title": "Доставка",
+                "description": "Транспортировка до ближайшего порта, и полный фотоотчёт автомобиля. Морская транспортировка ТС, к порту вашей страны."
+            },
+            {
+                "title": "Таможенная очистка",
+                "description": "Полный процесс делают наши таможенные брокеры и предоставляют помощь в оплате."
+            },
+            {
+                "title": "Вручение автомобиля",
+                "description": "Доставка автомобиля назначенная вами место назначения"
+            }
+        ]
+    },
+    "en": {
+        "title": "Car Buying Process from the USA",
+        "steps": [
+            {
+                "title": "Order a Car",
+                "description": "Contact the manager to clarify your wishes and budget for the vehicle"
+            },
+            {
+                "title": "Agreement",
+                "description": "Review and sign the agreement. This binds the parties to fulfill the terms."
+            },
+            {
+                "title": "Searching for a Suitable Vehicle",
+                "description": "Search and check and calculate the price of the vehicle that meets the client's requests"
+            },
+            {
+                "title": "Auction",
+                "description": "The process of buying a car and communicating with the client live at the auction allows for adjustments to wishes"
+            },
+            {
+                "title": "Payment",
+                "description": "Payment for all necessary processes is made within 2 working days after the purchase of the car, by any method convenient for the client"
+            },
+            {
+                "title": "Delivery",
+                "description": "Transportation to the nearest port, and a complete photo report of the car. Sea transportation of the vehicle to your country's port."
+            },
+            {
+                "title": "Customs Clearance",
+                "description": "The entire process is handled by our customs brokers and assistance with payment is provided."
+            },
+            {
+                "title": "Car Handover",
+                "description": "Delivery of the car to the destination specified by you"
+            }
+        ]
+    },
+    "ua": {
+        "title": "Процес купівлі автомобіля зі США",
+        "steps": [
+            {
+                "title": "Замовлення авто",
+                "description": "Зв'язок з менеджером для уточнення ваших побажань та бюджету на транспортний засіб"
+            },
+            {
+                "title": "Договір",
+                "description": "Ознайомлення та підписання договору. Це закріплює сторони для виконання умов."
+            },
+            {
+                "title": "Пошук підходящого ТЗ",
+                "description": "Пошук і перевірка і розрахунок ціни транспортного засобу, що відповідає запитам клієнта"
+            },
+            {
+                "title": "Аукціон",
+                "description": "Процес покупки автомобіля та спілкування з клієнтом у прямому ефірі аукціону, що дає доступ до коригування побажань"
+            },
+            {
+                "title": "Оплата",
+                "description": "Оплата всіх необхідних процесів здійснюється протягом 2 робочих днів після покупки авто, будь-яким зручним для клієнта способом"
+            },
+            {
+                "title": "Доставка",
+                "description": "Транспортування до найближчого порту та повний фотозвіт автомобіля. Морське транспортування ТЗ до порту вашої країни."
+            },
+            {
+                "title": "Митне очищення",
+                "description": "Повний процес роблять наші митні брокери та надають допомогу в оплаті."
+            },
+            {
+                "title": "Передача автомобіля",
+                "description": "Доставка автомобіля призначеним вами місцем призначення"
+            }
+        ]
+    }
+}

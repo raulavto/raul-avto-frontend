@@ -1,0 +1,20 @@
+{
+  "ru": {
+    "hero": {
+      "title": "Авто из США",
+      "description": "Прямые поставки с аукционов. Надёжность, качество, доступные цены."
+    }
+  },
+  "ua": {
+    "hero": {
+      "title": "Авто з США",
+      "description": "Прямі поставки з аукціонів. Надійність, якість, доступні ціни."
+    }
+  },
+  "en": {
+    "hero": {
+      "title": "Cars from the USA",
+      "description": "Direct deliveries from auctions. Reliability, quality, affordable prices."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "en": {
+    "consultation_title": "Get a consultation",
+    "consultation_subtitle": "Call us",
+    "consultation_button": "Call"
+  },
+  "ua": {
+    "consultation_title": "Отримайте консультацію",
+    "consultation_subtitle": "Зателефонуйте нам",
+    "consultation_button": "Зателефонувати"
+  },
+  "ru": {
+    "consultation_title": "Получите консультацию",
+    "consultation_subtitle": "Позвоните нам",
+    "consultation_button": "Позвонить"
+  }
+}

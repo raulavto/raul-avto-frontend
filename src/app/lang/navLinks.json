@@ -1,0 +1,26 @@
+{
+  "en": {
+    "calculator": "Calculator",
+    "partnership": "Partnership",
+    "contacts": "Contacts",
+    "about": "About Us",
+    "blog": "Blog",
+    "faq": "FAQ"
+  },
+  "ua": {
+    "calculator": "Калькулятор",
+    "partnership": "Співпраця",
+    "contacts": "Контакти",
+    "about": "Про нас",
+    "blog": "Блог",
+    "faq": "FAQ"
+  },
+  "ru": {
+    "calculator": "Калькулятор",
+    "partnership": "Сотрудничество",
+    "contacts": "Контакты",
+    "about": "О нас",
+    "blog": "Блог",
+    "faq": "FAQ"
+  }
+}

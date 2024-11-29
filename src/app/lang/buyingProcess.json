@@ -1,0 +1,125 @@
+{
+  "en": {
+    "section_title": "Car Buying Process from the USA",
+    "steps": [
+      {
+        "title": "Car Order",
+        "description": "Contact with a manager to clarify your preferences and budget for the vehicle."
+      },
+      {
+        "title": "Agreement",
+        "description": "Review and sign the agreement, which binds both parties to fulfill the terms."
+      },
+      {
+        "title": "Vehicle Search",
+        "description": "Search and inspect to estimate the cost of a vehicle that meets the client's requirements."
+      },
+      {
+        "title": "Auction",
+        "description": "Buying process with live communication during the auction, allowing preference adjustments."
+      },
+      {
+        "title": "Payment",
+        "description": "Payment for all necessary processes within 2 business days after purchase, via a convenient method."
+      },
+      {
+        "title": "Delivery",
+        "description": "Transport to the nearest port and complete photo report. Sea transport to your country's port."
+      },
+      {
+        "title": "Car Repair",
+        "description": "We can perform a full turnkey car repair."
+      },
+      {
+        "title": "Customs Clearance",
+        "description": "Full process handled by our customs brokers, providing assistance with payment."
+      },
+      {
+        "title": "Car Transfer",
+        "description": "Delivery of the car to the specified destination."
+      }
+    ]
+  },
+  "ua": {
+    "section_title": "Процес купівлі автомобіля зі США",
+    "steps": [
+      {
+        "title": "Замовлення авто",
+        "description": "Зв'язок з менеджером для уточнення ваших побажань та бюджету на транспортний засіб."
+      },
+      {
+        "title": "Договір",
+        "description": "Ознайомлення та підписання договору. Це закріплює сторони для виконання умов."
+      },
+      {
+        "title": "Пошук підходящого ТЗ",
+        "description": "Пошук і перевірка з розрахунком ціни транспортного засобу, що відповідає запитам клієнта."
+      },
+      {
+        "title": "Аукціон",
+        "description": "Процес покупки автомобіля та спілкування з клієнтом у прямому ефірі аукціону, що дає доступ до коригування побажань."
+      },
+      {
+        "title": "Оплата",
+        "description": "Оплата всіх необхідних процесів здійснюється протягом 2 робочих днів після покупки авто, будь-яким зручним для клієнта способом."
+      },
+      {
+        "title": "Доставка",
+        "description": "Транспортування до найближчого порту та повний фото-звіт автомобіля. Морем транспортування ТЗ до порту вашої країни."
+      },
+      {
+        "title": "Ремонт авто",
+        "description": "Ми можемо зробити повний ремонт авто під ключ."
+      },
+      {
+        "title": "Митне очищення",
+        "description": "Повний процес роблять наші митні брокери та надають допомогу в оплаті."
+      },
+      {
+        "title": "Передача автомобіля",
+        "description": "Доставка автомобіля призначеним вам місцем призначення."
+      }
+    ]
+  },
+  "ru": {
+    "section_title": "Процесс покупки автомобиля из США",
+    "steps": [
+      {
+        "title": "Заказ авто",
+        "description": "Связь с менеджером для уточнения ваших пожеланий и бюджета на транспортное средство."
+      },
+      {
+        "title": "Договор",
+        "description": "Ознакомление и подписание договора, что закрепляет стороны для выполнения условий."
+      },
+      {
+        "title": "Поиск подходящего ТС",
+        "description": "Поиск и проверка с расчетом цены транспортного средства, отвечающего запросам клиента."
+      },
+      {
+        "title": "Аукцион",
+        "description": "Процесс покупки автомобиля и общение с клиентом в прямом эфире аукциона, что дает возможность корректировки пожеланий."
+      },
+      {
+        "title": "Оплата",
+        "description": "Оплата всех необходимых процессов осуществляется в течение 2 рабочих дней после покупки авто, удобным для клиента способом."
+      },
+      {
+        "title": "Доставка",
+        "description": "Транспортировка до ближайшего порта и полный фотоотчет автомобиля. Морская транспортировка ТС до порта вашей страны."
+      },
+      {
+        "title": "Ремонт авто",
+        "description": "Мы можем выполнить полный ремонт авто под ключ."
+      },
+      {
+        "title": "Таможенная очистка",
+        "description": "Полный процесс выполняется нашими таможенными брокерами с оказанием помощи в оплате."
+      },
+      {
+        "title": "Передача автомобиля",
+        "description": "Доставка автомобиля к указанному месту назначения."
+      }
+    ]
+  }
+}

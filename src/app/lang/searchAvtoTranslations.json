@@ -1,0 +1,32 @@
+{
+  "ru": {
+    "find_car": "Найдите автомобиль:",
+    "select_brand": "Выберите марку",
+    "select_model": "Выберите модель",
+    "year_from": "Возраст",
+    "year_to": "Пробег",
+    "find": "Найти",
+    "year_range": "Возраст",
+    "odo_range": "Пробег"
+  },
+  "en": {
+    "find_car": "Find a car:",
+    "select_brand": "Select brand",
+    "select_model": "Select model",
+    "year_from": "Age",
+    "year_to": "Odo",
+    "find": "Find",
+    "year_range": "Year",
+    "odo_range": "Odometer"
+  },
+  "ua": {
+    "find_car": "Знайдіть автомобіль:",
+    "select_brand": "Виберіть марку",
+    "select_model": "Виберіть модель",
+    "year_from": "Вік",
+    "year_to": "Пробiг",
+    "find": "Знайти",
+    "year_range": "Вік",
+    "odo_range": "Пробіг"
+  }
+}

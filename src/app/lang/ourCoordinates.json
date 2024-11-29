@@ -1,0 +1,80 @@
+{
+    "en": {
+        "title": "Contacts",
+        "locations": [
+            {
+                "city": "Ukraine, Kyiv",
+                "address": "58 Novopyrohivska St, Office 502",
+                "hours": "Mon-Fri 18:00",
+                "phone": "+380 73 772 73 73",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "Georgia, Batumi",
+                "address": "121 Parnavaz Mepe St",
+                "hours": "Mon-Fri 18:00",
+                "phone": "+9959960929299",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "USA, Florida",
+                "address": "416 SW 1st Ave Apt 207, Fort Lauderdale, FL 33301",
+                "hours": "Mon-Fri 18:00",
+                "phone": "+1 786 614 1851",
+                "email": "info@raulavto.com"
+            }
+        ]
+    },
+    "ru": {
+        "title": "Контакты",
+        "locations": [
+            {
+                "city": "Украина, Киев",
+                "address": "ул. Новопираговская 58 офис 502",
+                "hours": "Пн-пт 18:00",
+                "phone": "+380 73 772 73 73",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "Грузия, Батуми",
+                "address": "ул. Парнаваза Мефе 121",
+                "hours": "Пн-пт 18:00",
+                "phone": "+9959960929299",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "США, Флорида",
+                "address": "416 SW 1ST AVE APT 207 FORT LAUDERDALE, FL 33301",
+                "hours": "Пн-пт 18:00",
+                "phone": "+1 786 614 1851",
+                "email": "info@raulavto.com"
+            }
+        ]
+    },
+    "ua": {
+        "title": "Контакти",
+        "locations": [
+            {
+                "city": "Україна, Київ",
+                "address": "вул. Новопирогівська 58 офіс 502",
+                "hours": "Пн-пт 18:00",
+                "phone": "+380 73 772 73 73",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "Грузія, Батумі",
+                "address": "вул. Парнаваза Мепе 121",
+                "hours": "Пн-пт 18:00",
+                "phone": "+9959960929299",
+                "email": "info@raulavto.com"
+            },
+            {
+                "city": "США, Флорида",
+                "address": "416 SW 1ST AVE APT 207 FORT LAUDERDALE, FL 33301",
+                "hours": "Пн-пт 18:00",
+                "phone": "+1 786 614 1851",
+                "email": "info@raulavto.com"
+            }
+        ]
+    }
+}

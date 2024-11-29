@@ -1,0 +1,26 @@
+{
+  "en": {
+    "hero_title": "Cars from the USA",
+    "hero_subtitle": "Direct deliveries from auctions. Reliability, quality, affordable prices.",
+    "button_text": "Select a car",
+    "clients_count": "Clients",
+    "cars_delivered": "Cars delivered",
+    "years_on_market": "Years on the market"
+  },
+  "ua": {
+    "hero_title": "Авто з США",
+    "hero_subtitle": "Прямі поставки з аукціонів. Надійність, якість, доступні ціни.",
+    "button_text": "Підібрати авто",
+    "clients_count": "Клієнтів",
+    "cars_delivered": "Привезено машин",
+    "years_on_market": "Років на ринку"
+  },
+  "ru": {
+    "hero_title": "Авто из США",
+    "hero_subtitle": "Прямые поставки с аукционов. Надежность, качество, доступные цены.",
+    "button_text": "Подобрать авто",
+    "clients_count": "Клиентов",
+    "cars_delivered": "Привезено машин",
+    "years_on_market": "Лет на рынке"
+  }
+}

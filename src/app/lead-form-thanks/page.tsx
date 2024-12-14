@@ -7,7 +7,6 @@ const LeadFormThanks = () => {
     <Container>
       <section
         className="flex justify-center items-center tablet:py-[156px] relative bg-[url('/order-fon.jpg')] mobile:bg-no-repeat mobile:bg-center mobile:bg-cover"
-        id="order-form"
       >
         <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"></div>

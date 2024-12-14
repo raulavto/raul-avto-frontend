@@ -13,6 +13,12 @@ import { sendMessage } from '@/app/utils/sendMessage';
 import Notification from '@/components/UI/Notification/Notification';
 import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import { sendClick_submitForm } from '@/app/utils/analytics';
+import { useRouter } from 'next/navigation';
+
+interface VariantProps{
+  variant?:"common"|"leadForm"
+}
 
 interface FormCallValues {
   name: string;
@@ -32,7 +38,8 @@ const initialValues: FormCallValues = {
   year: [2000, new Date().getFullYear()],
 };
 
-const OrderFormModern = () => {
+const OrderFormModern = ({ variant = "common" }: VariantProps) => {
+  const router = useRouter();
   const [notificationVisible, setNotificationVisible] = useState(false);
   const [mileage, setMileage] = useState([50000, 200000]);
   const [year, setYear] = useState([2000, new Date().getFullYear()]);
@@ -60,14 +67,21 @@ const OrderFormModern = () => {
   ) => {
     const { resetForm } = formikHelpers;
     const message = `
-      Заявка на подбор авто: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
+      Заявка на подбор авто ${ variant!=="common"?'со служебной страницы':""}: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
     `;
-    sendMessage(message);
+    console.log("🚀 ~ OrderFormModern ~ message:", message)
+    // sendMessage(message);
     resetForm();
     // Сброс значений ползунков
     setMileage([50000, 200000]);
     setYear([2000, new Date().getFullYear()]);
     setNotificationVisible(true);
+
+    if (variant !== "common") {
+       console.log('Triggering submit form event for GTM/Facebook Pixel');
+      sendClick_submitForm();
+      router.push('/lead-form-thanks');
+    }
   };
   return (
     <Container>

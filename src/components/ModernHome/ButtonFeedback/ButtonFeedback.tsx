@@ -2,11 +2,12 @@
 import Button from '@/components/UI/Button/Button';
 import { /*useAppDispatch,*/ useAppSelector } from '@/hooks/redux-hook';
 // import { openModalFeedback } from '@/Redux/feedbackFormSlice/feedbackFormSlice';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/buttonFeedback.json';
 
 const ButtonFeedback = () => {
+  const pathname = usePathname();
   const router = useRouter();
   // const dispatch = useAppDispatch();
   const isModalOpen = useAppSelector(
@@ -15,11 +16,13 @@ const ButtonFeedback = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
 
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+
   const handleClick = () => {
     // dispatch(openModalFeedback());
     router.push('/#order-form');
   };
-  return (
+  return (!isLeadForm&&
     !isModalOpen && (
       <div className="fixed z-[200] mobile:bottom-5 mobile:right-5 tablet:bottom-10 tablet:right-10 ">
         <Button

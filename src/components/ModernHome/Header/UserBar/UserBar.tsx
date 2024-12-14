@@ -15,7 +15,9 @@ const UserBar = () => {
     setShowModal((prev) => !prev);
   };
 
-  return (
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+
+  return ( !isLeadForm &&
     <ul className="mobile:hidden pointuserbar:flex items-center ml-auto">
       {/* VIN */}
       {/* <li className="mr-[26px] relative">

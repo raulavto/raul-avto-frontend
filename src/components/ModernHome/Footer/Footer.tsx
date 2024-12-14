@@ -1,3 +1,4 @@
+"use client"
 import Container from '@/components/Container/Container';
 import FooterLogo from './FooterLogo';
 import FooterNavigation from './FooterNavigation';
@@ -5,9 +6,13 @@ import FooterContacs from './FooterContacs';
 import FooterMap from './FooterMap';
 import FooterSocial from './FooterSocial';
 import FooterCall from './FooterCall';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
-  return (
+  const pathname = usePathname();
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+  
+  return (!isLeadForm &&
     <footer className="mobile:pt-[64px] mobile:pb-[80px] tablet:pb-[60px] lg:pt-[58px] lg:pb-[58px]">
       <Container>
         <ul className="flex flex-col items-center tablet:flex-row tablet:flex-wrap tablet:justify-evenly tablet:items-start tablet:gap-[30px]">

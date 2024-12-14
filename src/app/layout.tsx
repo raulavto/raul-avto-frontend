@@ -7,6 +7,10 @@ import { myFontPanagram } from './fonts';
 import './globals.css';
 import '../components/Loader/loader.css';
 import dynamic from 'next/dynamic';
+import { GoogleTagManager } from '@next/third-parties/google';
+import { Suspense } from 'react';
+import { FacebookPixelEvents } from './utils/analytics';
+
 const ReduxProvider = dynamic(() => import('../Providers/ReduxProvider'), {
   ssr: false,
 });
@@ -23,6 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <GoogleTagManager gtmId="GTM-MM6J6JCP" />
+        <Suspense fallback={null}>
+          <FacebookPixelEvents />
+        </Suspense>
+      </head>
       <link rel="apple-touch-icon" href="/apple-icon.png"></link>
       <link rel="manifest" href="/manifest.json"></link>
       <body className={myFontPanagram.className}>

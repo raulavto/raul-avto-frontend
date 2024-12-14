@@ -69,8 +69,7 @@ const OrderFormModern = ({ variant = "common" }: VariantProps) => {
     const message = `
       Заявка на подбор авто ${ variant!=="common"?'со служебной страницы':""}: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
     `;
-    console.log("🚀 ~ OrderFormModern ~ message:", message)
-    // sendMessage(message);
+    sendMessage(message);
     resetForm();
     // Сброс значений ползунков
     setMileage([50000, 200000]);
@@ -78,7 +77,6 @@ const OrderFormModern = ({ variant = "common" }: VariantProps) => {
     setNotificationVisible(true);
 
     if (variant !== "common") {
-       console.log('Triggering submit form event for GTM/Facebook Pixel');
       sendClick_submitForm();
       router.push('/lead-form-thanks');
     }

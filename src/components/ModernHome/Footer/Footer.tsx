@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 
 const Footer = () => {
   const pathname = usePathname();
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
   
   return (!isLeadForm &&
     <footer className="mobile:pt-[64px] mobile:pb-[80px] tablet:pb-[60px] lg:pt-[58px] lg:pb-[58px]">

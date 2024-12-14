@@ -7,7 +7,7 @@ const Burger = () => {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
 
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
 
   const toggleMenu = () => {
     setOpen(!isOpen);

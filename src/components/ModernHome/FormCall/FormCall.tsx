@@ -18,6 +18,7 @@ import translations from '../../../app/lang/formCall.json';
 import { Select, SelectItem } from '@nextui-org/react';
 import { sendMessage } from '@/app/utils/sendMessage';
 import Notification from '@/components/UI/Notification/Notification';
+import { usePathname } from 'next/navigation';
 
 interface FormCallValues {
   date: string;
@@ -34,6 +35,7 @@ const initialValues: FormCallValues = {
 };
 
 const FormCall = () => {
+  const pathname = usePathname();
   const [notificationVisible, setNotificationVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(initialValues.date);
   const [selectedHour, setSelectedHour] = useState(Number(initialValues.hour));
@@ -130,7 +132,9 @@ const FormCall = () => {
 
   if (!isVisible) return null;
 
-  return (
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
+
+  return ( !isLeadForm &&
     <section className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn">
       <button
         onClick={handleClose}

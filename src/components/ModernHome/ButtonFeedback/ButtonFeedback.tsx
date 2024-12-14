@@ -16,7 +16,7 @@ const ButtonFeedback = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
 
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
 
   const handleClick = () => {
     // dispatch(openModalFeedback());

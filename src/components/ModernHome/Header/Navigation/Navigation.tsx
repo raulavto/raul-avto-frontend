@@ -11,7 +11,7 @@ const Navigation = () => {
   const isActiveClass = 'text-red-600 text-[16px]';
   const t = translations[language];
 
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';;
+  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
 
   return (
     <nav className="flex items-center">

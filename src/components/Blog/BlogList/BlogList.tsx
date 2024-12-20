@@ -73,9 +73,10 @@ const BlogList = () => {
                 />
               )}
               <div className="p-[40px]">
-                <h3 className="h-[105px] overflow-auto scrollbar-hide text-[24px] font-bold text-black mb-[18px]">
+                <h3 className="text-[24px] font-bold text-black mb-[18px] break-words hyphens-auto">
                   {post.title || 'N/A'}
                 </h3>
+
                 {/* <p className="h-[35px] overflow-auto scrollbar-hide  text-sm text-gray-400 mb-4">
                   {post.subtitle}
                 </p> */}

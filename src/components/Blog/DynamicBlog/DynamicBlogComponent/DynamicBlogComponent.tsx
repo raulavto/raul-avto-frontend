@@ -132,9 +132,10 @@ const DynamicBlogComponent = ({ slug }) => {
           <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p1title || 'N/A'}
           </h3>
-          <p className=" text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]">
-            {post.p1text || 'N/A'}
-          </p>
+          <div
+            className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]"
+            dangerouslySetInnerHTML={{ __html: post.p1text || 'N/A' }}
+          ></div>
 
           <Swiper
             modules={[Navigation, Pagination]}
@@ -151,8 +152,8 @@ const DynamicBlogComponent = ({ slug }) => {
                 <Image
                   src={pic.url || placeholder}
                   alt={`p1pic-${index}` || 'slider car photo'}
-                  width={400}
-                  height={200}
+                  width={1600}
+                  height={900}
                   priority
                   className="w-full h-[220px] sm:h-[320px] tabletplus:h-[556px] object-cover rounded-sub-block-12 tablet:rounded-sub-block-24rounded-sub-block-12 tablet:rounded-sub-block-24"
                 />
@@ -171,9 +172,10 @@ const DynamicBlogComponent = ({ slug }) => {
           <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p2title || 'N/A'}
           </h3>
-          <p className="text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]">
-            {post.p2text || 'N/A'}
-          </p>
+          <div
+            className="text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]"
+            dangerouslySetInnerHTML={{ __html: post.p2text || 'N/A' }}
+          ></div>
           {post.p2vid ? (
             <div className="mb-[80px] tabletplus:mb-[110px]">
               <VideoPlayer url={post.p2vid} previewImage={previewImage} />
@@ -196,9 +198,10 @@ const DynamicBlogComponent = ({ slug }) => {
                 <h4 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
                   {paragraph.title || 'N/A'}
                 </h4>
-                <p className="text-[16px] text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]">
-                  {paragraph.text || 'N/A'}
-                </p>
+                <div
+                  className="text-[16px] text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]"
+                  dangerouslySetInnerHTML={{ __html: paragraph.text || 'N/A' }}
+                ></div>
                 {paragraph.photo && (
                   <Image
                     src={paragraph.photo.url || placeholder}

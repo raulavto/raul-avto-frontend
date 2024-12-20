@@ -13,9 +13,9 @@ export const GET_BLOG_POSTS = `
       }
       p2vid
       p2title
-      p2text
+      p2text(markdown: true)
       p1title
-      p1text
+      p1text(markdown: true)
       p1pics {
         url
       }
@@ -36,9 +36,9 @@ export const GET_BLOG_POSTS = `
       }
       p2vid
       p2title
-      p2text
+      p2text(markdown: true)
       p1title
-      p1text
+      p1text(markdown: true)
       p1pics {
         url
       }
@@ -59,9 +59,9 @@ export const GET_BLOG_POSTS = `
       }
       p2vid
       p2title
-      p2text
+      p2text(markdown: true)
       p1title
-      p1text
+      p1text(markdown: true)
       p1pics {
         url
       }
@@ -81,16 +81,16 @@ export const GET_DYNAMIC_BLOG_POST = `
           url
         }
         p1title
-        p1text
+        p1text(markdown: true)
         p2title
-        p2text
+        p2text(markdown: true)
         p2vid
         p1pics {
           url
         }
         restparagraphs {
           title
-          text
+          text(markdown: true)
           photo {
             url
           }
@@ -103,16 +103,16 @@ export const GET_DYNAMIC_BLOG_POST = `
           url
         }
         p1title
-        p1text
+        p1text(markdown: true)
         p2title
-        p2text
+        p2text(markdown: true)
         p2vid
         p1pics {
           url
         }
         restparagraphs {
           title
-          text
+          text(markdown: true)
           photo {
             url
           }
@@ -125,16 +125,16 @@ export const GET_DYNAMIC_BLOG_POST = `
           url
         }
         p1title
-        p1text
+        p1text(markdown: true)
         p2title
-        p2text
+        p2text(markdown: true)
         p2vid
         p1pics {
           url
         }
         restparagraphs {
           title
-          text
+          text(markdown: true)
           photo {
             url
           }

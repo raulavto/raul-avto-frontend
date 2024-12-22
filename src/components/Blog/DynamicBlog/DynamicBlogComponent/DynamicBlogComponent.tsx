@@ -115,7 +115,7 @@ const DynamicBlogComponent = ({ slug }) => {
             {post.p1title || 'N/A'}
           </h3>
           <div
-            className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px] custom-html"
+            className="text-[16px] text-white pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px] custom-html"
             dangerouslySetInnerHTML={{ __html: post.p1text || 'N/A' }}
           />
         </section>
@@ -126,7 +126,7 @@ const DynamicBlogComponent = ({ slug }) => {
             {post.p2title || 'N/A'}
           </h3>
           <div
-            className="text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
+            className=" pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
             dangerouslySetInnerHTML={{ __html: post.p2text || 'N/A' }}
           />
         </section>
@@ -139,7 +139,7 @@ const DynamicBlogComponent = ({ slug }) => {
                 {paragraph.title || 'N/A'}
               </h4>
               <div
-                className="text-[16px] text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
+                className="text-[16px] pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
                 dangerouslySetInnerHTML={{ __html: paragraph.text || 'N/A' }}
               />
             </div>

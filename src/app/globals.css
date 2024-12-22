@@ -110,9 +110,11 @@ button {
 }
 
 .mobile-block-gradient-for-proposition {
-  background: radial-gradient(circle at bottom center,
+  background: radial-gradient(
+      circle at bottom center,
       #660000 0%,
-      transparent 100%),
+      transparent 100%
+    ),
     #000000;
 }
 
@@ -223,7 +225,8 @@ input[type='range']::after {
 }
 
 /* Используйте более специфичный селектор для переопределения стиля */
-.group[data-has-value='true'] .group-data-\[has-value\=true\]\:text-default-foreground {
+.group[data-has-value='true']
+  .group-data-\[has-value\=true\]\:text-default-foreground {
   color: white !important;
   /* Белый цвет и использование !important, чтобы переопределить стиль */
 }
@@ -284,9 +287,7 @@ button[data-hover='true']:hover {
   border: 1px solid white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  animation:
-    fadeIn 1s ease-out forwards,
-    fadeOut 1s ease-out forwards 4s;
+  animation: fadeIn 1s ease-out forwards, fadeOut 1s ease-out forwards 4s;
   /* Плавное исчезновение после 4 секунд */
   pointer-events: none;
 }
@@ -313,4 +314,111 @@ button[data-hover='true']:hover {
   100% {
     opacity: 0;
   }
+}
+
+.custom-html * {
+  all: unset;
+  display: revert;
+}
+
+.custom-html p {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.custom-html h1,
+.custom-html h2,
+.custom-html h3 {
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.custom-html a {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.custom-html ol {
+  list-style: decimal; /* Включаем цифры */
+  margin-left: 20px; /* Отступ слева */
+  padding-left: 20px;
+}
+
+.custom-html ul {
+  list-style: disc; /* Стандартные маркеры для <ul> */
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.custom-html li {
+  margin-bottom: 8px;
+}
+
+.custom-html em,
+i {
+  font-style: italic;
+}
+
+.custom-html strong {
+  font-weight: bold;
+}
+
+.custom-html h1 {
+  font-size: 2.5rem; /* 40px */
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.custom-html h2 {
+  font-size: 2rem; /* 32px */
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+.custom-html h3 {
+  font-size: 1.75rem; /* 28px */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.custom-html h4 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.custom-html h5 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.custom-html h6 {
+  font-size: 1rem; /* 16px */
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+/* Стили для таблиц */
+.custom-html table {
+  width: 100%;
+  border-collapse: collapse; /* Убираем двойные границы */
+  margin: 20px 0;
+}
+
+.custom-html th,
+.custom-html td {
+  border: 1px solid #d1d5db; /* Светло-серые границы */
+  padding: 12px;
+  text-align: left;
+}
+
+.custom-html th {
+  background-color: #f3f4f6; /* Светло-серый фон для заголовков */
+  font-weight: bold;
+}
+
+/* Добавляем зебра-эффект для строк */
+.custom-html tr:nth-child(even) {
+  background-color: #f9fafb1c;
 }

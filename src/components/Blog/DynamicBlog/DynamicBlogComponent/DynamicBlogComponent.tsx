@@ -132,10 +132,26 @@ const DynamicBlogComponent = ({ slug }) => {
           <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p1title || 'N/A'}
           </h3>
-          <div
-            className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]"
-            dangerouslySetInnerHTML={{ __html: post.p1text || 'N/A' }}
-          ></div>
+          <div className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]">
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+              h1 { font-size: 2rem; }
+              h2 { font-size: 1.75rem; }
+              h3 { font-size: 1.5rem; }
+              h4 { font-size: 1.25rem; }
+              h5 { font-size: 1rem; }
+              h6 { font-size: 0.875rem; }
+              ul { list-style: disc; padding-left: 20px; }
+              ol { list-style: decimal; padding-left: 20px; }
+              p { margin-bottom: 16px; }
+            `,
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{ __html: post.p1text || 'N/A' }}
+            ></div>
+          </div>
 
           <Swiper
             modules={[Navigation, Pagination]}
@@ -172,10 +188,26 @@ const DynamicBlogComponent = ({ slug }) => {
           <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p2title || 'N/A'}
           </h3>
-          <div
-            className="text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]"
-            dangerouslySetInnerHTML={{ __html: post.p2text || 'N/A' }}
-          ></div>
+          <div className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]">
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+              h1 { font-size: 2rem; }
+              h2 { font-size: 1.75rem; }
+              h3 { font-size: 1.5rem; }
+              h4 { font-size: 1.25rem; }
+              h5 { font-size: 1rem; }
+              h6 { font-size: 0.875rem; }
+              ul { list-style: disc; padding-left: 20px; }
+              ol { list-style: decimal; padding-left: 20px; }
+              p { margin-bottom: 16px; }
+            `,
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{ __html: post.p2text || 'N/A' }}
+            ></div>
+          </div>
           {post.p2vid ? (
             <div className="mb-[80px] tabletplus:mb-[110px]">
               <VideoPlayer url={post.p2vid} previewImage={previewImage} />
@@ -198,10 +230,29 @@ const DynamicBlogComponent = ({ slug }) => {
                 <h4 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
                   {paragraph.title || 'N/A'}
                 </h4>
-                <div
-                  className="text-[16px] text-center pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px]"
-                  dangerouslySetInnerHTML={{ __html: paragraph.text || 'N/A' }}
-                ></div>
+                <div className="text-[16px] text-white text-center pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px]">
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: `
+              h1 { font-size: 2rem; }
+              h2 { font-size: 1.75rem; }
+              h3 { font-size: 1.5rem; }
+              h4 { font-size: 1.25rem; }
+              h5 { font-size: 1rem; }
+              h6 { font-size: 0.875rem; }
+              ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; }
+              ol { list-style: decimal; padding-left: 20px; margin-bottom: 16px; }
+              p { margin-bottom: 16px; }
+              strong { margin-bottom: 16px; }
+            `,
+                    }}
+                  />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: paragraph.text || 'N/A',
+                    }}
+                  ></div>
+                </div>
                 {paragraph.photo && (
                   <Image
                     src={paragraph.photo.url || placeholder}

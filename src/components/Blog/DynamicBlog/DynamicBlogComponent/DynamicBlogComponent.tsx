@@ -72,16 +72,16 @@ const DynamicBlogComponent = ({ slug }) => {
       <Container>
         <div className="flex flex-col pointuserbar:flex-row justify-between">
           <div className="flex flex-col">
-            <h1 className="text-[26px] tablet:text-[32px] mx-auto pointuserbar:mx-0 mac:text-[48px] text-center pointuserbar:text-left text-white font-bold max-w-[400px] mac:max-w-[600px] mb-[32px]">
+            <h1 className="text-[26px] tablet:text-[30px] mx-auto pointuserbar:mx-0 mac:text-[48px] text-center pointuserbar:text-left text-white font-bold max-w-[400px] mac:max-w-[600px] mb-[32px]">
               {post.title || 'N/A'}
             </h1>
-            <h2 className="max-w-[400px] mac:max-w-[631px] h-auto overflow-auto scrollbar-hide mx-auto pointuserbar:mx-0 text-[16px] text-center pointuserbar:text-left text-white mb-[40px] pointuserbar:mb-[70px]">
+            <h2 className="max-w-[400px] mac:max-w-[631px] h-auto overflow-auto scrollbar-hide mx-auto pointuserbar:mx-0 text-[19px] text-center pointuserbar:text-left text-white mb-[40px] pointuserbar:mb-[70px]">
               {post.subtitle || 'N/A'}
             </h2>
             <div className="flex items-center justify-center pointuserbar:justify-start mb-[20px] pointuserbar:mb-0 flex-wrap mt-auto gap-[20px] pointuserbar:gap-[46px]">
               <div className="flex items-center gap-[12px]">
                 <IoMdTime color="white" className="w-[35px] h-[36px]" />
-                <div className="text-white text-[16px] font-semibold">
+                <div className="text-white text-[20px] font-semibold">
                   6 хв на читання
                 </div>
               </div>
@@ -111,22 +111,22 @@ const DynamicBlogComponent = ({ slug }) => {
 
         {/* First Section with HTML Rendering */}
         <section className="pt-[20px] py-[20px] pointuserbar:pt-[40px] pointuserbar:pb-[40px]">
-          <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
+          <h3 className="uppercase text-[20px] tablet:text-[30px] pointuserbar:text-[30px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p1title || 'N/A'}
           </h3>
           <div
-            className="text-[16px] text-white pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px] custom-html"
+            className="text-[20px] text-white pointuserbar:text-left font-medium mb-[60px] pointuserbar:mb-[110px] custom-html"
             dangerouslySetInnerHTML={{ __html: post.p1text || 'N/A' }}
           />
         </section>
 
         {/* Second Section with HTML Rendering */}
         <section className="">
-          <h3 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
+          <h3 className="uppercase text-[22px] tablet:text-[30px] pointuserbar:text-[30px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
             {post.p2title || 'N/A'}
           </h3>
           <div
-            className=" pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
+            className="text-[20px] pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
             dangerouslySetInnerHTML={{ __html: post.p2text || 'N/A' }}
           />
         </section>
@@ -135,11 +135,11 @@ const DynamicBlogComponent = ({ slug }) => {
         {post.restparagraphs &&
           post.restparagraphs.map((paragraph, index) => (
             <div key={index} className="mb-6">
-              <h4 className="uppercase text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
+              <h4 className="uppercase text-[22px] tablet:text-[30px] pointuserbar:text-[30px] text-center pointuserbar:text-left text-white font-bold mb-[32px]">
                 {paragraph.title || 'N/A'}
               </h4>
               <div
-                className="text-[16px] pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
+                className="text-[20px] pointuserbar:text-left text-white mb-[80px] tabletplus:mb-[110px] custom-html"
                 dangerouslySetInnerHTML={{ __html: paragraph.text || 'N/A' }}
               />
             </div>

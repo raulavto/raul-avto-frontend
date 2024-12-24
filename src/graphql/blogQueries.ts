@@ -95,6 +95,7 @@ export const GET_DYNAMIC_BLOG_POST = `
             url
           }
         }
+        contactbtn
       }
       ru: blogpost(locale: ru, filter: { slug: { eq: $slug } }) {
         title
@@ -117,6 +118,7 @@ export const GET_DYNAMIC_BLOG_POST = `
             url
           }
         }
+        contactbtn
       }
       ua: blogpost(locale: uk, filter: { slug: { eq: $slug } }) {
         title
@@ -139,6 +141,7 @@ export const GET_DYNAMIC_BLOG_POST = `
             url
           }
         }
+        contactbtn
       }
     }
   `;

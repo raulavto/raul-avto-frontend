@@ -13,6 +13,8 @@ import SliderNavigation from '@/components/UI/SliderNavigation/SliderNavigation'
 import VideoPlayer from '@/components/UI/VideoPlayer/VideoPlayer';
 import LoaderForApi from '@/components/UI/Loaders/LoaderForApi';
 import EmptyMessage from '@/components/UI/EmptyMessage/EmptyMessage';
+import Button from '@/components/UI/Button/Button';
+import Link from 'next/link';
 
 const DynamicBlogComponent = ({ slug }) => {
   const sliderRef = useRef(null);
@@ -144,6 +146,23 @@ const DynamicBlogComponent = ({ slug }) => {
               />
             </div>
           ))}
+
+        {post.contactbtn && (
+          <div className="text-center rounded-xl bg-gray-900 p-6">
+            <p className="text-white text-18">
+              Залишились питання? Зв'яжіться з нами прямо зараз та наш менеджер
+              відповість на всі питання!
+            </p>
+            <Link
+              href="/contacts"
+              className="flex mx-auto max-w-[313px] pointuserbar:max-w-[205px]"
+            >
+              <Button className="bg-gradient-red mx-auto mt-10 w-52 h-[60px] pointuserbar:h-[40px] rounded-sub-block-12 text-[14px] text-white font-semibold">
+                Зв'язатися
+              </Button>
+            </Link>
+          </div>
+        )}
       </Container>
     </div>
   );

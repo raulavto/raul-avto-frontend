@@ -42,7 +42,7 @@
     "src/components/UI/LanguageSelection/LanguageSelection.jsx",
     "src/app/zustand/useStore.js",
     "src/components/Home/CarChoiceBody/CarChoiceBody.jsx"
-  ],
+, "src/app/api/google-sheets.action.ts", "src/app/api/route.js"  ],
   "exclude": [
     "node_modules"
   ]

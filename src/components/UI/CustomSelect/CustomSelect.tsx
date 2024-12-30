@@ -1,6 +1,5 @@
 'use client';
-import { useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { IconType } from 'react-icons';
 import { FaChevronDown } from 'react-icons/fa';
 
@@ -20,6 +19,8 @@ interface CustomSelectProps {
   onSelect: (value: Option) => void;
   currentSelectedOption: string;
   IconComponent?: IconType;
+  isLocationSelect?: boolean;
+  isPortSelect?: boolean;    
 }
 
 const CustomSelect = ({
@@ -33,9 +34,19 @@ const CustomSelect = ({
   onSelect,
   currentSelectedOption,
   IconComponent = FaChevronDown,
+  isLocationSelect = false,  
+  isPortSelect = false,      
 }: CustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+  useEffect(() => {
+    // Оновлюємо вибрану опцію тільки для локації або порту
+    if (isLocationSelect || isPortSelect) {
+      const selected = options.find(option => option.value === currentSelectedOption);
+      setSelectedOption(selected || null);
+    }
+  }, [currentSelectedOption, options, isLocationSelect, isPortSelect]);
 
   const handleOptionClick = (option: Option) => {
     setSelectedOption(option);
@@ -45,9 +56,7 @@ const CustomSelect = ({
 
   return (
     <>
-      <label
-        className={`text-primary text-16 font-medium mb-[8px] ${labelClassName}`}
-      >
+      <label className={`text-primary text-16 font-medium mb-[8px] ${labelClassName}`}>
         {label}
       </label>
       <div className={`relative z-[15] flex flex-col ${containerClassName}`}>

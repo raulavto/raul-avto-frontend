@@ -3,11 +3,10 @@ import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
 
 const TotalAmountCalculator = ({data}) => {
+  console.log("🚀 ~ TotalAmountCalculator ~ data:", data)
   const language = useStore((state) => state.language);
   const t = translations[language];
   const { auction, auctionCost, engineCapacity, fuelType, transportType, yearOfManufacture, auctionLoc, departPort, deliveryPort} = data
-
-  console.log(data);
 
   // auction fee
   let auctionFee = 0;
@@ -233,7 +232,7 @@ const TotalAmountCalculator = ({data}) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {usaDelivery ? usaDelivery : 0}
+                $ {data.cityCost ? data.cityCost : 0}
               </div>
             </li>
 

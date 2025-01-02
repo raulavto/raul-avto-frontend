@@ -2,16 +2,16 @@ import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
+  // визначення ID таблиці в залежності від аукціону
+  const auction = request.url.split('?auction=')[1] || 'copart';
+  let spreadsheetId;
+
   try {
     const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
     const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY.replace(
       /\\n/g,
       '\n'
     );
-
-    // визначення ID таблиці в залежності від аукціону
-    const auction = request.url.split('?auction=')[1] || 'copart';
-    let spreadsheetId;
 
     switch (auction) {
       case 'iaai':

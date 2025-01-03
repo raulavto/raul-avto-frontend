@@ -76,7 +76,7 @@ const InpuDataCalculator = ({ setData }) => {
         setFormData((prevState) => ({
           ...prevState,
           auctionLoc: locations[0].value, // Оновлюємо auctionLoc
-          departPort: locations[0].departOptions[0]?.value || '', // Встановлюємо перший порт
+          departPort: locations[0].departOptions[0]?.label || '', // Встановлюємо перший порт
         }));
       }
     } catch (error) {
@@ -100,7 +100,7 @@ const InpuDataCalculator = ({ setData }) => {
       setFormData((prevState) => ({
         ...prevState,
         auctionLoc: firstLocation.value, 
-        departPort: firstLocation.departOptions[0]?.value || '', 
+        departPort: firstLocation.departOptions[0]?.label || '', 
       }));
     }
   }, [formData.auction, auctionLocOptions]);
@@ -116,7 +116,7 @@ const InpuDataCalculator = ({ setData }) => {
       if (selectedLocation.departOptions.length > 0) {
         setFormData((prevState) => ({
           ...prevState,
-          departPort: selectedLocation.departOptions[0].value,
+          departPort: selectedLocation.departOptions[0].label,
         }));
       }
     } else {
@@ -213,6 +213,7 @@ const InpuDataCalculator = ({ setData }) => {
       options: [
         { label: 'Klaipeda', value: 'kl' },
         { label: 'Batumi', value: 'bt' },
+        { label: 'Odesa', value: 'adesa' },
       ],
     },
   ];
@@ -228,7 +229,7 @@ const InpuDataCalculator = ({ setData }) => {
           auctionLoc: firstLocation ? firstLocation.value : '',
           departPort:
             firstLocation && firstLocation.departOptions.length > 0
-              ? firstLocation.departOptions[0].value
+              ? firstLocation.departOptions[0].label
               : '',
         };
       }
@@ -287,7 +288,6 @@ const InpuDataCalculator = ({ setData }) => {
                   {item.label}
                 </label>
                 <input
-                  type="number"
                   placeholder={item.placeholder}
                   value={formData[item.key] || ''}
                   onChange={(e) => handleChange(item.key, e.target.value)}

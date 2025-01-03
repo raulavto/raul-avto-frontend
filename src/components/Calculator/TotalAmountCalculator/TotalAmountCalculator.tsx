@@ -2,12 +2,14 @@
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
 
+const baseFee = 1600;
+
 const TotalAmountCalculator = ({data}) => {
   console.log("🚀 ~ TotalAmountCalculator ~ data:", data)
   const language = useStore((state) => state.language);
   const t = translations[language];
-  const { auction, auctionCost, engineCapacity, fuelType, transportType, yearOfManufacture, auctionLoc, departPort, deliveryPort} = data
-
+  const { auction, auctionCost, engineCapacity, fuelType, transportType, yearOfManufacture, auctionLoc, departPort, deliveryPort } = data
+  
   // auction fee
   let auctionFee = 0;
 
@@ -88,12 +90,13 @@ const TotalAmountCalculator = ({data}) => {
     else if (auctionCost >= 1000) auctionFee = 65 + 175;
     else auctionFee = 65 + 95;
   }
+
   // our fee
   let ourFee = 0;
 
   if (auctionCost < 10001 || !auctionCost) {
     ourFee = 300;
-  } else if (auctionCost > 10000 && auctionCost < 15000) {
+  } else if (auctionCost > 10000 && auctionCost < 15001) {
     ourFee = 400
   } else {ourFee = 500}
 
@@ -103,33 +106,45 @@ const TotalAmountCalculator = ({data}) => {
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'nj') {
+    if (departPort === 'NY') {
       seaDelivery = 875;
-    } else if (departPort === 'ga') {
+    } else if (departPort === 'SAVANNAH') {
       seaDelivery = 875;
-    } else if (departPort === 'fl') {
+    } else if (departPort === 'FL') {
       seaDelivery = 950;
-    } else if (departPort === 'tx') {
+    } else if (departPort === 'TX') {
       seaDelivery = 1025;
-    } else if (departPort === 'ca') {
+    } else if (departPort === 'CA') {
       seaDelivery = 1425;
     }
-  } else {
-    if (departPort === 'bt') {
+  } else if (deliveryPort === 'bt') {
+    if (departPort === 'NY') {
       seaDelivery = 1200;
-    } else if (departPort === 'ca') {
+    } else if (departPort === 'CA') {
       seaDelivery = 1800;
-    } else if (departPort === 'tx') {
+    } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'ga') {
+    } else if (departPort === 'SAVANNAH') {
       seaDelivery = 1200;
-    } else if (departPort === 'fl') {
+    } else if (departPort === 'FL') {
       seaDelivery = 1350;
+    }
+  } else {
+    if (departPort === 'NY') {
+      seaDelivery = 1925;
+    } else if (departPort === 'CA') {
+      seaDelivery = 2625;
+    } else if (departPort === 'TX') {
+      seaDelivery = 2025;
+    } else if (departPort === 'SAVANNAH') {
+      seaDelivery = 1925;
     }
   }
 
-  if (seaDelivery > 0) {
-    seaDelivery = seaDelivery * 1 + 400; 
+  if (seaDelivery > 0 && deliveryPort === 'kl') {
+    seaDelivery = seaDelivery  + 500; 
+  } else if (seaDelivery > 0) {
+     seaDelivery = seaDelivery  + 300; 
   }
 
   let groundDelivery = 0;
@@ -138,37 +153,41 @@ const TotalAmountCalculator = ({data}) => {
     groundDelivery = 350
   }
 
-  const totalDelivery = usaDelivery * 1 + seaDelivery * 1 + groundDelivery * 1
+  const totalDelivery = data.cityCost * 1 + seaDelivery * 1 + groundDelivery * 1
 
+  const carCost = Number(auctionCost) + Number(auctionFee) + baseFee
   // customs 
 
   let importDuty = 0;
-  if (transportType !== 'electric') {
-    importDuty = auctionCost * 0.1;
+  if (fuelType !== 'electric') {
+    importDuty = carCost * 0.1;
   }
 
   const currentYear = new Date().getFullYear();
   const vehicleAge = currentYear - parseInt(yearOfManufacture, 10);
 
-  let exciseTax = 0;
-  if (fuelType === 'petrol') {
-    exciseTax = engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100);
-  } else if (fuelType === 'diesel') {
-    exciseTax = engineCapacity / 1000 * (engineCapacity <= 3500 ? 75 : 150);
-  } else if (fuelType === 'hybrid') {
-    exciseTax = engineCapacity / 1000 * 50; 
-  }
+let exciseTax = 0;
+const euroToDollar = 1.08;
 
-  exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 5;
+if (fuelType === 'petrol') {
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(2));
+} else if (fuelType === 'diesel') {
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3500 ? 75 : 150) * euroToDollar).toFixed(2));
+} else if (fuelType === 'hybrid') {
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(2));
+}
+
+  exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 1;
+
 
   let vat = 0;
   if (transportType !== 'electric') {
-    vat = (auctionCost *1 + importDuty * 1 + exciseTax *1) * 0.2;
+    vat = parseFloat(((carCost + importDuty * 1 + exciseTax *1) * 0.2).toFixed(2));
   }
 
-  const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1;
+  const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1 + 150;
 
-  const pension = 0.04 * auctionCost
+  const pension = parseFloat((0.03 * (Number(auctionCost) + Number(auctionFee))).toFixed(2));
 
   const totalDeliveryWithParking = totalDelivery + 330 + 30
 
@@ -372,7 +391,7 @@ const TotalAmountCalculator = ({data}) => {
             {t.total_cost}
           </div>
           <div className="text-primary text-20 font-semibold">
-            $ {totalCustomsFees ? 150 + 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee : 0}
+            $ {totalCustomsFees ? + 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee : 0}
             </div>
         </div>
         <p className="max-w-[380px] -mb-6 text-12 text-secondary">

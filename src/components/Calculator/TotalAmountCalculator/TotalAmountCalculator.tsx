@@ -46,7 +46,7 @@ const TotalAmountCalculator = ({ data }) => {
     return firstFee + secondFeeAmount + thirdFee;
   };
 
-  const auctionFee = getAuctionFee(auctionCost);
+  const auctionFee = parseFloat(getAuctionFee(auctionCost).toFixed(0));
 
   // our fee
   let ourFee = 0;

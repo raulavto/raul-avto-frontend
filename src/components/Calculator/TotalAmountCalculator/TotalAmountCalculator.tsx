@@ -1,33 +1,52 @@
 'use client';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
-import {liveBidFees, unsecuredPaymentMethods} from "./fees"
+import { liveBidFees, unsecuredPaymentMethods } from './fees';
 
 const baseFee = 1600;
 
-const TotalAmountCalculator = ({data}) => {
-  console.log("🚀 ~ TotalAmountCalculator ~ data:", data)
+const TotalAmountCalculator = ({ data }) => {
+  console.log('🚀 ~ TotalAmountCalculator ~ data:', data);
   const language = useStore((state) => state.language);
   const t = translations[language];
-  const { auction, auctionCost, engineCapacity, fuelType, transportType, yearOfManufacture, auctionLoc, departPort, deliveryPort } = data
-  
+  const {
+    auction,
+    auctionCost,
+    engineCapacity,
+    fuelType,
+    transportType,
+    yearOfManufacture,
+    auctionLoc,
+    departPort,
+    deliveryPort,
+  } = data;
+
   // auction fee
-  const getAuctionFee = (auctionCost:number) => {
+  const getAuctionFee = (auctionCost: number) => {
+    const firstFee = 129;
 
-  const firstFee = 129;
+    const secondFee =
+      unsecuredPaymentMethods.find(
+        (fee) => auctionCost >= fee.min && auctionCost <= fee.max
+      )?.fee || 0;
 
-  const secondFee = unsecuredPaymentMethods.find(
-    (fee) => auctionCost >= fee.min && auctionCost <= fee.max
-  )?.fee || 0; 
+    // Якщо вартість більше 15000, то враховуємо відсоток
+    let secondFeeAmount = 0;
+    if (auctionCost >= 15000) {
+      secondFeeAmount = auctionCost * secondFee;
+    } else {
+      secondFeeAmount = secondFee;
+    }
 
-  const thirdFee = liveBidFees.find(
-    (fee) => auctionCost >= fee.min && auctionCost <= fee.max
-  )?.fee || 0; 
+    const thirdFee =
+      liveBidFees.find(
+        (fee) => auctionCost >= fee.min && auctionCost <= fee.max
+      )?.fee || 0;
 
-  return firstFee + secondFee + thirdFee;
+    return firstFee + secondFeeAmount + thirdFee;
   };
-  
-  const auctionFee = getAuctionFee(auctionCost)
+
+  const auctionFee = getAuctionFee(auctionCost);
 
   // our fee
   let ourFee = 0;
@@ -35,10 +54,12 @@ const TotalAmountCalculator = ({data}) => {
   if (auctionCost < 10001 || !auctionCost) {
     ourFee = 300;
   } else if (auctionCost > 10000 && auctionCost < 15001) {
-    ourFee = 400
-  } else {ourFee = 500}
+    ourFee = 400;
+  } else {
+    ourFee = 500;
+  }
 
-  // delivery 
+  // delivery
   let usaDelivery = 150 + auctionLoc * 1;
 
   let seaDelivery = 0;
@@ -80,21 +101,22 @@ const TotalAmountCalculator = ({data}) => {
   }
 
   if (seaDelivery > 0 && deliveryPort === 'kl') {
-    seaDelivery = seaDelivery  + 500; 
+    seaDelivery = seaDelivery + 500;
   } else if (seaDelivery > 0) {
-     seaDelivery = seaDelivery  + 300; 
+    seaDelivery = seaDelivery + 300;
   }
 
   let groundDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    groundDelivery = 350
+    groundDelivery = 350;
   }
 
-  const totalDelivery = data.cityCost * 1 + seaDelivery * 1 + groundDelivery * 1
+  const totalDelivery =
+    data.cityCost * 1 + seaDelivery * 1 + groundDelivery * 1;
 
-  const carCost = Number(auctionCost) + Number(auctionFee) + baseFee
-  // customs 
+  const carCost = Number(auctionCost) + Number(auctionFee) + baseFee;
+  // customs
 
   let importDuty = 0;
   if (fuelType !== 'electric') {
@@ -104,30 +126,49 @@ const TotalAmountCalculator = ({data}) => {
   const currentYear = new Date().getFullYear();
   const vehicleAge = currentYear - parseInt(yearOfManufacture, 10);
 
-let exciseTax = 0;
-const euroToDollar = 1.08;
+  let exciseTax = 0;
+  const euroToDollar = 1.08;
 
-if (fuelType === 'petrol') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(0));
-} else if (fuelType === 'diesel') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3500 ? 75 : 150) * euroToDollar).toFixed(0));
-} else if (fuelType === 'hybrid') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(0));
-}
+  if (fuelType === 'petrol') {
+    exciseTax = parseFloat(
+      (
+        (engineCapacity / 1000) *
+        (engineCapacity <= 3000 ? 50 : 100) *
+        euroToDollar
+      ).toFixed(0)
+    );
+  } else if (fuelType === 'diesel') {
+    exciseTax = parseFloat(
+      (
+        (engineCapacity / 1000) *
+        (engineCapacity <= 3500 ? 75 : 150) *
+        euroToDollar
+      ).toFixed(0)
+    );
+  } else if (fuelType === 'hybrid') {
+    exciseTax = parseFloat(
+      (
+        (engineCapacity / 1000) *
+        (engineCapacity <= 3000 ? 50 : 100) *
+        euroToDollar
+      ).toFixed(0)
+    );
+  }
 
   exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 1;
 
-
   let vat = 0;
   if (transportType !== 'electric') {
-    vat = parseFloat(((carCost + importDuty * 1 + exciseTax *1) * 0.2).toFixed(0));
+    vat = parseFloat(
+      ((carCost + importDuty * 1 + exciseTax * 1) * 0.2).toFixed(0)
+    );
   }
 
   const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1 + 150;
 
   const pension = parseFloat((0.04 * carCost).toFixed(0));
 
-  const totalDeliveryWithParking = totalDelivery + 330 + 30
+  const totalDeliveryWithParking = totalDelivery + 330 + 30;
 
   return (
     <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] max-w-[940px] w-full bg-gradient-sub-block">
@@ -138,7 +179,7 @@ if (fuelType === 'petrol') {
               {t.total}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
-              $ {auctionCost ? auctionCost * 1 + auctionFee: '0'}
+              $ {auctionCost ? auctionCost * 1 + auctionFee : '0'}
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">
@@ -182,7 +223,6 @@ if (fuelType === 'petrol') {
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">
-
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.portDel}
@@ -195,14 +235,14 @@ if (fuelType === 'petrol') {
 
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                {t.port_complex} 
+                {t.port_complex}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 $ 330
               </div>
             </li>
-            
+
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.port_parking}
@@ -225,14 +265,13 @@ if (fuelType === 'petrol') {
 
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                {t.ukrDel} 
+                {t.ukrDel}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 $ {groundDelivery ? groundDelivery : 0}
               </div>
             </li>
-
           </ul>
         </li>
         <li className="border-b-[1px] border-solid border-primary pt-4">
@@ -329,8 +368,17 @@ if (fuelType === 'petrol') {
             {t.total_cost}
           </div>
           <div className="text-primary text-20 font-semibold">
-            $ {totalCustomsFees ? + 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee : 0}
-            </div>
+            ${' '}
+            {totalCustomsFees
+              ? +150 +
+                pension +
+                totalCustomsFees +
+                totalDeliveryWithParking +
+                ourFee +
+                auctionCost * 1 +
+                auctionFee
+              : 0}
+          </div>
         </div>
         <p className="max-w-[380px] -mb-6 text-12 text-secondary">
           {t.disclaimer}

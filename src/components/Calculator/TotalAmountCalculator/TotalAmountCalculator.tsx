@@ -160,7 +160,7 @@ const TotalAmountCalculator = ({data}) => {
 
   let importDuty = 0;
   if (fuelType !== 'electric') {
-    importDuty = carCost * 0.1;
+    importDuty = parseFloat((carCost * 0.1).toFixed(0));
   }
 
   const currentYear = new Date().getFullYear();
@@ -170,11 +170,11 @@ let exciseTax = 0;
 const euroToDollar = 1.08;
 
 if (fuelType === 'petrol') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(2));
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(0));
 } else if (fuelType === 'diesel') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3500 ? 75 : 150) * euroToDollar).toFixed(2));
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3500 ? 75 : 150) * euroToDollar).toFixed(0));
 } else if (fuelType === 'hybrid') {
-  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(2));
+  exciseTax = parseFloat((engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100) * euroToDollar).toFixed(0));
 }
 
   exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 1;
@@ -182,12 +182,12 @@ if (fuelType === 'petrol') {
 
   let vat = 0;
   if (transportType !== 'electric') {
-    vat = parseFloat(((carCost + importDuty * 1 + exciseTax *1) * 0.2).toFixed(2));
+    vat = parseFloat(((carCost + importDuty * 1 + exciseTax *1) * 0.2).toFixed(0));
   }
 
   const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1 + 150;
 
-  const pension = parseFloat((0.03 * (Number(auctionCost) + Number(auctionFee))).toFixed(2));
+  const pension = parseFloat((0.04 * carCost).toFixed(0));
 
   const totalDeliveryWithParking = totalDelivery + 330 + 30
 

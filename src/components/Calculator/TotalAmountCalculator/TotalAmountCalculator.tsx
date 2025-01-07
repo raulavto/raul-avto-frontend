@@ -1,6 +1,7 @@
 'use client';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
+import {liveBidFees, unsecuredPaymentMethods} from "./fees"
 
 const baseFee = 1600;
 
@@ -11,85 +12,22 @@ const TotalAmountCalculator = ({data}) => {
   const { auction, auctionCost, engineCapacity, fuelType, transportType, yearOfManufacture, auctionLoc, departPort, deliveryPort } = data
   
   // auction fee
-  let auctionFee = 0;
+  const getAuctionFee = (auctionCost:number) => {
 
-  if (auction === 'copart') {
-    if (auctionCost >= 17500) auctionFee = 30 + 75 + auctionCost * 0.02;
-    else if (auctionCost >= 4000) auctionFee = 30 + 75 + 350;
-    else if (auctionCost >= 3000) auctionFee = 30 + 75 + 325;
-    else if (auctionCost >= 2500) auctionFee = 30 + 75 + 300;
-    else if (auctionCost >= 2000) auctionFee = 30 + 50 + 275;
-    else if (auctionCost >= 1700) auctionFee = 30 + 50 + 250;
-    else if (auctionCost >= 1400) auctionFee = 30 + 50 + 225;
-    else if (auctionCost >= 1200) auctionFee = 30 + 50 + 200;
-    else if (auctionCost >= 1000) auctionFee = 30 + 35 + 175;
-    else if (auctionCost >= 800) auctionFee = 30 + 35 + 150;
-    else if (auctionCost >= 600) auctionFee = 30 + 35 + 125;
-    else if (auctionCost >= 400) auctionFee = 30 + 35 + 95;
-    else if (auctionCost >= 200) auctionFee = 30 + 35 + 75;
-    else if (auctionCost >= 100) auctionFee = 30 + 35 + 45;
-    else auctionFee = 30 + 35 + 20;
-  } else if (auction === 'iaai') {
-    if (auctionCost >= 35000) auctionFee = 155 + 89 + auctionCost * 0.02;
-    else if (auctionCost >= 30000) auctionFee = 155 + 89 + 700;
-    else if (auctionCost >= 25000) auctionFee = 155 + 89 + 650;
-    else if (auctionCost >= 20000) auctionFee = 155 + 89 + 600;
-    else if (auctionCost >= 15000) auctionFee = 155 + 89 + 550;
-    else if (auctionCost >= 10000) auctionFee = 155 + 89 + 500;
-    else if (auctionCost >= 7500) auctionFee = 155 + 89 + 475;
-    else if (auctionCost >= 5000) auctionFee = 155 + 89 + 450;
-    else if (auctionCost >= 4000) auctionFee = 155 + 79 + 425;
-    else if (auctionCost >= 3000) auctionFee = 155 + 69 + 400;
-    else if (auctionCost >= 2700) auctionFee = 155 + 69 + 375;
-    else if (auctionCost >= 2400) auctionFee = 155 + 69 + 350;
-    else if (auctionCost >= 2000) auctionFee = 155 + 59 + 325;
-    else if (auctionCost >= 1800) auctionFee = 155 + 59 + 300;
-    else if (auctionCost >= 1600) auctionFee = 155 + 59 + 275;
-    else if (auctionCost >= 1500) auctionFee = 155 + 49 + 250;
-    else if (auctionCost >= 1400) auctionFee = 155 + 49 + 225;
-    else if (auctionCost >= 1200) auctionFee = 155 + 49 + 200;
-    else if (auctionCost >= 1000) auctionFee = 155 + 39 + 185;
-    else if (auctionCost >= 900) auctionFee = 155 + 39 + 170;
-    else if (auctionCost >= 700) auctionFee = 155 + 39 + 140;
-    else if (auctionCost >= 600) auctionFee = 155 + 39 + 125;
-    else if (auctionCost >= 500) auctionFee = 155 + 29 + 105;
-    else if (auctionCost >= 400) auctionFee = 155 + 29 + 90;
-    else if (auctionCost >= 300) auctionFee = 155 + 29 + 70;
-    else if (auctionCost >= 200) auctionFee = 155 + 29 + 50;
-    else if (auctionCost >= 100) auctionFee = 155 + 35;
-    else auctionFee = 155 + 25;
-  } else if (auction === 'manheim') {
-    if (auctionCost >= 1001) auctionFee = 66 + auctionCost * 0.125;
-    else if (auctionCost >= 501) auctionFee = 66 + 122;
-    else if (auctionCost >= 201) auctionFee = 66 + 60;
-    else auctionFee = 66 + 33;
-  } else if (auction === 'adesa') {
-    if (auctionCost >= 100000) auctionFee = 65 + 1100;
-    else if (auctionCost >= 95000) auctionFee = 65 + 1050;
-    else if (auctionCost >= 90000) auctionFee = 65 + 1000;
-    else if (auctionCost >= 85000) auctionFee = 65 + 950;
-    else if (auctionCost >= 80000) auctionFee = 65 + 900;
-    else if (auctionCost >= 75000) auctionFee = 65 + 850;
-    else if (auctionCost >= 70000) auctionFee = 65 + 795;
-    else if (auctionCost >= 17000) auctionFee = 65 + 755;
-    else if (auctionCost >= 15000) auctionFee = 65 + 695;
-    else if (auctionCost >= 14000) auctionFee = 65 + 675;
-    else if (auctionCost >= 13000) auctionFee = 65 + 625;
-    else if (auctionCost >= 12000) auctionFee = 65 + 595;
-    else if (auctionCost >= 11000) auctionFee = 65 + 575;
-    else if (auctionCost >= 10000) auctionFee = 65 + 550;
-    else if (auctionCost >= 9000) auctionFee = 65 + 495;
-    else if (auctionCost >= 8000) auctionFee = 65 + 475;
-    else if (auctionCost >= 7000) auctionFee = 65 + 455;
-    else if (auctionCost >= 6000) auctionFee = 65 + 395;
-    else if (auctionCost >= 5000) auctionFee = 65 + 385;
-    else if (auctionCost >= 4000) auctionFee = 65 + 365;
-    else if (auctionCost >= 3000) auctionFee = 65 + 345;
-    else if (auctionCost >= 2000) auctionFee = 65 + 295;
-    else if (auctionCost >= 1500) auctionFee = 65 + 275;
-    else if (auctionCost >= 1000) auctionFee = 65 + 175;
-    else auctionFee = 65 + 95;
-  }
+  const firstFee = 129;
+
+  const secondFee = unsecuredPaymentMethods.find(
+    (fee) => auctionCost >= fee.min && auctionCost <= fee.max
+  )?.fee || 0; 
+
+  const thirdFee = liveBidFees.find(
+    (fee) => auctionCost >= fee.min && auctionCost <= fee.max
+  )?.fee || 0; 
+
+  return firstFee + secondFee + thirdFee;
+  };
+  
+  const auctionFee = getAuctionFee(auctionCost)
 
   // our fee
   let ourFee = 0;

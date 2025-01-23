@@ -20,7 +20,7 @@ const TotalAmountCalculator = ({ data }) => {
     departPort,
     deliveryPort,
   } = data;
-
+  
   // auction fee
   const getAuctionFee = (auctionCost: number) => {
     const firstFee = 129;
@@ -63,11 +63,13 @@ const TotalAmountCalculator = ({ data }) => {
   let usaDelivery = 150 + auctionLoc * 1;
 
   let seaDelivery = 0;
-
+  
   if (deliveryPort === 'kl') {
+ 
     if (departPort === 'NY') {
+
       seaDelivery = 875;
-    } else if (departPort === 'SAVANNAH') {
+    } else if (departPort === 'Savannah') {
       seaDelivery = 875;
     } else if (departPort === 'FL') {
       seaDelivery = 950;
@@ -83,7 +85,7 @@ const TotalAmountCalculator = ({ data }) => {
       seaDelivery = 1800;
     } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'SAVANNAH') {
+    } else if (departPort === 'Savannah') {
       seaDelivery = 1200;
     } else if (departPort === 'FL') {
       seaDelivery = 1350;
@@ -95,11 +97,13 @@ const TotalAmountCalculator = ({ data }) => {
       seaDelivery = 2625;
     } else if (departPort === 'TX') {
       seaDelivery = 2025;
-    } else if (departPort === 'SAVANNAH') {
+    } else if (departPort === 'Savannah') {
       seaDelivery = 1925;
+    } else if (departPort === 'FL') {
+      seaDelivery = 1800;
     }
   }
-
+  
   if (seaDelivery > 0 && deliveryPort === 'kl') {
     seaDelivery = seaDelivery + 500;
   } else if (seaDelivery > 0) {
@@ -107,7 +111,7 @@ const TotalAmountCalculator = ({ data }) => {
   }
 
   let groundDelivery = 0;
-
+  
   if (deliveryPort === 'kl') {
     groundDelivery = 350;
   }
@@ -259,7 +263,7 @@ const TotalAmountCalculator = ({ data }) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {seaDelivery ? seaDelivery : 500}
+                $ {seaDelivery ? seaDelivery : "Specify data"}
               </div>
             </li>
 

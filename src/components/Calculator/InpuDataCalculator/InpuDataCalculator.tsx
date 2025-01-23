@@ -25,7 +25,7 @@ const InpuDataCalculator = ({ setData }) => {
   const [auctionLocOptions, setAuctionLocOptions] = useState([]);
   const [departPorts, setDepartPorts] = useState([]);
 
-  const fetchAuctionData = async (selectedAuction:string) => {
+  const fetchAuctionData = async (selectedAuction: string) => {
     try {
       const response = await fetch(
         `/api/getSheetData?auction=${selectedAuction}`
@@ -38,7 +38,7 @@ const InpuDataCalculator = ({ setData }) => {
       }
 
       const locations = data.data
-        .map((row:any, rowIndex:number) => {
+        .map((row: any, rowIndex: number) => {
           if (rowIndex === 0) return null;
 
           const cityState = row[0];
@@ -99,8 +99,8 @@ const InpuDataCalculator = ({ setData }) => {
       const firstLocation = auctionLocOptions[0];
       setFormData((prevState) => ({
         ...prevState,
-        auctionLoc: firstLocation.value, 
-        departPort: firstLocation.departOptions[0]?.label || '', 
+        auctionLoc: firstLocation.value,
+        departPort: firstLocation.departOptions[0]?.label || '',
       }));
     }
   }, [formData.auction, auctionLocOptions]);
@@ -122,7 +122,7 @@ const InpuDataCalculator = ({ setData }) => {
     } else {
       setDepartPorts([]);
     }
-  }, [formData.auctionLoc, auctionLocOptions]); 
+  }, [formData.auctionLoc, auctionLocOptions]);
 
   if (!translations[language]) {
     throw new Error(`Translations for language "${language}" not found.`);
@@ -306,7 +306,12 @@ const InpuDataCalculator = ({ setData }) => {
                 selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold"
                 optionClassName="text-primary w-full"
                 optionListClassName="max-h-[100px]"
-                onSelect={(option) => handleChange(item.key, option.value)}
+                onSelect={(option) =>
+                  handleChange(
+                    item.key,
+                    item.key === 'departPort' ? option.label : option.value
+                  )
+                }
                 isLocationSelect={item.key === 'auctionLoc'}
                 isPortSelect={item.key === 'departPort'}
               />

@@ -162,7 +162,7 @@ const TotalAmountCalculator = ({ data }) => {
   exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 1;
 
   let vat = 0;
-  if (transportType !== 'electric') {
+  if (fuelType !== 'electric') {
     vat = parseFloat(
       ((carCost + importDuty * 1 + exciseTax * 1) * 0.2).toFixed(0)
     );

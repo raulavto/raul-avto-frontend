@@ -20,7 +20,7 @@ const TotalAmountCalculator = ({ data }) => {
     departPort,
     deliveryPort,
   } = data;
-  
+
   // auction fee
   const getAuctionFee = (auctionCost: number) => {
     const firstFee = 129;
@@ -63,11 +63,9 @@ const TotalAmountCalculator = ({ data }) => {
   let usaDelivery = 150 + auctionLoc * 1;
 
   let seaDelivery = 0;
-  
-  if (deliveryPort === 'kl') {
- 
-    if (departPort === 'NY') {
 
+  if (deliveryPort === 'kl') {
+    if (departPort === 'NY') {
       seaDelivery = 875;
     } else if (departPort === 'Savannah') {
       seaDelivery = 875;
@@ -103,7 +101,7 @@ const TotalAmountCalculator = ({ data }) => {
       seaDelivery = 1800;
     }
   }
-  
+
   if (seaDelivery > 0 && deliveryPort === 'kl') {
     seaDelivery = seaDelivery + 500;
   } else if (seaDelivery > 0) {
@@ -111,9 +109,9 @@ const TotalAmountCalculator = ({ data }) => {
   }
 
   let groundDelivery = 0;
-  
+
   if (deliveryPort === 'kl') {
-    groundDelivery = 350;
+    groundDelivery = 600;
   }
 
   const totalDelivery =
@@ -123,7 +121,9 @@ const TotalAmountCalculator = ({ data }) => {
   // customs
 
   let importDuty = 0;
-  if (fuelType !== 'electric') {
+  if (fuelType === 'electric') {
+    importDuty = engineCapacity * 1; // 1 kW = 1 EUR
+  } else {
     importDuty = parseFloat((carCost * 0.1).toFixed(0));
   }
 
@@ -170,7 +170,7 @@ const TotalAmountCalculator = ({ data }) => {
 
   const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1 + 150;
 
-  const pension = parseFloat((0.04 * carCost).toFixed(0));
+  const pension = parseFloat((0.03 * carCost).toFixed(0));
 
   const totalDeliveryWithParking = totalDelivery + 330 + 30;
 
@@ -239,6 +239,16 @@ const TotalAmountCalculator = ({ data }) => {
 
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                {t.vehicle_delivery}
+              </div>
+              <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                $ {seaDelivery ? seaDelivery : 'Specify data'}
+              </div>
+            </li>
+
+            <li className="flex items-center justify-between">
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.port_complex}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
@@ -254,16 +264,6 @@ const TotalAmountCalculator = ({ data }) => {
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 $ 30
-              </div>
-            </li>
-
-            <li className="flex items-center justify-between">
-              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                {t.vehicle_delivery}
-              </div>
-              <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
-              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {seaDelivery ? seaDelivery : "Specify data"}
               </div>
             </li>
 

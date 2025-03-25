@@ -143,6 +143,11 @@ const InpuDataCalculator = ({ setData }) => {
     departPort,
   } = translations[language];
 
+  const engineCapacityLabel =
+  formData.fuelType === 'electric'
+    ? translations[language].engineCapacityElectro
+    : translations[language].engineCapacity;
+
   const fields = [
     {
       key: 'auctionCost',
@@ -172,7 +177,7 @@ const InpuDataCalculator = ({ setData }) => {
     },
     {
       key: 'engineCapacity',
-      label: engineCapacity,
+      label: engineCapacityLabel,
       type: 'input',
       placeholder: '389',
     },

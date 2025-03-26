@@ -8,7 +8,8 @@
         "profile": "Личный кабинет",
         "find_car_by_vin": "Найти авто по VIN",
         "enter_vin": "Введите VIN номер",
-        "login": "Войти"
+        "login": "Войти",
+        "competition":"Конкурс"
     },
     "en": {
         "companyName": "Raulavto",
@@ -19,7 +20,8 @@
         "profile": "Profile",
         "find_car_by_vin": "Find car by VIN",
         "enter_vin": "Enter VIN number",
-        "login": "Login"
+        "login": "Login",
+        "competition":"Competition"
     },
     "ua": {
         "companyName": "Raulavto",
@@ -30,6 +32,7 @@
         "profile": "Особистий кабінет",
         "find_car_by_vin": "Знайти авто по VIN",
         "enter_vin": "Введіть VIN номер",
-        "login": "Увійти"
+        "login": "Увійти",
+        "competition":"Конкурс"
     }
 }

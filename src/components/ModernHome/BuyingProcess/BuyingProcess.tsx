@@ -48,7 +48,7 @@ const BuyingProcess = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
   return (
-    <section className="py-[112px] bg-black text-white">
+    <section className="pb-[112px] bg-black text-white">
       <Container>
         <h2 className="uppercase text-center text-[28px] pointuserbar:text-[48px] font-bold mx-auto mb-12 pointuserbar:mb-[86px] max-w-[300px] pointuserbar:max-w-full">
           {t.section_title}

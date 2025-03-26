@@ -5,7 +5,9 @@
     "contacts": "Contacts",
     "about": "About Us",
     "blog": "Blog",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "competition":"Competition"
+
   },
   "ua": {
     "calculator": "Калькулятор",
@@ -13,7 +15,8 @@
     "contacts": "Контакти",
     "about": "Про нас",
     "blog": "Блог",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "competition":"Конкурс"
   },
   "ru": {
     "calculator": "Калькулятор",
@@ -21,6 +24,7 @@
     "contacts": "Контакты",
     "about": "О нас",
     "blog": "Блог",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "competition":"Конкурс"
   }
 }

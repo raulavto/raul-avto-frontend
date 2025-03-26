@@ -14,12 +14,14 @@ const config: Config = {
       screens: {
         mobile: '320px',
         mobileplus: '480px',
+        pretablet: '620px',
         tablet: '768px',
         tabletplus: '880px',
         pointuserbar: '960px',
         mac: '1280px',
         desktop: '1285px',
         pointnav: '1340px',
+         wide: '1441px',
         fullhd: '1920px',
       },
       textColor: {

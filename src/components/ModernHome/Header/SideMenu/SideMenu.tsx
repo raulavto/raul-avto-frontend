@@ -106,6 +106,20 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             {t.faq}
           </Link>
         </li>
+
+         <li className="p-2">
+          <Link
+            onClick={onClose}
+            className={`text-[22px] font-bold text-red-600 transition-colors duration-300 ease-in-out hover:primary focus:primary outline-none ${
+              pathname === '/competition' ? isActive : ''
+            }`}
+            href="/competition"
+          >
+            {t.competition}
+          </Link>
+        </li>
+
+ 
         {/* <li className="p-2">
           <Link
             onClick={onClose}

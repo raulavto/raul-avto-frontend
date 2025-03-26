@@ -86,6 +86,17 @@ const Navigation = () => {
               {t.faq}
             </Link>
           </li>
+             <li className="text-red-600 text-[16px] font-bold">
+            <Link
+              className={`transition-colors duration-300 ease-in-out hover:text-white focus:text-white outline-none ${
+                pathname === '/competition' ? isActiveClass : ''
+              }`}
+              href="/competition"
+            >
+              {t.competition}
+            </Link>
+           
+          </li>
         </ul>
       )}
     </nav>

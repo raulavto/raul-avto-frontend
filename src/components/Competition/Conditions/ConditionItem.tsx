@@ -1,4 +1,5 @@
 import Button from '@/components/UI/Button/Button';
+import Link from 'next/link';
 
 interface ConditionItemProps {
   condition: {
@@ -29,9 +30,11 @@ export default function ConditionItem({
       <p className="mb-4 text-16 font-normal leading-[1.23] text-center">
         {description}
       </p>
-      <Button className="w-[275px] pointuserbar:w-full rounded-[14px] px-4 py-[13.5px] mx-auto text-[14px] font-semibold leading-[1.23]">
-        {button}
-      </Button>
+      <Link href="">
+        <Button className="w-[275px] pointuserbar:w-full rounded-[14px] px-4 py-[13.5px] mx-auto text-[14px] font-semibold leading-[1.23]">
+          {button}
+        </Button>
+      </Link>
     </li>
   );
 }

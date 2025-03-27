@@ -8,6 +8,7 @@ export default function ConditionsList() {
       description:
         'Дізнайся всі деталі конкурсу та переходь на наш сайт за посиланням!',
       button: 'Завантажити умови ',
+      url: '',
     },
     {
       number: '02',
@@ -15,6 +16,7 @@ export default function ConditionsList() {
       description:
         'Підпишись на соціальні мережі наших партнерів, щоб бути в курсі новин.',
       button: 'Підпишись на партнерів',
+      url: '/competition#partners',
     },
     {
       number: '03',
@@ -22,6 +24,7 @@ export default function ConditionsList() {
       description:
         'Придбай квиток для участі, відсканувавши QR-код на банку Monobank.',
       button: 'Зареєструйся в конкурсі',
+      url: '/competition#form',
     },
   ];
 

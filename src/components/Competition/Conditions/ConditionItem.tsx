@@ -7,6 +7,7 @@ interface ConditionItemProps {
     title: string;
     description: string;
     button: string;
+    url: string;
   };
   className?: string;
 }
@@ -15,7 +16,7 @@ export default function ConditionItem({
   condition,
   className = '',
 }: ConditionItemProps) {
-  const { number, title, description, button } = condition;
+  const { number, title, description, button, url } = condition;
   return (
     <li className="relative z-10 pointuserbar:max-w-[235px] xl:max-w-[255px]">
       <div
@@ -30,7 +31,7 @@ export default function ConditionItem({
       <p className="mb-4 text-16 font-normal leading-[1.23] text-center">
         {description}
       </p>
-      <Link href="">
+      <Link href={url}>
         <Button className="w-[275px] pointuserbar:w-full rounded-[14px] px-4 py-[13.5px] mx-auto text-[14px] font-semibold leading-[1.23]">
           {button}
         </Button>

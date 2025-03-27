@@ -25,7 +25,7 @@ const CompetitionBlock = () => {
             </p>
             <Timer />
             <Link href="/competition" className="mt-10 w-full flex h-[75px]">
-              <Button className="w-full h-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white">
+              <Button className="w-full h-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white hover:bg-red-800">
                 Дізнатися деталі
               </Button>
             </Link>
@@ -39,7 +39,7 @@ const CompetitionBlock = () => {
           href="/competition"
           className="mb-6 w-full flex max-w-[313px] h-[48px] justify-center"
         >
-          <Button className="w-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white h-full">
+          <Button className="w-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white h-full hover:bg-red-800">
             Дізнатися деталі
           </Button>
         </Link>

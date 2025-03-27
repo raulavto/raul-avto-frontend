@@ -1,14 +1,17 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const targetDate = new Date('2025-03-29T00:00:00').getTime();
+type TimerProps = {
+  targetDate?: string; 
+};
 
-const Timer = () => {
+const Timer = ({ targetDate = '2025-03-29T00:00:00' }: TimerProps) => {
+  const targetTime = new Date(targetDate).getTime();
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   function calculateTimeLeft() {
     const now = new Date().getTime();
-    const difference = targetDate - now;
+    const difference = targetTime - now;
 
     if (difference <= 0) {
       return { days: '00', hours: '00', minutes: '00', seconds: '00' };

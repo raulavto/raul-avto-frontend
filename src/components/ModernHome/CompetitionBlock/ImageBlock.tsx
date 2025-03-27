@@ -13,6 +13,7 @@ const ImageBlock = () => {
         width={212}
         height={263}
         className="h-full w-full object-cover object-left pretablet:hidden"
+        quality={100}
       />
       <Image
         src="/competition-bg-2.webp"
@@ -20,6 +21,7 @@ const ImageBlock = () => {
         width={212}
         height={263}
         className="h-full w-full object-cover object-left hidden pretablet:block"
+        quality={100}
       />
       <div className="hidden wide:block absolute  bg-gradient-to-l from-[#0B0909] to-transparent w-[60px] h-full right-[-10px] top-0"></div>
       <motion.div
@@ -40,8 +42,10 @@ const ImageBlock = () => {
           alt="audi a8"
           fill
           className="object-contain"
+          quality={100}
         />
       </motion.div>
+      
     </div>
   );
 };

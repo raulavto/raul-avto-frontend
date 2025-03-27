@@ -1,4 +1,8 @@
+import AnimatedListItem from '@/components/AnimatedWrappers/AnimatedListItem';
+import AnimatedWrapper from '@/components/AnimatedWrappers/AnimatedWrapper';
 import Image from 'next/image';
+import { fadeInAnimation } from '@/app/utils/animation';
+import { motion } from 'framer-motion';
 
 interface PrizeItemProps {
   prize: { number: string; image: string; title: string; description: string };
@@ -9,7 +13,7 @@ export default function PrizeItem({ prize, className = '' }: PrizeItemProps) {
   const { number, image, title, description } = prize;
 
   return (
-    <li
+    <AnimatedListItem
       className={`${
         image === 'car'
           ? 'pointuserbar:order-2 pointuserbar:w-[346px] mac:w-[463px] mac:h-[523px] pointuserbar:pt-[45px] pointuserbar:pb-[53px] pointuserbar:px-[30px]'
@@ -18,13 +22,15 @@ export default function PrizeItem({ prize, className = '' }: PrizeItemProps) {
           : 'pointuserbar:order-3 pointuserbar:w-[328px] pointuserbar:h-[362px] mac:h-[347px] pointuserbar:pt-5 pointuserbar:pb-10 pointuserbar:px-[18px]'
       } relative z-10 px-[38px] pt-4 pb-7 rounded-[32px] bg-[#3d3c3c4d] bg-opacity-30`}
     >
-      <p
+      <AnimatedWrapper
+        as={motion.p}
+        animation={fadeInAnimation({ y: -50, scale: 0.8, delay: 2.6 })}
         className={`${
           image === 'car' ? 'block' : 'hidden'
         } absolute z-10 top-[-31px] pointuserbar:top-[-62px] left-[calc(50%-86.5px)] pointuserbar:left-0 pointuserbar:w-full p-[10px] pointuserbar:p-[21px] text-[16px] pointuserbar:text-[24px] mac:text-[28px] font-semibold leading-[1.23] text-center uppercase rounded-[12px] border border-[#E2011A]`}
       >
         Головний Приз
-      </p>
+      </AnimatedWrapper>
       <div
         className={`${
           image === 'car' ? 'block' : 'hidden'
@@ -48,6 +54,6 @@ export default function PrizeItem({ prize, className = '' }: PrizeItemProps) {
       <p className="max-w-[260px] pointuserbar:max-w-[195px] mac:max-w-[395px] mx-auto text-[12px] pointuserbar:text-[14px] mac:text-[16px] leading-[1.23] text-center">
         {description}
       </p>
-    </li>
+    </AnimatedListItem>
   );
 }

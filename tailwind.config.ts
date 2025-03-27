@@ -21,8 +21,15 @@ const config: Config = {
         mac: '1280px',
         desktop: '1285px',
         pointnav: '1340px',
-         wide: '1441px',
+        wide: '1441px',
         fullhd: '1920px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '25px',
+          lg: '70px',
+        },
       },
       textColor: {
         primary: '#ebebeb',
@@ -51,6 +58,8 @@ const config: Config = {
           'linear-gradient(270deg, #1b1b1c 0%, #171718 100%)',
         'gradient-white': 'linear-gradient(90deg, #ececec 0%, #c7c7c7 100%)',
         'gradient-select': 'linear-gradient(270deg, #141516 0%, #121213 100%)',
+        'gradient-conditions':
+          'inear-gradient(180deg, #FFACB5 0%, #E2011A 100%))',
       },
       backgroundColor: {
         fon: '#000000',

@@ -58,8 +58,6 @@ const config: Config = {
           'linear-gradient(270deg, #1b1b1c 0%, #171718 100%)',
         'gradient-white': 'linear-gradient(90deg, #ececec 0%, #c7c7c7 100%)',
         'gradient-select': 'linear-gradient(270deg, #141516 0%, #121213 100%)',
-        'gradient-conditions':
-          'inear-gradient(180deg, #FFACB5 0%, #E2011A 100%))',
       },
       backgroundColor: {
         fon: '#000000',

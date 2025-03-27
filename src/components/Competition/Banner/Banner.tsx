@@ -25,7 +25,7 @@ const Banner = () => {
       <div className="relative">
         <div className="relative min-h-[205px] pointuserbar:min-h-[610px] w-full aspect-video ">
           <ReactPlayer
-            url="https://www.youtube.com/watch?v=vlDOjTaaEdA&rel=0"
+            url="https://youtu.be/9vAOjXLT4hc?si=8H2Iri2yeg4gY6_x&rel=0"
             width="100%"
             height="100%"
             playing={true}

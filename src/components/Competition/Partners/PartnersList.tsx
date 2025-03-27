@@ -1,4 +1,7 @@
 import PartnerItem from './PartnerItem';
+import AnimatedWrapper from '@/components/AnimatedWrappers/AnimatedWrapper';
+import { motion } from 'framer-motion';
+import { listVariants } from '@/app/utils/animation';
 
 export default function PartnersList() {
   const partnersList = [
@@ -15,7 +18,12 @@ export default function PartnersList() {
   ];
 
   return (
-    <ul className="flex flex-col pretablet:flex-row pretablet:justify-between gap-6 max-w-[1296px] mx-auto text-white">
+    <AnimatedWrapper
+      as={motion.ul}
+      viewport={{ once: true, amount: 0.6 }}
+      animation={listVariants({ staggerChildren: 0.5, delayChildren: 0.4 })}
+      className="flex flex-col pretablet:flex-row pretablet:justify-between gap-6 max-w-[1296px] mx-auto text-white"
+    >
       {partnersList.map((partner, idx) => (
         <PartnerItem
           key={idx}
@@ -32,6 +40,6 @@ export default function PartnersList() {
           }
         />
       ))}
-    </ul>
+    </AnimatedWrapper>
   );
 }

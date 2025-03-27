@@ -1,3 +1,4 @@
+import AnimatedListItem from '@/components/AnimatedWrappers/AnimatedListItem';
 import Button from '@/components/UI/Button/Button';
 import Link from 'next/link';
 
@@ -18,7 +19,7 @@ export default function ConditionItem({
 }: ConditionItemProps) {
   const { number, title, description, button, url } = condition;
   return (
-    <li className="relative z-10 pointuserbar:max-w-[235px] xl:max-w-[255px]">
+    <AnimatedListItem className="relative z-10 pointuserbar:max-w-[235px] xl:max-w-[255px]">
       <div
         className={`absolute -z-10 w-[164px] h-[183px] bg-[#E2011A] blur-[150px] supports-[backdrop-filter]:blur-[150px] will-change-transform ${className}`}
       ></div>
@@ -36,6 +37,6 @@ export default function ConditionItem({
           {button}
         </Button>
       </Link>
-    </li>
+    </AnimatedListItem>
   );
 }

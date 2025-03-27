@@ -1,3 +1,4 @@
+import AnimatedListItem from '@/components/AnimatedWrappers/AnimatedListItem';
 import Button from '@/components/UI/Button/Button';
 import Image from 'next/image';
 
@@ -15,7 +16,7 @@ export default function PartnerItem({
   const { title, image, url } = partner;
 
   return (
-    <li className="relative z-10 flex flex-col justify-between pretablet:w-[calc(50%-12px)] px-3 pt-3 pb-[26px] pointuserbar:py-[44px] rounded-[12px] bg-[#3d3c3c80] bg-opacity-50">
+    <AnimatedListItem className="relative z-10 flex flex-col justify-between pretablet:w-[calc(50%-12px)] px-3 pt-3 pb-[26px] pointuserbar:py-[44px] rounded-[12px] bg-[#3d3c3c80] bg-opacity-50">
       <div
         className={`absolute -z-10 w-[133px] h-[177px] pointuserbar:w-[158px] pointuserbar:h-[177px] bg-[#E2011A] blur-[150px] supports-[backdrop-filter]:blur-[150px] will-change-transform ${blurStyles}`}
       ></div>
@@ -37,6 +38,6 @@ export default function PartnerItem({
           </Button>
         </a>
       </div>
-    </li>
+    </AnimatedListItem>
   );
 }

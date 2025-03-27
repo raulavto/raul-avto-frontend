@@ -24,6 +24,7 @@ export default function ConditionsList() {
       button: 'Зареєструйся в конкурсі',
     },
   ];
+
   return (
     <ul className="flex flex-col pointuserbar:flex-row pointuserbar:justify-between gap-y-16 max-w-[430px] pointuserbar:max-w-[1075px] mx-auto text-white">
       {conditionsList.map((condition, idx) => (

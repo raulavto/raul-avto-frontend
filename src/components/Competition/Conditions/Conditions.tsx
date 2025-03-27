@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Conditions() {
   return (
-    <section className="relative z-10 pt-6 pb-4 pointuserbar:pt-[38px] pointuserbar:pb-[42px] mx-auto overflow-hidden">
+    <section className="relative z-10 pt-6 pb-10 pointuserbar:pt-[38px] pointuserbar:pb-[42px] mx-auto overflow-hidden">
       <div className="container xl:max-w-[1440px]">
         <AnimatedWrapper
           as={motion.h2}

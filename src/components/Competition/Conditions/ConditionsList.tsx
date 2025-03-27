@@ -34,7 +34,7 @@ export default function ConditionsList() {
   return (
     <AnimatedWrapper
       as={motion.ul}
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       animation={listVariants({ staggerChildren: 0.5, delayChildren: 0.4 })}
       className="flex flex-col pointuserbar:flex-row pointuserbar:justify-between gap-y-16 max-w-[430px] pointuserbar:max-w-[1075px] mx-auto text-white"
     >

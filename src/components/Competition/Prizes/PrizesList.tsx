@@ -29,7 +29,7 @@ export default function PrizesList() {
   return (
     <AnimatedWrapper
       as={motion.ul}
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       animation={listVariants({ staggerChildren: 0.5, delayChildren: 0.4 })}
       className="flex flex-col pointuserbar:flex-row pointuserbar:justify-between pointuserbar:items-center gap-y-10 
     pointuserbar:gap-x-8 mac:gap-x-12 max-w-[430px] pointuserbar:max-w-[1215px] mx-auto text-white"

@@ -20,7 +20,7 @@ export default function PartnersList() {
   return (
     <AnimatedWrapper
       as={motion.ul}
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       animation={listVariants({ staggerChildren: 0.5, delayChildren: 0.4 })}
       className="flex flex-col pretablet:flex-row pretablet:justify-between gap-6 max-w-[1296px] mx-auto text-white"
     >

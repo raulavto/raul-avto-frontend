@@ -2,6 +2,7 @@ import { Montserrat } from 'next/font/google';
 
 import Banner from '@/components/Competition/Banner/Banner';
 import TimerBlock from '@/components/Competition/TimerBlock/TimerBlock';
+import Conditions from '@/components/Competition/Conditions/Conditions';
 
 const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
@@ -12,7 +13,8 @@ const Competition = () => {
   return (
     <div className={montserrat.className}>
       <Banner />
-      <TimerBlock/>
+      <TimerBlock />
+      <Conditions />
     </div>
   );
 };

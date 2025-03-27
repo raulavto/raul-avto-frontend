@@ -21,8 +21,15 @@ const config: Config = {
         mac: '1280px',
         desktop: '1285px',
         pointnav: '1340px',
-         wide: '1441px',
+        wide: '1441px',
         fullhd: '1920px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '25px',
+          lg: '70px',
+        },
       },
       textColor: {
         primary: '#ebebeb',

@@ -20,7 +20,7 @@ const Competition = () => {
       <Conditions />
       <Prizes />
       <Partners />
-       <FormBlock/>
+      <FormBlock/>
     </div>
   );
 };

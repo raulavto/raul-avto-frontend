@@ -44,7 +44,7 @@ const Form = () => {
 
 const redirectMono = () => {
   if (typeof window !== 'undefined') {
-    window.open('https://send.monobank.ua/jar/4WirKpXLbP', '_blank');
+    window.open('https://send.monobank.ua/jar/96CygjGUtR', '_blank');
   } else {
     console.error('Window object is not available');
   }

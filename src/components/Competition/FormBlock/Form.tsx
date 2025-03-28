@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import * as yup from 'yup';
-import { sendMessage } from '@/app/utils/sendMessage';
 
 const schema = yup.object().shape({
   name: yup.string().required('Імʼя є обовʼязковим'),
@@ -20,7 +19,6 @@ const schema = yup.object().shape({
 });
 
 const Form = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     instagram: '',
@@ -33,47 +31,81 @@ const Form = () => {
     phone: '',
     agreement: '',
   });
-
+  const [isLoading, setIsLoading] = useState(false); 
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
+    setFormData({
+      ...formData,
+      [name]:
+        type === 'checkbox' ? checked : name === 'phone' ? value : value.trim(),
+    });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-   
-    try {
-      await schema.validate(formData, { abortEarly: false });
-      setErrors({ name: '', instagram: '', phone: '', agreement: '' });
+const redirectMono = () => {
+  if (typeof window !== 'undefined') {
+    window.open('https://send.monobank.ua/jar/4WirKpXLbP', '_blank');
+  } else {
+    console.error('Window object is not available');
+  }
+}
 
-      const message = `
-✨ Нова заявка на участь у конкурсі! ✨  
-👤 Ім'я: ${formData.name}  
-📱 Телефон: ${formData.phone}  
-📸 Instagram: ${formData.instagram}  
- 
-`;
-      sendMessage(message);
-      console.log(message);
-      setFormData({
-        name: '',
-        instagram: '',
-        phone: '',
-        agreement: false,
-      });
-      router.push('https://send.monobank.ua/jar/96CygjGUtR');
-    } catch (err) {
-      const newErrors = { name: '', instagram: '', phone: '', agreement: '' };
-      if (err.inner) {
-        err.inner.forEach((error) => {
-          if (error.path) {
-            newErrors[error.path] = error.message;
-          }
-        });
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsLoading(true);
+  try {
+
+    await schema.validate(formData, { abortEarly: false });
+    setErrors({ name: '', instagram: '', phone: '', agreement: '' });
+
+
+    const response = await fetch('/api/addRow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...formData,
+        phone: formData.phone.toString(),
+      }),
+    });
+
+    // Перевірка, чи відповідає контент типу JSON
+    const contentType = response.headers.get('Content-Type');
+    if (contentType && contentType.includes('application/json')) {
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Помилка при відправці');
       }
-      setErrors(newErrors);
-    } 
-  };
+
+      console.log('✅ Дані додані в Google Sheets:', result);
+    } else {
+      // Якщо це HTML (сторінка для редіректу на MonoPay), просто редіректимемо
+      console.log('✅ Перехід до MonoPay');
+      redirectMono();
+    }
+
+    setFormData({
+      name: '',
+      instagram: '',
+      phone: '',
+      agreement: false,
+    });
+
+  } catch (err) {
+    const newErrors = { name: '', instagram: '', phone: '', agreement: '' };
+    if (err.inner) {
+      err.inner.forEach((error) => {
+        if (error.path) {
+          newErrors[error.path] = error.message;
+        }
+      });
+    }
+    setErrors(newErrors);
+  }finally {
+      setIsLoading(false); 
+    }
+};
+
 
   return (
     <div className="py-[25px] px-[22px] bg-[#F4F4F4] rounded-t-[10px] tablet:py-[33px] mac:px-[43px]   tablet:w-[66.5%] tablet:rounded-none tablet:rounded-l-[10px]">
@@ -85,7 +117,8 @@ const Form = () => {
         Заповни форму та зроби внесок, щоб стати учасником конкурсу
       </p>
       <form
-        onSubmit={handleSubmit}
+     onSubmit={handleSubmit}
+
         className="flex flex-col gap-5 tablet:gap-4"
       >
         <div className="max-w-[408px] mx-auto flex flex-col gap-4">
@@ -162,10 +195,12 @@ const Form = () => {
           <div className="mac:flex items-center gap-4 w-full">
             <div className="relative h-12 tabletplus:h-[60px] mac:w-[94%]">
               <Button
+                disabled={isLoading}
                 type="submit"
                 className="w-full h-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white tablet:pr-5"
               >
-                Оплатити через MonoPay
+                {isLoading? 'Надсилаємо дані':"Оплатити через MonoPay"}
+                
               </Button>
               <Image
                 src="/copmetitionIcons/mono.svg"

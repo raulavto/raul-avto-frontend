@@ -32,7 +32,7 @@ export async function addRowToSheet(spreadsheetId, data) {
     const appendResponse = await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: `B${rowCount}`,
-      valueInputOption: 'USER_ENTERED',
+      valueInputOption: 'RAW',
       requestBody: { values },
     });
 

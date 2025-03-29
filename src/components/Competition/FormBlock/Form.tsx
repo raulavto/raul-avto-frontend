@@ -43,11 +43,13 @@ const Form = () => {
   };
 
 const redirectMono = () => {
-  if (typeof window !== 'undefined') {
-    window.open('https://send.monobank.ua/jar/96CygjGUtR', '_blank');
-  } else {
-    console.error('Window object is not available');
-  }
+  // if (typeof window !== 'undefined') {
+  //   window.open('https://send.monobank.ua/jar/96CygjGUtR', '_blank');
+  // } else {
+  //   console.error('Window object is not available');
+  // }
+  const router = useRouter()
+  router.push('https://send.monobank.ua/jar/96CygjGUtR')
 }
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

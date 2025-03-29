@@ -11,8 +11,8 @@ export const data = [
     },
             {
         icon: '/copmetitionIcons/icon3.svg',
-        title: "Пробіг",
-        descr:"145 000 км"
+        title: "Колір",
+        descr:"Сірий"
     },
                 {
         icon: '/copmetitionIcons/icon4.svg',

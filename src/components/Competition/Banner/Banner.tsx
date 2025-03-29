@@ -32,6 +32,7 @@ const Banner = () => {
             muted={true} // Вимкнений звук, щоб не блокувався автозапуск
             playsinline={true}
             controls={true}
+            loop={true}
             className="w-full h-full"
           />
         </div>

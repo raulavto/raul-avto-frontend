@@ -2,8 +2,8 @@
 import Button from '@/components/UI/Button/Button';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import * as yup from 'yup';
+import Modal from './Modal';
 
 const schema = yup.object().shape({
   name: yup.string().required('Імʼя є обовʼязковим'),
@@ -31,8 +31,9 @@ const Form = () => {
     phone: '',
     agreement: '',
   });
-  const [isLoading, setIsLoading] = useState(false); 
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -42,71 +43,58 @@ const Form = () => {
     });
   };
 
-const redirectMono = () => {
-  // if (typeof window !== 'undefined') {
-  //   window.open('https://send.monobank.ua/jar/96CygjGUtR', '_blank');
-  // } else {
-  //   console.error('Window object is not available');
-  // }
-  const router = useRouter()
-  router.push('https://send.monobank.ua/jar/96CygjGUtR')
-}
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      await schema.validate(formData, { abortEarly: false });
+      setErrors({ name: '', instagram: '', phone: '', agreement: '' });
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsLoading(true);
-  try {
+      const response = await fetch('/api/addRow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          phone: formData.phone.toString(),
+        }),
+      });
 
-    await schema.validate(formData, { abortEarly: false });
-    setErrors({ name: '', instagram: '', phone: '', agreement: '' });
+      // Перевірка, чи відповідає контент типу JSON
+      const contentType = response.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/json')) {
+        const result = await response.json();
 
+        if (!response.ok) {
+          throw new Error(result.error || 'Помилка при відправці');
+        }
 
-    const response = await fetch('/api/addRow', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...formData,
-        phone: formData.phone.toString(),
-      }),
-    });
-
-    // Перевірка, чи відповідає контент типу JSON
-    const contentType = response.headers.get('Content-Type');
-    if (contentType && contentType.includes('application/json')) {
-      const result = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(result.error || 'Помилка при відправці');
+        console.log('✅ Дані додані в Google Sheets:', result);
+      } else {
+        // Якщо це HTML (сторінка для редіректу на MonoPay), просто редіректимемо
+        console.log('✅ Перехід до MonoPay');
+        setModalOpen(true);
       }
 
-      console.log('✅ Дані додані в Google Sheets:', result);
-    } else {
-      // Якщо це HTML (сторінка для редіректу на MonoPay), просто редіректимемо
-      console.log('✅ Перехід до MonoPay');
-      redirectMono();
-    }
-
-    setFormData({
-      name: '',
-      instagram: '',
-      phone: '',
-      agreement: false,
-    });
-
-  } catch (err) {
-    const newErrors = { name: '', instagram: '', phone: '', agreement: '' };
-    if (err.inner) {
-      err.inner.forEach((error) => {
-        if (error.path) {
-          newErrors[error.path] = error.message;
-        }
+      setFormData({
+        name: '',
+        instagram: '',
+        phone: '',
+        agreement: false,
       });
+    } catch (err) {
+      const newErrors = { name: '', instagram: '', phone: '', agreement: '' };
+      if (err.inner) {
+        err.inner.forEach((error) => {
+          if (error.path) {
+            newErrors[error.path] = error.message;
+          }
+        });
+      }
+      setErrors(newErrors);
+    } finally {
+      setIsLoading(false);
     }
-    setErrors(newErrors);
-  }finally {
-      setIsLoading(false); 
-    }
-};
+  };
 
 
   return (
@@ -119,8 +107,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         Заповни форму та зроби внесок, щоб стати учасником конкурсу
       </p>
       <form
-     onSubmit={handleSubmit}
-
+        onSubmit={handleSubmit}
         className="flex flex-col gap-5 tablet:gap-4"
       >
         <div className="max-w-[408px] mx-auto flex flex-col gap-4">
@@ -201,8 +188,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 type="submit"
                 className="w-full h-full rounded-sub-block-12 bg-gradient-red text-[14px] text-white tablet:pr-5"
               >
-                {isLoading? 'Надсилаємо дані':"Оплатити через MonoPay"}
-                
+                {isLoading ? 'Надсилаємо дані' : 'Оплатити через MonoPay'}
               </Button>
               <Image
                 src="/copmetitionIcons/mono.svg"
@@ -218,6 +204,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
         </div>
       </form>
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}/>}
     </div>
   );
 };

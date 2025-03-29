@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <head>
         <GoogleTagManager gtmId="GTM-MM6J6JCP" />
         <Suspense fallback={null}>

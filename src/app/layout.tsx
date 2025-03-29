@@ -2,7 +2,7 @@ import Header from '@/components/ModernHome/Header/Header';
 import Footer from '@/components/ModernHome/Footer/Footer';
 import FormCall from '@/components/ModernHome/FormCall/FormCall';
 import ButtonFeedback from '@/components/ModernHome/ButtonFeedback/ButtonFeedback';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { myFontPanagram } from './fonts';
 import './globals.css';
 import '../components/Loader/loader.css';
@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   description: 'Car from USA',
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,11 +34,6 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-
         <GoogleTagManager gtmId="GTM-MM6J6JCP" />
         <Suspense fallback={null}>
           <FacebookPixelEvents />

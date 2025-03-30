@@ -1,10 +1,13 @@
-"use client"
+'use client';
 
 import Button from '@/components/UI/Button/Button';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Modal = ({ modalOpen, setModalOpen }) => {
+  const [copied, setCopied] = useState(false);
+
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = 'hidden';
@@ -21,6 +24,12 @@ const Modal = ({ modalOpen, setModalOpen }) => {
     if (e.target === e.currentTarget) {
       setModalOpen(false);
     }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('4441 1111 2222 4276');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -44,6 +53,26 @@ const Modal = ({ modalOpen, setModalOpen }) => {
             "Оплатити через MonoPay"
           </Button>
         </Link>
+
+        <div className="mt-6">
+          <p className="text-gray-700">Або можете зробити переказ на карту:</p>
+          <div className="mt-2 flex items-center justify-center border border-gray-300 rounded-lg p-2">
+            <span className="font-bold text-[12px] mobileplus:text-lg">4441 1111 2222 4276</span>
+            <button
+              onClick={copyToClipboard}
+              className="ml-3 p-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+              title="Скопіювати номер картки"
+            >
+              <Image
+                src="/copmetitionIcons/copy.svg"
+                alt="copy icon"
+                width={24}
+                height={24}
+              />
+            </button>
+          </div>
+          {copied && <p className="text-green-600 mt-1">Номер скопійовано!</p>}
+        </div>
       </div>
     </div>
   );

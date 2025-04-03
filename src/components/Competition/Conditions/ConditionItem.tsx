@@ -9,6 +9,8 @@ interface ConditionItemProps {
     description: string;
     button: string;
     url: string;
+    target: string;
+    rel: string
   };
   className?: string;
 }
@@ -32,7 +34,8 @@ export default function ConditionItem({
       <p className="mb-4 text-16 font-normal leading-[1.23] text-center">
         {description}
       </p>
-      <Link href={url}>
+      <Link href={url}  target={condition.target}
+  rel={condition.rel}>
         <Button className="w-[275px] pointuserbar:w-full rounded-[14px] px-4 py-[13.5px] mx-auto text-[14px] font-semibold leading-[1.23]">
           {button}
         </Button>

@@ -11,7 +11,7 @@ export default function ConditionsList() {
       description:
         'Дізнайся всі деталі конкурсу та переходь на наш сайт за посиланням!',
       button: 'Завантажити умови ',
-      url: '',
+      url: 'https://drive.google.com/drive/folders/1nOg3HLnojMyPv1UXGmwPUaMRmgj--qGt?q=sharedwith:public%20parent:1nOg3HLnojMyPv1UXGmwPUaMRmgj--qGt',
     },
     {
       number: '02',
@@ -41,7 +41,11 @@ export default function ConditionsList() {
       {conditionsList.map((condition, idx) => (
         <ConditionItem
           key={idx}
-          condition={condition}
+          condition={{
+      ...condition,
+      target: idx === 0 ? '_blank' : undefined,
+      rel: idx === 0 ? 'noopener noreferrer' : undefined,
+    }}
           className={`${
             idx === 0
               ? 'top-[61px] pointuserbar:top-[201px] left-[calc(50%-190px)] pointuserbar:left-[-29px]'

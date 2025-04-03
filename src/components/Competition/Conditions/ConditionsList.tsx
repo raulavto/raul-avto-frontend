@@ -11,7 +11,7 @@ export default function ConditionsList() {
       description:
         'Дізнайся всі деталі конкурсу та переходь на наш сайт за посиланням!',
       button: 'Завантажити умови ',
-      url: 'https://drive.google.com/drive/folders/1nOg3HLnojMyPv1UXGmwPUaMRmgj--qGt?q=sharedwith:public%20parent:1nOg3HLnojMyPv1UXGmwPUaMRmgj--qGt',
+      url: 'https://drive.google.com/file/d/1FijfJu_ySfxjhUbnkEumu77QK_3NfDEU/view?usp=sharing',
     },
     {
       number: '02',

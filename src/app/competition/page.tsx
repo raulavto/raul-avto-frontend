@@ -6,6 +6,7 @@ import Conditions from '@/components/Competition/Conditions/Conditions';
 import Prizes from '@/components/Competition/Prizes/Prizes';
 import Partners from '@/components/Competition/Partners/Partners';
 import FormBlock from '@/components/Competition/FormBlock/FormBlock';
+import Help from '@/components/Competition/Help/Help';
 
 const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
@@ -18,9 +19,11 @@ const Competition = () => {
       <Banner />
       <TimerBlock />
       <Conditions />
+      <Help />
+
       <Prizes />
       <Partners />
-      <FormBlock/>
+      <FormBlock />
     </div>
   );
 };

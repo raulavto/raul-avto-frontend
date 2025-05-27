@@ -3,6 +3,7 @@ import ConditionsList from './ConditionsList';
 import { fadeInAnimation } from '@/app/utils/animation';
 import AnimatedWrapper from '@/components/AnimatedWrappers/AnimatedWrapper';
 import { motion } from 'framer-motion';
+import Help from '../Help/Help';
 
 export default function Conditions() {
   return (
@@ -16,15 +17,6 @@ export default function Conditions() {
           Умови Конкурсу
         </AnimatedWrapper>
         <ConditionsList />
-        <AnimatedWrapper
-          as={motion.p}
-          animation={fadeInAnimation({ x: 50, delay: 1.2 })}
-          className="max-w-[430px] pointuserbar:max-w-[736px] mt-[47px] mx-auto text-[12px] pointuserbar:text-[20px] font-semibold text-white text-center leading-[1.23]"
-        >
-          Частина зібраних коштів піде на дитячий будинок-інтернат у місті Київ
-          для дітей з дефектами фізичного та розумового розвитку. Разом даруємо
-          надію!
-        </AnimatedWrapper>
       </div>
     </section>
   );

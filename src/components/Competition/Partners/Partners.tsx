@@ -8,14 +8,14 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className="py-6 pointuserbar:pt-[70px] pointuserbar:pb-[101px] mb-[60px]"
+      className="py-6 pointuserbar:pt-[70px] pointuserbar:pb-[101px] px-4"
     >
-      <div className="container xl:max-w-[1440px]">
+      <div className="max-w-[1280px] mx-auto">
         <AnimatedWrapper
           animation={fadeInAnimation({ x: -50 })}
-          className="mb-[29px] pointuserbar:mb-[69px] text-[25px] pointuserbar:text-[48px] font-bold leading-[1.23] uppercase text-[#F2EEEE] text-center"
+          className="mb-[20px] text-[25px] pointuserbar:text-[48px] font-bold leading-[1.23] uppercase text-[#F2EEEE] text-center"
         >
-          Підпишись на наших Партнерів
+          Наші Партнери
         </AnimatedWrapper>
         <PartnersList />
       </div>

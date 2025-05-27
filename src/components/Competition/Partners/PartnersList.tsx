@@ -22,7 +22,7 @@ export default function PartnersList() {
       as={motion.ul}
       viewport={{ once: true, amount: 0.3 }}
       animation={listVariants({ staggerChildren: 0.5, delayChildren: 0.4 })}
-      className="flex flex-col pretablet:flex-row pretablet:justify-between gap-6 max-w-[1296px] mx-auto text-white"
+      className="flex flex-row gap-3 max-w-[100%] mx-auto text-white"
     >
       {partnersList.map((partner, idx) => (
         <PartnerItem
@@ -35,8 +35,8 @@ export default function PartnersList() {
           }
           imageStyles={
             idx === 0
-              ? 'w-[230px] h-[157px] pointuserbar:w-[387px] mac:w-[447px] pointuserbar:h-[268px] mac:h-[309px]'
-              : 'w-[141px] h-[141px] mt-2 pointuserbar:w-[231px] mac:w-[271px] pointuserbar:h-[231px] mac:h-[271px]'
+              ? 'w-[120px] h-[82px] pointuserbar:w-[300px] mac:w-[350px] pointuserbar:h-[208px] mac:h-[240px]'
+              : 'w-[80px] h-[55px] pointuserbar:w-[300px] mac:w-[350px] pointuserbar:h-[208px] mac:h-[240px]'
           }
         />
       ))}

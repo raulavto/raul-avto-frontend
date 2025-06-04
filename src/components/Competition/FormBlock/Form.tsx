@@ -7,7 +7,6 @@ import Modal from './Modal';
 
 const schema = yup.object().shape({
   name: yup.string().required('Імʼя є обовʼязковим'),
-  instagram: yup.string().required('Нік інстаграм є обовʼязковим'),
   phone: yup
     .string()
     .matches(
@@ -21,13 +20,11 @@ const schema = yup.object().shape({
 const Form = () => {
   const [formData, setFormData] = useState({
     name: '',
-    instagram: '',
     phone: '',
     agreement: false,
   });
   const [errors, setErrors] = useState({
     name: '',
-    instagram: '',
     phone: '',
     agreement: '',
   });
@@ -48,7 +45,7 @@ const Form = () => {
     setIsLoading(true);
     try {
       await schema.validate(formData, { abortEarly: false });
-      setErrors({ name: '', instagram: '', phone: '', agreement: '' });
+      setErrors({ name: '', phone: '', agreement: '' });
 
       const response = await fetch('/api/addRow', {
         method: 'POST',
@@ -77,12 +74,11 @@ const Form = () => {
 
       setFormData({
         name: '',
-        instagram: '',
         phone: '',
         agreement: false,
       });
     } catch (err) {
-      const newErrors = { name: '', instagram: '', phone: '', agreement: '' };
+      const newErrors = { name: '', phone: '', agreement: '' };
       if (err.inner) {
         err.inner.forEach((error) => {
           if (error.path) {
@@ -95,7 +91,6 @@ const Form = () => {
       setIsLoading(false);
     }
   };
-
 
   return (
     <div className="py-[25px] px-[22px] bg-[#F4F4F4] rounded-t-[10px] tablet:py-[33px] mac:px-[43px]   tablet:w-[66.5%] tablet:rounded-none tablet:rounded-l-[10px]">
@@ -123,22 +118,6 @@ const Form = () => {
             {errors.name && (
               <p className="text-red-500 text-[10px] absolute bottom-[-14px]">
                 {errors.name}
-              </p>
-            )}
-          </div>
-
-          <div className="relative">
-            <input
-              type="text"
-              name="instagram"
-              placeholder="Нік інстаграм"
-              value={formData.instagram}
-              onChange={handleChange}
-              className="w-full rounded-xl py-[10px] px-4 bg-[#d4d4d866] border border-[#555] placeholder-[#A1A1AA] placeholder:text-[12px] text-[12px] outline-none"
-            />
-            {errors.instagram && (
-              <p className="text-red-500 text-[10px] absolute bottom-[-14px]">
-                {errors.instagram}
               </p>
             )}
           </div>
@@ -204,7 +183,7 @@ const Form = () => {
           </div>
         </div>
       </form>
-      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}/>}
+      {modalOpen && <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
     </div>
   );
 };

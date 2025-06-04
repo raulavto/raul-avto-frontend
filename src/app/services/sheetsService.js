@@ -21,12 +21,7 @@ export async function addRowToSheet(spreadsheetId, data) {
     const rowCount = response.data.values ? response.data.values.length + 1 : 2;
 
     const values = [
-      [
-        data.name,
-        data.instagram,
-        data.phone,
-        new Date().toLocaleString('uk-UA'),
-      ],
+      [data.name, data.phone, new Date().toLocaleString('uk-UA')],
     ];
 
     const appendResponse = await sheets.spreadsheets.values.append({

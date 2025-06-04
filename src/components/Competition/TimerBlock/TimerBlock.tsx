@@ -10,7 +10,7 @@ const TimerBlock = () => {
         До кінця конкурсу:
       </p>
       <div className="w-[72.5%] pretablet:w-[408px]">
-        <Timer targetDate="2025-06-01T12:00:00" />
+        <Timer targetDate="2025-09-20T12:00:00" />
       </div>
     </section>
   );

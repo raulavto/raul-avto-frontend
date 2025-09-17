@@ -24,7 +24,7 @@ const ButtonFeedback = () => {
   };
   return (!isLeadForm&&
     !isModalOpen && (
-      <div className="fixed z-[200] mobile:bottom-5 mobile:right-5 tablet:bottom-10 tablet:right-10 ">
+      <div className="fixed z-[200] mobile:bottom-[20px] mobile:left-5 tablet:bottom-[50px] tablet:left-10 ">
         <Button
           className="mobile:bg-white mobile:w-[60px] mobile:h-[60px] tablet:w-[126px] tablet:h-[126px] rounded-full text-red-600 mobile:text-[8px] tablet:text-[15px] font-bold uppercase transform transition duration-300 ease-in-out hover:scale-105 hover:text-gray-700"
           onClick={handleClick}

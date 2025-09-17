@@ -17,7 +17,7 @@ const ReduxProvider = dynamic(() => import('../Providers/ReduxProvider'), {
 });
 
 export const metadata: Metadata = {
-  title: 'Raul Auto',
+  title: 'Raul Avto',
   description: 'Car from USA',
 };
 

@@ -10,7 +10,7 @@ import Feedback from '@/components/ModernHome/Feedback/Feedback';
 import OrderBlock from '@/components/ModernHome/OrderBlock/OrderBlock';
 import Propositions from '@/components/ModernHome/Propositions/Propositions';
 import { Montserrat } from 'next/font/google';
-import CompetitionBlock from '../components/ModernHome/CompetitionBlock/CompetitionBlock';
+// Competition block hidden
 
 const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
@@ -21,7 +21,6 @@ const page = () => {
   return (
     <section className={montserrat.className}>
       <Hero />
-      <CompetitionBlock />
       <BuyingProcess />
       <Consultation />
       <Trusted />

@@ -23,7 +23,7 @@ const TotalAmountCalculator = ({ data }) => {
 
   // auction fee
   const getAuctionFee = (auctionCost: number) => {
-    const firstFee = 129;
+    const firstFee = 419; //initial: 129, increase: 290
 
     const secondFee =
       unsecuredPaymentMethods.find(
@@ -51,12 +51,12 @@ const TotalAmountCalculator = ({ data }) => {
   // our fee
   let ourFee = 0;
 
-  if (auctionCost < 10001 || !auctionCost) {
-    ourFee = 300;
-  } else if (auctionCost > 10000 && auctionCost < 15001) {
+  if (auctionFee < 10001 || !auctionFee) {
     ourFee = 400;
-  } else {
+  } else if (auctionFee > 10000 && auctionFee < 15001) {
     ourFee = 500;
+  } else {
+    ourFee = 600;
   }
 
   // delivery
@@ -66,9 +66,18 @@ const TotalAmountCalculator = ({ data }) => {
 
   if (deliveryPort === 'kl') {
     if (departPort === 'NY') {
-      seaDelivery = 875;
+      // motorcyle isnt specified initially
+      if (transportType === 'sedan' || transportType === 'motorcycle') {
+        seaDelivery = 1275;
+      } else if (transportType === 'suv') {
+        seaDelivery = 1387;
+      } else if (transportType === 'mediumSuv') {
+        seaDelivery = 1587;
+      }
     } else if (departPort === 'Savannah') {
-      seaDelivery = 875;
+      if (transportType === 'sedan' || transportType === 'motorcycle') {
+        seaDelivery = 1275;
+      } else if (transportType === 'suv') {
         seaDelivery = 1375;
       } else if (transportType === 'mediumSuv') {
         seaDelivery = 1575;

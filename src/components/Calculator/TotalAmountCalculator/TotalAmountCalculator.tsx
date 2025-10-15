@@ -69,12 +69,34 @@ const TotalAmountCalculator = ({ data }) => {
       seaDelivery = 875;
     } else if (departPort === 'Savannah') {
       seaDelivery = 875;
+        seaDelivery = 1375;
+      } else if (transportType === 'mediumSuv') {
+        seaDelivery = 1575;
+      }
     } else if (departPort === 'FL') {
-      seaDelivery = 950;
+      if (transportType === 'sedan' || transportType === 'motorcycle') {
+        seaDelivery = 1350;
+      } else if (transportType === 'suv') {
+        seaDelivery = 1450;
+      } else if (transportType === 'mediumSuv') {
+        seaDelivery = 1650;
+      }
     } else if (departPort === 'TX') {
-      seaDelivery = 1025;
+      if (transportType === 'sedan' || transportType === 'motorcycle') {
+        seaDelivery = 1425;
+      } else if (transportType === 'suv') {
+        seaDelivery = 1525;
+      } else if (transportType === 'mediumSuv') {
+        seaDelivery = 1725;
+      }
     } else if (departPort === 'CA') {
-      seaDelivery = 1425;
+      if (transportType === 'sedan' || transportType === 'motorcycle') {
+        seaDelivery = 1775;
+      } else if (transportType === 'suv') {
+        seaDelivery = 1925;
+      } else if (transportType === 'mediumSuv') {
+        seaDelivery = 2125;
+      }
     }
   } else if (deliveryPort === 'bt') {
     if (departPort === 'NY') {
@@ -108,14 +130,18 @@ const TotalAmountCalculator = ({ data }) => {
     seaDelivery = seaDelivery + 300;
   }
 
+  // Sea delivery total
+  const totalSeaDelivery = seaDelivery * 1 + data.cityCost * 1;
+
   let groundDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    groundDelivery = 600;
+    groundDelivery = 1050;
+  } else if (deliveryPort === 'adesa') {
+    groundDelivery = 200;
   }
 
-  const totalDelivery =
-    data.cityCost * 1 + seaDelivery * 1 + groundDelivery * 1;
+  const totalDelivery = totalSeaDelivery + groundDelivery * 1;
 
   const carCost = Number(auctionCost) + Number(auctionFee) + baseFee;
   // customs
@@ -168,11 +194,14 @@ const TotalAmountCalculator = ({ data }) => {
     );
   }
 
-  const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1 + 150;
+  const customFees = importDuty * 1 + exciseTax * 1 + vat * 1;
+
+  const totalCustomsFees = customFees + 150;
 
   const pension = parseFloat((0.03 * carCost).toFixed(0));
 
-  const totalDeliveryWithParking = totalDelivery + 330 + 30;
+  // Port Complex and Port Parking
+  const totalDeliveryWithParking = totalDelivery + 360 + 60;
 
   return (
     <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] max-w-[940px] w-full bg-gradient-sub-block">
@@ -226,8 +255,9 @@ const TotalAmountCalculator = ({ data }) => {
               $ {totalDeliveryWithParking ? totalDeliveryWithParking : 0}
             </div>
           </div>
+
           <ul className="mobile:ml-0 tablet:ml-[72px]">
-            <li className="flex items-center justify-between">
+            {/* <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.portDel}
               </div>
@@ -236,37 +266,42 @@ const TotalAmountCalculator = ({ data }) => {
                 $ {data.cityCost ? data.cityCost : 0}
               </div>
             </li>
-
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.vehicle_delivery}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {seaDelivery ? seaDelivery : 'Specify data'}
+                $ {seaDelivery ? seaDelivery : 0}
+              </div>
+            </li> */}
+            <li className="flex items-center justify-between">
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                {t.delivery_to_port}
+              </div>
+              <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                $ {totalSeaDelivery ? totalSeaDelivery : '0'}
               </div>
             </li>
-
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.port_complex}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ 330
+                $ 360
               </div>
             </li>
-
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.port_parking}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ 30
+                $ 60
               </div>
             </li>
-
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.ukrDel}
@@ -305,7 +340,7 @@ const TotalAmountCalculator = ({ data }) => {
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 $ 0
               </div>
-            </li> */}
+            </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 {t.import_duty}
@@ -331,6 +366,15 @@ const TotalAmountCalculator = ({ data }) => {
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
                 $ {vat ? vat : 0}
+              </div>
+            </li> */}
+            <li className="flex items-center justify-between">
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                {t.custom_fees}
+              </div>
+              <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
+              <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
+                $ {customFees ? customFees : 0}
               </div>
             </li>
           </ul>

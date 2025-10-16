@@ -1,0 +1,153 @@
+{
+  "en": {
+    "title": "Preliminary Calculation",
+    "operation": "Operation Name",
+    "price": "Price",
+    "auctionCost": { "title": "Starting Bid in the US", "description": "" },
+    "auctionFee": {
+      "title": "Auction Fee",
+      "description": "(Internet Fee/Vehicle Report/Auction Service)"
+    },
+    "ourFee": {
+      "title": "Our Commission",
+      "description": "(Search/Selection/Documentary Verification/Vehicle Inspection/Purchase/Delivery/Customs Clearance)"
+    },
+    "totalSeaDelivery": {
+      "title": "Delivery to Port",
+      "description": "(Land Delivery to the US to the Port of Departure/Photo and Video Material Before Loading/Container Loading/Container Loading on Ship/Arrival at Port)"
+    },
+    "port_complex": {
+      "title": "Port Complex",
+      "description": "(Container Opening / Vehicle Unloading / Photo Report after Opening)"
+    },
+    "port_parking": {
+      "title": "Port Parking",
+      "description": "(After Vehicle Unloading from Container)"
+    },
+    "broker": {
+      "title": "Broker",
+      "description": "(Vehicle Customs Clearance Service Upon Arrival in Ukraine)"
+    },
+    "groundDelivery": {
+      "title": "Vehicle Delivery",
+      "description": "to"
+    },
+    "customFees": {
+      "title": "Official Fee Amount",
+      "description": "(For Vehicle Customs Clearance on the Day of Purchase)"
+    },
+    "certification": {
+      "title": "Certification",
+      "description": "(Carried out after vehicle repairs)"
+    },
+    "pension": {
+      "title": "Pension Fund upon registration",
+      "description": ""
+    },
+    "totalAmount": "Vehicle without repairs in Ukraine with license plates:",
+    "flavorText": "Vehicle price/Auction fee/Vehicle delivery is paid within 2 days after confirmation of winning the vehicle!",
+    "portName": { "kl": "Klaipeda", "bt": "Batumi", "adesa": "Odesa" }
+  },
+  "ua": {
+    "title": "Попередній розрахунок",
+    "operation": "Назва операції",
+    "price": "Ціна",
+    "auctionCost": { "title": "Початкова ставка в США", "description": "" },
+    "auctionFee": {
+      "title": "Аукціонний збір",
+      "description": "(Інтернет-збір/Звіт про транспортний засіб/Аукціонний сервіс)"
+    },
+    "ourFee": {
+      "title": "Наша комісія",
+      "description": "(Пошук/Вибір/Перевірка документів/Огляд транспортного засобу/Купівля/Доставка/Митне оформлення)"
+    },
+    "totalSeaDelivery": {
+      "title": "Доставка до порту",
+      "description": "(Наземна доставка до США до порту відправлення/Фото- та відеоматеріали перед завантаженням/Завантаження контейнера/Завантаження контейнера на судно/Прибуття в порт)"
+    },
+    "port_complex": {
+      "title": "Портовий комплекс",
+      "description": "(Відкриття контейнера / Розвантаження транспортного засобу / Фотозвіт після відкриття)"
+    },
+    "port_parking": {
+      "title": "Портова парковка",
+      "description": "(Після розвантаження транспортного засобу з контейнера)"
+    },
+    "broker": {
+      "title": "Брокер",
+      "description": "(Послуга з митного оформлення транспортного засобу після прибуття в Україну)"
+    },
+    "groundDelivery": {
+      "title": "Доставка транспортного засобу",
+      "description": "до"
+    },
+    "customFees": {
+      "title": "Сума офіційного збору",
+      "description": "(За митне оформлення транспортного засобу в день покупки)"
+    },
+    "certification": {
+      "title": "Сертифікація",
+      "description": "(Здійснюється після ремонту транспортного засобу)"
+    },
+    "pension": {
+      "title": "Пенсійний фонд після реєстрація",
+      "опис": ""
+    },
+    "totalAmount": "Транспортний засіб без ремонту в Україні з номерними знаками:",
+    "flavorText": "Ціна транспортного засобу/Аукціонний збір/Доставка транспортного засобу сплачується протягом 2 днів після підтвердження виграшу транспортного засобу!",
+    "portName": { "kl": "Клайпеда", "bt": "Батумі", "adesa": "Одеса" }
+  },
+  "ru": {
+    "title": "Предварительній расчет",
+    "operation": "Название операции",
+    "price": "Цена",
+    "auctionCost": { "title": "Начальная ставка в США", "description": "" },
+    "auctionFee": {
+      "title": "Сбор аукциона",
+      "description": "(сбор за интернет/ отчет автомобилей /обслуживание аукциона)"
+    },
+    "ourFee": {
+      "title": "Наша комиссия",
+      "description": "(поиск/ подбор/ проверка документальний стороні/ проверка автомобиля/ покупка/ доставка/ тамоенная очистка)"
+    },
+    "totalSeaDelivery": {
+      "title": "Доставка в порт",
+      "description": "(доставка по суши в США до порта отправления/ фото видео материал до погрузки/ погрузка в контейнер/ погрузка контейнера на судно/ прибытие в порт)"
+    },
+    "port_complex": {
+      "title": "Комплекс в порту",
+      "description": "(открітие контейнера / выгрузка авто/ фото отчет после открытия)"
+    },
+    "port_parking": {
+      "title": "Стоянка в порту",
+      "description": "(после выгрузки автомобиля с контейнера)"
+    },
+    "broker": {
+      "title": "Брокер",
+      "description": "(услуга таможеного оформления автомобиля по приезду в Украину)"
+    },
+    "groundDelivery": {
+      "title": "Доставка транспортного средства",
+      "description": "в"
+    },
+    "customFees": {
+      "title": "Сумма официальных платежей",
+      "description": "(за таможенную очистку автомобиля в день покупки авто)"
+    },
+    "certification": {
+      "title": "Сертификация",
+      "description": "(проводится после ремонта автомобиля)"
+    },
+    "pension": {
+      "title": "Пенсионный фонд при постановке на учет",
+      "description": ""
+    },
+    "totalAmount": "ТС без ремонта в Украине на номерах:",
+    "flavorText": "Цена автомобиля/Аукционный сбор/ Доставка автомобиля оплачивается в течении 2-х дней, после подтверждения выигриша автомобиля!",
+    "portName": {
+      "kl": "Клайпеда",
+      "bt": "Батуми",
+      "adesa": "Одесса"
+    }
+  }
+}

@@ -17,6 +17,7 @@
     "framer-motion": "^11.3.2",
     "googleapis": "^144.0.0",
     "hamburger-react": "^2.5.1",
+    "jspdf": "^3.0.3",
     "lg-fullscreen": "^1.2.1",
     "lg-thumbnail": "^1.2.1",
     "libphonenumber-js": "^1.11.14",

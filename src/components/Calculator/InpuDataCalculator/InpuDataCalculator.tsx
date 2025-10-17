@@ -160,7 +160,9 @@ const InpuDataCalculator = ({ setData }) => {
       label: transportType,
       type: 'select',
       options: [
-        { label: options.auto, value: 'auto' },
+        { label: options.sedan, value: 'sedan' },
+        { label: options.suv, value: 'suv' },
+        { label: options.mediumSuv, value: 'mediumSuv' },
         { label: options.motorcycle, value: 'motorcycle' },
       ],
     },

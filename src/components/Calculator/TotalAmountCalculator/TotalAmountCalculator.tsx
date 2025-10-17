@@ -109,25 +109,25 @@ const TotalAmountCalculator = ({ data }) => {
       }
     }
   } else if (deliveryPort === 'bt') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1200;
     } else if (departPort === 'CA') {
       seaDelivery = 1800;
     } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       seaDelivery = 1200;
     } else if (departPort === 'FL') {
       seaDelivery = 1350;
     }
   } else {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1925;
     } else if (departPort === 'CA') {
       seaDelivery = 2625;
     } else if (departPort === 'TX') {
       seaDelivery = 2025;
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       seaDelivery = 1925;
     } else if (departPort === 'FL') {
       seaDelivery = 1800;

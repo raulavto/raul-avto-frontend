@@ -47,13 +47,14 @@ const TotalAmountCalculator = ({ data }) => {
   };
 
   const auctionFee = parseFloat(getAuctionFee(auctionCost).toFixed(0));
+  const auctionTotal = auctionCost * 1 + auctionFee;
 
   // our fee
   let ourFee = 0;
 
-  if (auctionFee < 10001 || !auctionFee) {
+  if (auctionTotal < 10001 || !auctionTotal) {
     ourFee = 400;
-  } else if (auctionFee > 10000 && auctionFee < 15001) {
+  } else if (auctionTotal > 10000 && auctionTotal < 15001) {
     ourFee = 500;
   } else {
     ourFee = 600;
@@ -221,7 +222,7 @@ const TotalAmountCalculator = ({ data }) => {
               {t.total}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
-              $ {auctionCost ? auctionCost * 1 + auctionFee : '0'}
+              $ {auctionTotal ? auctionTotal : '0'}
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">

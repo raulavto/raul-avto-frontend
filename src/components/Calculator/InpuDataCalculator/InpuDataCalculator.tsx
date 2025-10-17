@@ -10,7 +10,7 @@ const InpuDataCalculator = ({ setData }) => {
 
   const [formData, setFormData] = useState({
     auctionCost: '',
-    transportType: 'auto',
+    transportType: 'sedan',
     fuelType: 'petrol',
     engineCapacity: '',
     yearOfManufacture: '2023',

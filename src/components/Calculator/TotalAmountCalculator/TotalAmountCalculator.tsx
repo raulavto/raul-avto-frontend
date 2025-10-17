@@ -66,7 +66,7 @@ const TotalAmountCalculator = ({ data }) => {
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       // motorcyle isnt specified initially
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
@@ -75,7 +75,7 @@ const TotalAmountCalculator = ({ data }) => {
       } else if (transportType === 'mediumSuv') {
         seaDelivery = 1587;
       }
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
       } else if (transportType === 'suv') {

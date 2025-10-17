@@ -43,7 +43,7 @@ export async function GET(request) {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'Table1!A1:J300',
+      range: 'Table1!A1:H300',
     });
 
     const rows = response.data.values;

@@ -66,7 +66,7 @@ const TotalAmountCalculator = ({ data }) => {
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       // motorcyle isnt specified initially
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
@@ -75,7 +75,7 @@ const TotalAmountCalculator = ({ data }) => {
       } else if (transportType === 'mediumSuv') {
         seaDelivery = 1587;
       }
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
       } else if (transportType === 'suv') {
@@ -109,25 +109,25 @@ const TotalAmountCalculator = ({ data }) => {
       }
     }
   } else if (deliveryPort === 'bt') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1200;
     } else if (departPort === 'CA') {
       seaDelivery = 1800;
     } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       seaDelivery = 1200;
     } else if (departPort === 'FL') {
       seaDelivery = 1350;
     }
   } else {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1925;
     } else if (departPort === 'CA') {
       seaDelivery = 2625;
     } else if (departPort === 'TX') {
       seaDelivery = 2025;
-    } else if (departPort === 'Savannah') {
+    } else if (departPort === 'GA') {
       seaDelivery = 1925;
     } else if (departPort === 'FL') {
       seaDelivery = 1800;

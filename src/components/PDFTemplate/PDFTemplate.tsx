@@ -325,7 +325,7 @@ export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
     link.href = url;
     link.download = `${
       t?.title || 'Preliminary Calculation'
-    }-${Date.now()}.pdf`;
+    }_${Date.now()}.pdf`;
 
     // Trigger download
     document.body.appendChild(link);

@@ -108,9 +108,9 @@
         "electric": "Електро"
       }
     },
-    "saveCalculationTitle": "Хотите зберегти розрахунок?",
+    "saveCalculationTitle": "Хочете зберегти розрахунок?",
     "saveCalculationDescription": "Не є комерційною пропозицією",
     "saveCalculationButton": "Скачати PDF",
-    "generatingPDF": "Генерация PDF..."
+    "generatingPDF": "Генерація PDF..."
   }
 }

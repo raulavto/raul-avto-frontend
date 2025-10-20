@@ -32,7 +32,7 @@ export const DownloadPDFPopup = ({ onGeneratePDF, onClose }) => {
 
   const popupContent = (
     <div className="fixed bottom-[100px] tablet:bottom-[160px] left-0 right-0 z-[9999] transition-opacity duration-500 opacity-0 animate-fadeIn px-4">
-      <div className="max-w-[1696px] mx-auto">
+      <div className="max-w-[1264px] mx-auto">
         <div className="flex gap-4 tablet:gap-0 justify-between items-center flex-col tablet:flex-row mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:px-[50px] desktop:px-[80px] desktop:py-[40px] w-full bg-gradient-sub-block">
           <div className="flex flex-col gap-2 text-center tablet:text-left">
             <h1 className="text-primary text-20 font-semibold">

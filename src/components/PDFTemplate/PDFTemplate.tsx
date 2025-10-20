@@ -1,12 +1,20 @@
 import translations from '../../app/lang/pdfTemplate.json';
 import contacts from '../../app/lang/contacts.json';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
-import { renderToString } from 'react-dom/server';
+import { FiPhone } from 'react-icons/fi';
+import { Inter } from 'next/font/google';
+import calculator from '../../app/lang/calculator.json';
+
+const inter = Inter({
+  weight: ['500', '700', '900'],
+  subsets: ['latin', 'cyrillic'],
+});
 
 interface PDFTemplateProps {
   data: {
-    carName?: string;
+    carType: string;
+    yearOfManufacture: number;
+    fuelType: string;
+    engineCapacity: number;
     auctionCost: number;
     auctionFee: number;
     ourFee: number;
@@ -26,433 +34,305 @@ interface PDFTemplateProps {
 export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
   const t = translations[language];
   const c = contacts[language];
+  const carData = calculator[language];
   const adminContacts = c.phone;
+  const carType = carData.options[data.carType];
+  const carFuel = carData.options.fuelOptions[data.fuelType];
   const totalAmount =
-    data.auctionCost +
-    data.auctionFee +
-    data.ourFee +
-    data.totalSeaDelivery +
-    data.port_complex +
-    data.port_parking +
-    data.broker +
-    data.groundDelivery +
-    data.customFees +
-    data.certification +
-    data.pension;
+    data.auctionCost * 1 +
+    data.auctionFee * 1 +
+    data.ourFee * 1 +
+    data.totalSeaDelivery * 1 +
+    data.port_complex * 1 +
+    data.port_parking * 1 +
+    data.broker * 1 +
+    data.groundDelivery * 1 +
+    data.customFees * 1 +
+    data.certification * 1 +
+    data.pension * 1;
 
   return (
     <div
-      style={{
-        fontFamily: 'Pangram, Arial, sans-serif',
-        width: '210mm',
-        padding: '20px 30px',
-        boxSizing: 'border-box',
-        backgroundColor: 'white',
-        margin: '0',
-        lineHeight: '1.4',
-      }}
+      className={`${inter.className} w-[792px] pl-[25px] pr-[54px] pt-[175px] box-sizing-border-box relative bg-white overflow-hidden z-100`}
     >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: '20px',
-        }}
-      >
-        <img src="/modern-logo.png" alt="logo" width={120} height={60} />
+      <img
+        src="/pdf/top-left-flag.png"
+        alt="logo"
+        width={792}
+        height={289}
+        className="absolute drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] top-0 left-0 z-20"
+      />
+      <img
+        src="/pdf/top-right-flag.png"
+        alt="logo"
+        width={241}
+        height={163}
+        className="absolute top-[27px] -right-[1px] z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
+      />
+      <img
+        src="/pdf/bot-flag.png"
+        alt="logo"
+        width={792}
+        height={144}
+        className="flex justify-center items-center absolute bottom-0 left-0 drop-shadow-[0_-10px_10px_rgba(0,0,0,0.6)] z-10"
+      />
+      <img
+        src="/pdf/bot-left-flag.png"
+        alt="logo"
+        width={792}
+        height={80}
+        className="flex justify-center items-center absolute bottom-0 left-0 z-30"
+      />
+      <div className="absolute bottom-0 left-0 z-40 pl-[38px] flex items-center gap-[6px]">
+        <FiPhone className="stroke-black w-[34px] h-[34px] rounded-full bg-white p-[6px]" />
+        <p className="text-white text-[34px] font-semibold tracking-[-0.02em]">
+          {adminContacts}
+        </p>
       </div>
 
-      <h1
-        style={{
-          marginTop: '40px',
-          marginBottom: '10px',
-          fontSize: '24px',
-          fontWeight: 'bold',
-        }}
-      >
-        {t?.title || 'Invoice'}
-      </h1>
-      {data?.carName && (
-        <p style={{ fontSize: '14px', marginBottom: '20px' }}>{data.carName}</p>
-      )}
+      <div className="relative z-20">
+        <div className="ml-[352px] mb-[27px] flex items-center">
+          <div className="inline-block pr-[4px] border-r-[7px] border-black p-[6px] mr-[15px]">
+            <img
+              src="/pdf/us-flag.png"
+              alt="US"
+              width={63}
+              height={53}
+              className="block rounded-[12px]"
+            />
+          </div>
+          <h1
+            className={`${inter.className} text-[24px] leading-[30px] font-black inline-block uppercase whitespace-pre-line`}
+          >
+            {t?.title || 'Invoice'}
+          </h1>
+        </div>
 
-      <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '30px' }}
-      >
-        <thead>
-          <tr style={{ backgroundColor: '#ef4444', color: 'white' }}>
-            <th
-              style={{
-                padding: '10px',
-                textAlign: 'left',
-                border: '1px solid #ddd',
-              }}
-            >
-              <p style={{ margin: 0 }}>{t?.operation || 'Operation'}</p>
-            </th>
-            <th
-              style={{
-                padding: '10px',
-                textAlign: 'right',
-                border: '1px solid #ddd',
-                width: '100px',
-              }}
-            >
-              <p style={{ margin: 0, textAlign: 'center' }}>
-                {t?.price || 'Price'}
-              </p>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.auctionCost?.title || 'Auction Cost'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.auctionCost?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.auctionCost || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.auctionFee?.title || 'Auction Fee'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.auctionFee?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.auctionFee || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.ourFee?.title || 'Our Fee'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.ourFee?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.ourFee || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.totalSeaDelivery?.title || 'Sea Delivery'}{' '}
-              {t?.portName?.[data?.deliveryPort] || ''}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.totalSeaDelivery?.description || ''}{' '}
-                {t?.portName?.[data?.deliveryPort] || ''}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.totalSeaDelivery || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.port_complex?.title || 'Port Complex'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.port_complex?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.port_complex || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.port_parking?.title || 'Port Parking'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.port_parking?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.port_parking || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.broker?.title || 'Broker'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.broker?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.broker || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.customFees?.title || 'Custom Fees'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.customFees?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.customFees || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.groundDelivery?.title || 'Ground Delivery'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.groundDelivery?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.groundDelivery || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.certification?.title || 'Certification'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.certification?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.certification || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '14px',
-              }}
-            >
-              {t?.pension?.title || 'Pension'}
-              <div style={{ fontSize: '10px', color: '#666' }}>
-                {t?.pension?.description}
-              </div>
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '14px',
-              }}
-            >
-              ${data?.pension || '0'}
-            </td>
-          </tr>
-          <tr style={{ backgroundColor: '#ef4444', color: 'white' }}>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              }}
-            >
-              {t?.totalAmount || 'Total Amount'}
-            </td>
-            <td
-              style={{
-                padding: '8px',
-                border: '1px solid #ddd',
-                textAlign: 'right',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              }}
-            >
-              ${totalAmount || '0'}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p style={{ marginTop: '20px', fontSize: '14px', color: '#ef4444' }}>
-        {t?.flavorText || ''}
-      </p>
+        <h2
+          className={`${inter.className} text-[24px] mb-[22px] leading-[24px] font-semibold text-center uppercase`}
+        >
+          {data.yearOfManufacture} {carType} {carFuel} {data.engineCapacity}
+        </h2>
+
+        <div className="pr-[12px] w-full">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-[#ef4444] text-white">
+                <th className="px-[12px] pt-[6px] pb-[4px] text-left">
+                  <p className="text-[20px] leading-[28px] font-bold tracking-[0.03em]">
+                    {t?.operation || 'Operation'}
+                  </p>
+                </th>
+                <th className="px-[28px] pt-[2px] text-right w-[100px]">
+                  <p className="text-[20px] leading-[28px] font-bold tracking-[0.03em] text-center">
+                    {t?.price || 'Price'}
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[4px] pb-[4px] text-[23px] leading-[28px] font-semibold tracking-[0.02em]">
+                  {t?.auctionCost?.title || 'Auction Cost'}
+                  <span className="text-[10px] ">
+                    {t?.auctionCost?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] pt-[4px] pb-[4px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.auctionCost || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="pb-[14px] px-[7px] pt-[7px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.auctionFee?.title || 'Auction Fee'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.auctionFee?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.auctionFee || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.ourFee?.title || 'Our Fee'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.ourFee?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] pt-[4px] pb-[4px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.ourFee || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[4px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.totalSeaDelivery?.title || 'Sea Delivery'}{' '}
+                  {t?.portName?.[data?.deliveryPort] || ''}
+                  <div className="text-[10px] ">
+                    {t?.totalSeaDelivery?.description || ''}{' '}
+                    {t?.portName?.[data?.deliveryPort] || ''}
+                    {')'}
+                  </div>
+                </td>
+                <td className="px-[10px] pt-[4px] pb-[4px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.totalSeaDelivery || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.port_complex?.title || 'Port Complex'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.port_complex?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.port_complex || '0'}
+                  <span className="text-white bg-black font-medium">€</span>
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.port_parking?.title || 'Port Parking'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.port_parking?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.port_parking || '0'}
+                  <span className="text-white bg-black font-medium">€</span>
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.broker?.title || 'Broker'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.broker?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.broker || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.customFees?.title || 'Custom Fees'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.customFees?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.customFees || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.groundDelivery?.title || 'Ground Delivery'}
+                  <span className="text-[14px] leading-[12px]">
+                    {' '}
+                    {t?.groundDelivery?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.groundDelivery || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.certification?.title || 'Certification'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.certification?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.certification || '0'}
+                </td>
+              </tr>
+              <tr>
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.pension?.title || 'Pension'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.pension?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.pension || '0'}
+                </td>
+              </tr>
+              <tr className="bg-[#ef4444] text-white">
+                <td className="px-[12px] pt-[10px] pb-[8px] text-[20px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.totalAmount || 'Total Amount'}
+                </td>
+                <td className="px-[10px] text-[24px] leading-[24px] font-semibold text-right -tracking-[0.05em]">
+                  {totalAmount || '0'}$
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="px-[20px] pt-[12px] pb-[82px] text-center text-[14px] leading-[20px] font-extrabold tracking-[0.02em] text-[#ef4444] bg-white">
+            {t?.flavorText || ''}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export const createPDFDocument = async ({
+// Server-side function to render PDFTemplate to HTML string using actual component
+export const renderPDFTemplateToString = async ({
   data,
   language,
 }: PDFTemplateProps) => {
-  const element = renderToString(
-    <PDFTemplate data={data} language={language} />
-  );
-  // Create a temporary container
-  const container = document.createElement('div');
-  container.innerHTML = element;
-  container.style.position = 'absolute';
-  container.style.left = '-9999px';
-  container.style.top = '-9999px';
-  container.style.width = '210mm'; // A4 width
-  document.body.appendChild(container);
+  // Import React and renderToString dynamically to avoid SSR issues
+  const React = await import('react');
+  const { renderToString } = await import('react-dom/server');
 
-  // Convert to canvas
-  const canvas = await html2canvas(container, {
-    scale: 2,
-    useCORS: true,
-    logging: false,
-    backgroundColor: '#ffffff',
-    allowTaint: true,
-    windowHeight: container.scrollHeight,
-  });
-  // Remove temporary container
-  document.body.removeChild(container);
+  // Create the component element
+  const element = React.createElement(PDFTemplate, { data, language });
 
-  // Get canvas dimensions
-  const imgData = canvas.toDataURL('image/png');
-  const imgWidth = 210; // A4 width in mm
-  const pageHeight = 295; // A4 height in mm
-  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  // Render to string
+  return renderToString(element);
+};
 
-  // Create PDF
-  const pdf = new jsPDF('p', 'mm', 'a4');
+export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
+  try {
+    const response = await fetch('/api/generate-pdf', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data, language }),
+    });
 
-  // Add single page or multiple pages only if needed
-  pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-
-  if (imgHeight > pageHeight) {
-    let position = pageHeight;
-    while (position < imgHeight) {
-      pdf.addPage();
-      pdf.addImage(imgData, 'PNG', 0, -position, imgWidth, imgHeight);
-      position += pageHeight;
+    if (!response.ok) {
+      throw new Error('Failed to generate PDF');
     }
-  }
 
-  // Download the PDF
-  pdf.save();
+    // Get the PDF blob
+    const pdfBlob = await response.blob();
+
+    // Create download link
+    const url = window.URL.createObjectURL(pdfBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `calculation-puppeteer-${Date.now()}.pdf`;
+
+    // Trigger download
+    document.body.appendChild(link);
+    link.click();
+
+    // Cleanup
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    throw error;
+  }
 };

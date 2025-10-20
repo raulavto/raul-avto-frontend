@@ -1,49 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InpuDataCalculator from '../InpuDataCalculator/InpuDataCalculator';
 import TotalAmountCalculator from '../TotalAmountCalculator/TotalAmountCalculator';
 
-import { createPDFDocument } from '../../PDFTemplate/PDFTemplate';
+import { generatePDF } from '../../PDFTemplate/PDFTemplate';
 import useStore from '@/app/zustand/useStore';
+import { DownloadPDFPopup } from '../DownloadPDFPopup/DownloadPDFPopup';
 
 const CalculatorBlock = () => {
   const [data, setData] = useState({});
+  const [isDataGenerated, setIsDataGenerated] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [pdfData, setPdfData] = useState(null);
   const language = useStore((state) => state.language);
 
-  const dataForPDF = {
-    auctionCost: 10000,
-    auctionFee: 1000,
-    ourFee: 1000,
-    deliveryPort: 'kl',
-    totalSeaDelivery: 1000,
-    port_complex: 360,
-    port_parking: 60,
-    broker: 150,
-    groundDelivery: 1000,
-    customFees: 1000,
-    certification: 150,
-    pension: 1000,
+  useEffect(() => {
+    if (isDataGenerated) {
+      setIsPopupOpen(true);
+    }
+  }, [isDataGenerated]);
+
+  const handleGeneratePDF = async () => {
+    return await generatePDF({ data: pdfData, language });
   };
 
-  const generatePDF = (data: any) => {
-    createPDFDocument({ data, language });
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    setIsDataGenerated(false);
   };
 
   return (
-    <div className="mobile:pt-[20px] mobile:pb-[20px] tablet:pt-[52px] tablet:pb-[52px]">
-      <div className="max-w-[1696px] mx-auto">
-        <div className="flex gap-[32px] justify-center items-center flex-wrap desktop:flex-nowrap">
-          <InpuDataCalculator setData={setData} />
-          <TotalAmountCalculator data={data} />
-          <button
-            onClick={() => generatePDF(dataForPDF)}
-            className="text-white"
-          >
-            Generate PDF
-          </button>
+    <div className="mobile:pt-[20px] mobile:pb-[20px] tablet:pt-[52px] tablet:pb-[52px] relative">
+      <div className="max-w-[1696px] mx-auto ">
+        <div className="flex gap-[32px] justify-center items-stretch flex-wrap desktop:flex-nowrap">
+          <InpuDataCalculator
+            setData={setData}
+            setIsDataGenerated={setIsDataGenerated}
+          />
+          <TotalAmountCalculator
+            data={data}
+            setPdfData={setPdfData}
+            isDataGenerated={isDataGenerated}
+          />
         </div>
       </div>
+      {isPopupOpen && (
+        <DownloadPDFPopup
+          onGeneratePDF={handleGeneratePDF}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   );
 };

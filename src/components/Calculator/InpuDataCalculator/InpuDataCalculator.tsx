@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calculator.json';
 
-const InpuDataCalculator = ({ setData }) => {
+const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   const language = useStore((state) => state.language);
 
   const [formData, setFormData] = useState({

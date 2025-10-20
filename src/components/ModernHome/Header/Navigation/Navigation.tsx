@@ -11,11 +11,15 @@ const Navigation = () => {
   const isActiveClass = 'text-red-600 text-[16px]';
   const t = translations[language];
 
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
+  const isLeadForm =
+    pathname === '/lead-form' || pathname === '/lead-form-thanks';
 
   return (
     <nav className="flex items-center">
-      <Link href={`${!isLeadForm?"/":"#"}`} className="focus:outline-focus outline-none mr-[70px]">
+      <Link
+        href={`${!isLeadForm ? '/' : '#'}`}
+        className="focus:outline-focus outline-none mr-[70px]"
+      >
         <Image
           src="/modern-logo.png"
           alt="logo icon"
@@ -86,7 +90,7 @@ const Navigation = () => {
               {t.faq}
             </Link>
           </li>
-             <li className="text-red-600 text-[16px] font-bold">
+          {/* <li className="text-red-600 text-[16px] font-bold">
             <Link
               className={`transition-colors duration-300 ease-in-out hover:text-white focus:text-white outline-none ${
                 pathname === '/competition' ? isActiveClass : ''
@@ -96,7 +100,7 @@ const Navigation = () => {
               {t.competition}
             </Link>
            
-          </li>
+          </li> */}
         </ul>
       )}
     </nav>

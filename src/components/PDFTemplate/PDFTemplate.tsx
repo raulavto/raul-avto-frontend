@@ -302,6 +302,7 @@ export const renderPDFTemplateToString = async ({
 };
 
 export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
+  const t = translations[language];
   try {
     const response = await fetch('/api/generate-pdf', {
       method: 'POST',
@@ -322,7 +323,9 @@ export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
     const url = window.URL.createObjectURL(pdfBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `calculation-puppeteer-${Date.now()}.pdf`;
+    link.download = `${
+      t?.title || 'Preliminary Calculation'
+    }-${Date.now()}.pdf`;
 
     // Trigger download
     document.body.appendChild(link);

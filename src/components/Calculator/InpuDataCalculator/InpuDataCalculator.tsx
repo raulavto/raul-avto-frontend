@@ -276,6 +276,7 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
 
     if (Object.keys(newErrors).length === 0) {
       setData(updatedFormData);
+      setIsDataGenerated(true);
     }
 
     console.log(updatedFormData);

@@ -31,7 +31,11 @@
         "hybrid": "Hybrid",
         "electric": "Electric"
       }
-    }
+    },
+    "saveCalculationTitle": "Do you want to save the calculation?",
+    "saveCalculationDescription": "Not a commercial offer",
+    "saveCalculationButton": "Download PDF",
+    "generatingPDF": "Generating PDF..."
   },
   "ru": {
     "auctionLoc": "Локация аукциона",
@@ -49,7 +53,7 @@
     "fuelType": "Тип топлива",
     "options": {
       "cost": "Введите стоимость",
-      "sedan": "Sedan",
+      "sedan": "Седан",
       "suv": "Внедорожник",
       "mediumSuv": "Средний внедорожник",
       "motorcycle": "Мото",
@@ -65,7 +69,11 @@
         "hybrid": "Гибрид",
         "electric": "Электро"
       }
-    }
+    },
+    "saveCalculationTitle": "Хотите сохранить расчет?",
+    "saveCalculationDescription": "Не коммерческое предложение",
+    "saveCalculationButton": "Скачать PDF",
+    "generatingPDF": "Генерация PDF..."
   },
   "ua": {
     "auctionLoc": "Локація аукціону",
@@ -99,6 +107,10 @@
         "hybrid": "Гібрид",
         "electric": "Електро"
       }
-    }
+    },
+    "saveCalculationTitle": "Хочете зберегти розрахунок?",
+    "saveCalculationDescription": "Не є комерційною пропозицією",
+    "saveCalculationButton": "Скачати PDF",
+    "generatingPDF": "Генерація PDF..."
   }
 }

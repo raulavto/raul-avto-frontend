@@ -1,11 +1,12 @@
 'use client';
+import { useEffect } from 'react';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
 import { liveBidFees, unsecuredPaymentMethods } from './fees';
 
 const baseFee = 1600;
 
-const TotalAmountCalculator = ({ data }) => {
+const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   console.log('🚀 ~ TotalAmountCalculator ~ data:', data);
   const language = useStore((state) => state.language);
   const t = translations[language];
@@ -212,6 +213,45 @@ const TotalAmountCalculator = ({ data }) => {
 
   // Port Complex and Port Parking
   const totalDeliveryWithParking = totalDelivery + 360 + 60;
+
+  useEffect(() => {
+    if (isDataGenerated && data && Object.keys(data).length > 0) {
+      setPdfData({
+        auctionCost: auctionCost,
+        auctionFee: auctionFee,
+        ourFee: ourFee,
+        deliveryPort: deliveryPort,
+        totalSeaDelivery: seaDelivery,
+        port_complex: 330,
+        port_parking: 30,
+        broker: 150,
+        groundDelivery: groundDelivery,
+        customFees: totalCustomsFees,
+        certification: 150,
+        pension: pension,
+        yearOfManufacture: yearOfManufacture,
+        carType: transportType,
+        fuelType: fuelType,
+        engineCapacity: engineCapacity,
+      });
+    }
+  }, [
+    isDataGenerated,
+    data,
+    auctionCost,
+    auctionFee,
+    ourFee,
+    deliveryPort,
+    seaDelivery,
+    groundDelivery,
+    totalCustomsFees,
+    pension,
+    yearOfManufacture,
+    transportType,
+    fuelType,
+    engineCapacity,
+    setPdfData,
+  ]);
 
   return (
     <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] max-w-[940px] w-full bg-gradient-sub-block">

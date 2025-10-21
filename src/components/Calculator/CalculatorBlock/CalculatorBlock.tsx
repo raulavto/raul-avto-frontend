@@ -32,8 +32,8 @@ const CalculatorBlock = () => {
 
   return (
     <div className="mobile:pt-[20px] mobile:pb-[20px] tablet:pt-[52px] tablet:pb-[52px] relative">
-      <div className="max-w-[1696px] mx-auto ">
-        <div className="flex gap-[32px] justify-center items-stretch flex-wrap desktop:flex-nowrap">
+      <div className="max-w-[1696px] mx-auto">
+        <div className="flex gap-[32px] justify-center items-center desktop:items-stretch flex-wrap desktop:flex-nowrap mb-[20px]">
           <InpuDataCalculator
             setData={setData}
             setIsDataGenerated={setIsDataGenerated}

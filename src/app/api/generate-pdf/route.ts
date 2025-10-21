@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Navigate to the PDF template route
-    const baseUrl = 'https://www.raul-avto.com/';
+    const baseUrl = 'https://www.raul-avto.com';
 
     const url = `${baseUrl}/api/pdf-template?data=${encodeURIComponent(
       JSON.stringify(data)

@@ -1,16 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { data, language } = body;
 
-    // Launch Puppeteer browser
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    // Determine if we're running on Vercel (serverless) vs local
+    // Only use @sparticuz/chromium when actually deployed on Vercel
+    const isVercel = process.env.VERCEL === '1';
+
+    let browser;
+
+    if (isVercel) {
+      // Vercel serverless: Use puppeteer-core with @sparticuz/chromium
+      const puppeteerCore = await import('puppeteer-core');
+      browser = await puppeteerCore.default.launch({
+        args: chromium.args,
+        executablePath: await chromium.executablePath(),
+        headless: true,
+      });
+    } else {
+      // Local (dev or production build): Use puppeteer with bundled Chrome
+      const puppeteer = await import('puppeteer');
+      browser = await puppeteer.default.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      });
+    }
 
     const page = await browser.newPage();
 

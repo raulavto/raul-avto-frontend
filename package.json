@@ -12,6 +12,7 @@
     "@next/third-parties": "^15.1.0",
     "@nextui-org/react": "^2.4.6",
     "@reduxjs/toolkit": "^2.3.0",
+    "@sparticuz/chromium": "^141.0.0",
     "axios": "^1.7.2",
     "formik": "^2.4.6",
     "framer-motion": "^11.3.2",
@@ -22,7 +23,7 @@
     "libphonenumber-js": "^1.11.14",
     "lightgallery": "^2.7.2",
     "next": "14.2.3",
-    "puppeteer": "^24.25.0",
+    "puppeteer-core": "^24.25.0",
     "react": "^18",
     "react-dom": "^18",
     "react-facebook-pixel": "^1.0.4",
@@ -42,6 +43,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "puppeteer": "^24.25.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

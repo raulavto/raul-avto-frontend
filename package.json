@@ -23,7 +23,6 @@
     "libphonenumber-js": "^1.11.14",
     "lightgallery": "^2.7.2",
     "next": "14.2.3",
-    "puppeteer": "^24.25.0",
     "puppeteer-core": "^24.25.0",
     "react": "^18",
     "react-dom": "^18",
@@ -44,6 +43,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "puppeteer": "^24.25.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

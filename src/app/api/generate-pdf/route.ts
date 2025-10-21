@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import chromium from '@sparticuz/chromium';
+import chromium from '@sparticuz/chromium-min';
+import puppeteerCore from 'puppeteer-core';
 
 // Configure route for Node.js runtime (required for Puppeteer)
 export const runtime = 'nodejs';
+export const maxDuration = 60; // Allow up to 60 seconds for PDF generation
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,17 +12,19 @@ export async function POST(request: NextRequest) {
     const { data, language } = body;
 
     // Determine if we're running on Vercel (serverless) vs local
-    // Only use @sparticuz/chromium when actually deployed on Vercel
     const isVercel = process.env.VERCEL === '1';
 
     let browser;
 
     if (isVercel) {
-      // Vercel serverless: Use puppeteer-core with @sparticuz/chromium
-      const puppeteerCore = await import('puppeteer-core');
-      browser = await puppeteerCore.default.launch({
+      // Vercel serverless: Use @sparticuz/chromium-min
+      const executablePath = await chromium.executablePath(
+        'https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar'
+      );
+
+      browser = await puppeteerCore.launch({
         args: chromium.args,
-        executablePath: await chromium.executablePath(),
+        executablePath,
         headless: true,
       });
     } else {

@@ -9,7 +9,9 @@ export const maxDuration = 60; // Allow up to 60 seconds for PDF generation
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { data, language } = body;
+    const { data, language, carName } = body;
+
+    console.log('Generate PDF - carName received:', carName);
 
     // Determine if we're running on Vercel (serverless) vs local
     const isVercel = process.env.VERCEL === '1';
@@ -48,9 +50,15 @@ export async function POST(request: NextRequest) {
     // Navigate to the PDF template route
     const baseUrl = 'https://www.raul-avto.com';
 
-    const url = `${baseUrl}/api/pdf-template?data=${encodeURIComponent(
-      JSON.stringify(data)
-    )}&language=${language}`;
+    const urlParams = new URLSearchParams({
+      data: JSON.stringify(data),
+      language: language,
+    });
+    if (carName) {
+      urlParams.append('carName', carName);
+    }
+
+    const url = `${baseUrl}/api/pdf-template?${urlParams.toString()}`;
 
     await page.goto(url, {
       waitUntil: 'networkidle0',

@@ -1,8 +1,15 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
-import { liveBidFees, unsecuredPaymentMethods } from './fees';
+import { getTotalAuctionFee } from '../../../utils/auctionFeeCalculator';
+import {
+  calculateImportDuty,
+  calculateExciseTax,
+  calculateVAT,
+  calculatePension,
+} from '../../../utils/customsTaxCalculator';
+import { getEurExchangeRate } from '../../../utils/minfinApi';
 
 const baseFee = 1600;
 
@@ -10,6 +17,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   console.log('🚀 ~ TotalAmountCalculator ~ data:', data);
   const language = useStore((state) => state.language);
   const t = translations[language];
+  const [eurExchangeRate, setEurExchangeRate] = useState<number | null>(null);
   const {
     auction,
     auctionCost,
@@ -22,32 +30,15 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
     deliveryPort,
   } = data;
 
-  // auction fee
-  const getAuctionFee = (auctionCost: number) => {
-    const firstFee = 419; //initial: 129, increase: 290
-
-    const secondFee =
-      unsecuredPaymentMethods.find(
-        (fee) => auctionCost >= fee.min && auctionCost <= fee.max
-      )?.fee || 0;
-
-    // Якщо вартість більше 15000, то враховуємо відсоток
-    let secondFeeAmount = 0;
-    if (auctionCost >= 15000) {
-      secondFeeAmount = auctionCost * secondFee;
-    } else {
-      secondFeeAmount = secondFee;
-    }
-
-    const thirdFee =
-      liveBidFees.find(
-        (fee) => auctionCost >= fee.min && auctionCost <= fee.max
-      )?.fee || 0;
-
-    return firstFee + secondFeeAmount + thirdFee;
+  // New auction fee calculation using extracted logic
+  const getNewAuctionFee = () => {
+    if (!auctionCost || !auction) return 0;
+    const auctionType = auction.toLowerCase() === 'copart' ? 'Copart' : 'IAAI';
+    return parseFloat(getTotalAuctionFee(auctionType, auctionCost).toFixed(0));
   };
 
-  const auctionFee = parseFloat(getAuctionFee(auctionCost).toFixed(0));
+  const auctionFee = getNewAuctionFee() + 290; // base fee of 290
+
   const auctionTotal = auctionCost * 1 + auctionFee;
 
   // our fee
@@ -67,7 +58,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'NJ') {
+    if (departPort === 'NY') {
       // motorcyle isnt specified initially
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
@@ -76,7 +67,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
       } else if (transportType === 'mediumSuv') {
         seaDelivery = 1587;
       }
-    } else if (departPort === 'GA') {
+    } else if (departPort === 'Savannah') {
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
       } else if (transportType === 'suv') {
@@ -110,35 +101,29 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
       }
     }
   } else if (deliveryPort === 'bt') {
-    if (departPort === 'NJ') {
+    if (departPort === 'NY') {
       seaDelivery = 1200;
     } else if (departPort === 'CA') {
       seaDelivery = 1800;
     } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'GA') {
+    } else if (departPort === 'Savannah') {
       seaDelivery = 1200;
     } else if (departPort === 'FL') {
       seaDelivery = 1350;
     }
   } else {
-    if (departPort === 'NJ') {
+    if (departPort === 'NY') {
       seaDelivery = 1925;
     } else if (departPort === 'CA') {
       seaDelivery = 2625;
     } else if (departPort === 'TX') {
       seaDelivery = 2025;
-    } else if (departPort === 'GA') {
+    } else if (departPort === 'Savannah') {
       seaDelivery = 1925;
     } else if (departPort === 'FL') {
       seaDelivery = 1800;
     }
-  }
-
-  if (seaDelivery > 0 && deliveryPort === 'kl') {
-    seaDelivery = seaDelivery + 500;
-  } else if (seaDelivery > 0) {
-    seaDelivery = seaDelivery + 300;
   }
 
   // Sea delivery total
@@ -211,8 +196,27 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
 
   const pension = parseFloat((0.03 * carCost).toFixed(0));
 
-  // Port Complex and Port Parking
-  const totalDeliveryWithParking = totalDelivery + 360 + 60;
+  // Port Complex and Port Parking (in EUR)
+  const portComplexEur = 310;
+  const portParkingEur = 50;
+
+  // Convert EUR to USD using exchange rate, fallback to 1.08 if rate not available
+  // Round up to nearest integer
+  const eurToUsdRate = eurExchangeRate || 1.08;
+  const portComplex = Math.ceil(portComplexEur * eurToUsdRate);
+  const portParking = Math.ceil(portParkingEur * eurToUsdRate);
+  const totalDeliveryWithParking = totalDelivery + portComplex + portParking;
+
+  // Fetch EUR exchange rate on component mount
+  useEffect(() => {
+    const fetchExchangeRate = async () => {
+      const rate = await getEurExchangeRate();
+      if (rate) {
+        setEurExchangeRate(rate);
+      }
+    };
+    fetchExchangeRate();
+  }, []);
 
   useEffect(() => {
     if (isDataGenerated && data && Object.keys(data).length > 0) {
@@ -222,8 +226,8 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
         ourFee: ourFee,
         deliveryPort: deliveryPort,
         totalSeaDelivery: seaDelivery,
-        port_complex: 330,
-        port_parking: 30,
+        port_complex: portComplex,
+        port_parking: portParking,
         broker: 150,
         groundDelivery: groundDelivery,
         customFees: totalCustomsFees,
@@ -340,7 +344,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ 360
+                € 310
               </div>
             </li>
             <li className="flex items-center justify-between">
@@ -349,7 +353,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ 60
+                € 50
               </div>
             </li>
             <li className="flex items-center justify-between">
@@ -427,6 +431,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
                 $ {customFees ? customFees : 0}
               </div>
             </li>
+            {/* New Calculation Comparison Fields */}
           </ul>
         </li>
         <li className="border-b-[1px] border-solid border-primary pt-4">

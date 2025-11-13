@@ -6,9 +6,18 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const data = JSON.parse(searchParams.get('data') || '{}');
     const language = searchParams.get('language') || 'en';
+    const carNameParam = searchParams.get('carName');
+    const carName =
+      carNameParam && carNameParam.trim() !== '' ? carNameParam : undefined;
+
+    console.log('PDF Template - carName:', carName);
 
     // Use the server-side function to render the PDFTemplate
-    const htmlContent = await renderPDFTemplateToString({ data, language });
+    const htmlContent = await renderPDFTemplateToString({
+      data,
+      language,
+      carName,
+    });
 
     // Create a complete HTML document with Tailwind CSS
     const fullHtml = `
@@ -16,7 +25,7 @@ export async function GET(request: NextRequest) {
       <html>
         <head>
           <meta charset="utf-8">
-          <title>PDF Document</title>
+          <title>${carName ? `PDF - ${carName}` : 'PDF Document'}</title>
           <script src="https://cdn.tailwindcss.com"></script>
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
           <style>

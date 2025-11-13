@@ -21,8 +21,8 @@ const CalculatorBlock = () => {
     }
   }, [isDataGenerated]);
 
-  const handleGeneratePDF = async () => {
-    return await generatePDF({ data: pdfData, language });
+  const handleGeneratePDF = async (carName?: string) => {
+    return await generatePDF({ data: pdfData, language, carName });
   };
 
   const handleClosePopup = () => {

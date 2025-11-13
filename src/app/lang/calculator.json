@@ -35,7 +35,9 @@
     "saveCalculationTitle": "Do you want to save the calculation?",
     "saveCalculationDescription": "Not a commercial offer",
     "saveCalculationButton": "Download PDF",
-    "generatingPDF": "Generating PDF..."
+    "generatingPDF": "Generating PDF...",
+    "carName": "Car Name",
+    "carNamePlaceholder": "Enter car name (e.g., Toyota Camry)"
   },
   "ru": {
     "auctionLoc": "Локация аукциона",
@@ -73,7 +75,9 @@
     "saveCalculationTitle": "Хотите сохранить расчет?",
     "saveCalculationDescription": "Не коммерческое предложение",
     "saveCalculationButton": "Скачать PDF",
-    "generatingPDF": "Генерация PDF..."
+    "generatingPDF": "Генерация PDF...",
+    "carName": "Название автомобиля",
+    "carNamePlaceholder": "Введите название автомобиля (например, Toyota Camry)"
   },
   "ua": {
     "auctionLoc": "Локація аукціону",
@@ -111,6 +115,8 @@
     "saveCalculationTitle": "Хочете зберегти розрахунок?",
     "saveCalculationDescription": "Не є комерційною пропозицією",
     "saveCalculationButton": "Скачати PDF",
-    "generatingPDF": "Генерація PDF..."
+    "generatingPDF": "Генерація PDF...",
+    "carName": "Назва автомобіля",
+    "carNamePlaceholder": "Введіть назву автомобіля (наприклад, Toyota Camry)"
   }
 }

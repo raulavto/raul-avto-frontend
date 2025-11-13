@@ -58,7 +58,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       // motorcyle isnt specified initially
       if (transportType === 'sedan' || transportType === 'motorcycle') {
         seaDelivery = 1275;
@@ -101,7 +101,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
       }
     }
   } else if (deliveryPort === 'bt') {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1200;
     } else if (departPort === 'CA') {
       seaDelivery = 1800;
@@ -113,7 +113,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
       seaDelivery = 1350;
     }
   } else {
-    if (departPort === 'NY') {
+    if (departPort === 'NJ') {
       seaDelivery = 1925;
     } else if (departPort === 'CA') {
       seaDelivery = 2625;
@@ -194,8 +194,6 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
 
   const totalCustomsFees = customFees + 150;
 
-  const pension = parseFloat((0.03 * carCost).toFixed(0));
-
   // Port Complex and Port Parking (in EUR)
   const portComplexEur = 310;
   const portParkingEur = 50;
@@ -206,6 +204,10 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   const portComplex = Math.ceil(portComplexEur * eurToUsdRate);
   const portParking = Math.ceil(portParkingEur * eurToUsdRate);
   const totalDeliveryWithParking = totalDelivery + portComplex + portParking;
+
+  const pension = parseFloat(
+    (0.03 * (carCost + totalDeliveryWithParking + ourFee)).toFixed(0)
+  );
 
   // Fetch EUR exchange rate on component mount
   useEffect(() => {

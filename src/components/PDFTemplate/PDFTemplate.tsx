@@ -29,9 +29,10 @@ interface PDFTemplateProps {
     pension: number;
   };
   language: string;
+  carName?: string;
 }
 
-export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
+export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
   const t = translations[language];
   const c = contacts[language];
   const carData = calculator[language];
@@ -111,7 +112,7 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
         <h2
           className={`${inter.className} text-[24px] mb-[22px] leading-[24px] font-semibold text-center uppercase`}
         >
-          {data.yearOfManufacture} {carType} {carFuel} {data.engineCapacity}
+          {data.yearOfManufacture} {carName}
         </h2>
 
         <div className="pr-[12px] w-full">
@@ -167,6 +168,18 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.customFees?.title || 'Custom Fees'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.customFees?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.customFees || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
                 <td className="px-[7px] pt-[7px] pb-[4px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
                   {t?.totalSeaDelivery?.title || 'Sea Delivery'}{' '}
                   {t?.portName?.[data?.deliveryPort] || ''}
@@ -189,8 +202,8 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
                   </span>
                 </td>
                 <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
-                  {data?.port_complex || '0'}
-                  <span className="text-white bg-black font-medium">€</span>
+                  {310}
+                  <span className="font-medium">€</span>
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
@@ -202,8 +215,8 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
                   </span>
                 </td>
                 <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
-                  {data?.port_parking || '0'}
-                  <span className="text-white bg-black font-medium">€</span>
+                  {50}
+                  <span className="font-medium">€</span>
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
@@ -216,18 +229,6 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
                 </td>
                 <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
                   {data?.broker || '0'}
-                </td>
-              </tr>
-              <tr className="border-b border-[#d1d5db]">
-                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
-                  {t?.customFees?.title || 'Custom Fees'}
-                  <span className="text-[14px] lowercase leading-[12px]">
-                    {' '}
-                    {t?.customFees?.description}
-                  </span>
-                </td>
-                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
-                  {data?.customFees || '0'}
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
@@ -289,19 +290,24 @@ export const PDFTemplate = ({ data, language }: PDFTemplateProps) => {
 export const renderPDFTemplateToString = async ({
   data,
   language,
+  carName,
 }: PDFTemplateProps) => {
   // Import React and renderToString dynamically to avoid SSR issues
   const React = await import('react');
   const { renderToString } = await import('react-dom/server');
 
   // Create the component element
-  const element = React.createElement(PDFTemplate, { data, language });
+  const element = React.createElement(PDFTemplate, { data, language, carName });
 
   // Render to string
   return renderToString(element);
 };
 
-export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
+export const generatePDF = async ({
+  data,
+  language,
+  carName,
+}: PDFTemplateProps) => {
   const t = translations[language];
   try {
     const response = await fetch('/api/generate-pdf', {
@@ -309,7 +315,7 @@ export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ data, language }),
+      body: JSON.stringify({ data, language, carName }),
     });
 
     if (!response.ok) {
@@ -323,9 +329,16 @@ export const generatePDF = async ({ data, language }: PDFTemplateProps) => {
     const url = window.URL.createObjectURL(pdfBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${
-      t?.title || 'Preliminary Calculation'
-    }_${Date.now()}.pdf`;
+
+    // Create filename with car name if provided
+    const sanitizedCarName = carName
+      ? carName.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+      : '';
+    const filename = sanitizedCarName
+      ? `${sanitizedCarName}_${Date.now()}.pdf`
+      : `${t?.title || 'Preliminary Calculation'}_${Date.now()}.pdf`;
+
+    link.download = filename;
 
     // Trigger download
     document.body.appendChild(link);

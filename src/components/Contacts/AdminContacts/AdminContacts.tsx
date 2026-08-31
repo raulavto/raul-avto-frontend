@@ -28,7 +28,7 @@ const AdminContacts = () => {
           <div className="flex flex-col gap-4 mb-[25px]">
             <a
               className="max-w-full h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 font-bold text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-              href={`tel:${t.phone}`}
+              href={`tel:${t.phone.replace(/\s/g, '')}`}
             >
               {t.phone}
             </a>
@@ -43,7 +43,7 @@ const AdminContacts = () => {
             <li>
               <a
                 className="focus:outline-focus outline-none "
-                href={`https://t.me/RAUL_AVTO`}
+                href={`https://t.me/+380777767373`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -75,7 +75,7 @@ const AdminContacts = () => {
             <li>
               <a
                 className="focus:outline-focus outline-none"
-                href={`https://wa.me/+380737727373`}
+                href={`https://wa.me/+380777767373`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -91,7 +91,7 @@ const AdminContacts = () => {
             <li>
               <a
                 className="focus:outline-focus outline-none"
-                href={`https://viber.com/+380737727373`}
+                href={`viber://chat?number=%2B380777767373`}
                 target="_blank"
                 rel="noreferrer"
               >

@@ -106,7 +106,7 @@ const FaqComponent = () => {
         {/* <div className="flex flex-col gap-4 mb-[25px] mt-4">
           <a
             className="w-full max-w-[300px] mx-auto rounded-sub-block-10 h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-10 bg-input text-16 font-bold text-primary transition duration-300 hover:scale-105"
-            href={`tel:+380937767373`}
+              href={`tel:+380777767373`}
           >
             +380 93 776 73 73
           </a>

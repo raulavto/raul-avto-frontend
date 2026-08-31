@@ -38,7 +38,7 @@ const OurCoordinates = () => {
               </div>
               <div className="mobile:text-14 mobile:leading-10 tablet:text-16 font-bold text-primary">
                 <a
-                  href={`tel:${location.phone}`}
+                  href={`tel:${location.phone.replace(/\s/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-red-600 duration-300"

@@ -10,7 +10,7 @@ const FooterContacs = () => {
         {t.contacts_title}
       </h4>
       <a
-        href="mailto:raulkogo@gmail.com"
+        href={`mailto:${t.email}`}
         className="text-[14px] mb-[12px] tablet:text-[16px] font-medium inline-flex transition duration-300 ease-in-out hover:text-red-600"
       >
         {t.email}
@@ -23,10 +23,9 @@ const FooterContacs = () => {
         <div className="text-[14px] tablet:text-[16px] mb-[8px] font-medium">
           {t.address}
         </div>
-        <div className="text-[14px] tablet:text-[16px] mb-[8px] font-medium">
-          {t.office}
+        <div className="text-[14px] tablet:text-[16px] font-medium">
+          {t.offices}
         </div>
-        <div className="text-[14px] tablet:text-[16px] font-medium">502</div>
       </a>
     </div>
   );

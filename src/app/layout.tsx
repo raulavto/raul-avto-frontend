@@ -7,7 +7,6 @@ import { myFontPanagram } from './fonts';
 import './globals.css';
 import '../components/Loader/loader.css';
 import dynamic from 'next/dynamic';
-import Script from 'next/script';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { Suspense } from 'react';
 import { FacebookPixelEvents } from './utils/analytics';
@@ -50,7 +49,6 @@ export default function RootLayout({
           <FormCall />
           <Footer />
         </ReduxProvider>
-        <Script src="https://widgets.binotel.com/getcall/widgets/h2rbr4cbe4tu71av8ray.js" strategy="afterInteractive" />
       </body>
     </html>
   );

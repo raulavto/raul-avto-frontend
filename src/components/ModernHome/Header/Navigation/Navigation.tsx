@@ -18,7 +18,7 @@ const Navigation = () => {
     <nav className="flex items-center">
       <Link
         href={`${!isLeadForm ? '/' : '#'}`}
-        className="focus:outline-focus outline-none mr-[70px]"
+        className="outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus mr-[70px]"
       >
         <Image
           src="/modern-logo.png"

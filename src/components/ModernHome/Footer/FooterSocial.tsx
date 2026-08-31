@@ -5,7 +5,7 @@ const social = [
     id: 1,
     icon: '/footer-telegram-icon.png',
     name: 'Telegram',
-    url: 'https://t.me/RAUL_AVTO',
+    url: 'https://t.me/+380777767373',
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const social = [
     id: 3,
     icon: '/footer-viber-icon.png',
     name: 'Viber',
-    url: 'viber://chat?number=%2B380737727373',
+    url: 'viber://chat?number=%2B380777767373',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const social = [
     id: 5,
     icon: '/footer-whatsapp-icon.png',
     name: 'WhatsApp',
-    url: 'https://wa.me/+380737727373',
+    url: 'https://wa.me/+380777767373',
   },
 ];
 

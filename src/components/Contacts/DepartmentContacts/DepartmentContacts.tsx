@@ -7,6 +7,10 @@ const DepartmentContacts = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
 
+  const toTelHref = (phone: string) => `tel:${phone.replace(/\s/g, '')}`;
+  const toTelegramHref = (handle: string) =>
+    `https://t.me/${handle.replace('@', '')}`;
+
   return (
     <div className="pb-[104px]">
       <div className="flex flex-col gap-[32px]">
@@ -26,17 +30,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:+380937767373`}
+                  href={toTelHref(t.selection_phone)}
                 >
-                  +380 93 776 73 73
+                  {t.selection_phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`https://t.me/raul_avto_search`}
+                  href={toTelegramHref(t.telegram_selection)}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  @raul_avto_search
+                  {t.telegram_selection}
                 </a>
               </div>
             </div>
@@ -56,17 +60,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:+380637767373`}
+                  href={toTelHref(t.parts_phone)}
                 >
-                  +380 63 776 73 73
+                  {t.parts_phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`http://t.me/raul_avto_parts`}
+                  href={toTelegramHref(t.telegram_parts)}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  @raul_avto_parts
+                  {t.telegram_parts}
                 </a>
               </div>
             </div>
@@ -88,17 +92,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:+380737767373`}
+                  href={toTelHref(t.logistics_phone)}
                 >
-                  +380 73 776 73 73
+                  {t.logistics_phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`http://t.me/raul_avto_transport`}
+                  href={toTelegramHref(t.telegram_logistics)}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  @raul_avto_transport
+                  {t.telegram_logistics}
                 </a>
               </div>
             </div>

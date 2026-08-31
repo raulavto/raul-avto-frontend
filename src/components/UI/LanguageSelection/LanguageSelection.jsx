@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
 import { FaChevronDown } from 'react-icons/fa';
@@ -16,15 +15,12 @@ const LanguageSelection = () => {
   const isLeadForm =
     pathname === '/lead-form' || pathname === '/lead-form-thanks';
   const setLanguage = useStore((state) => state.setLanguage);
-  const language = useStore((state) => state.language); // Получаем текущий язык
+  const language = useStore((state) => state.language);
 
   const handleSelectChange = (value) => {
     setLanguage(value.value);
-    console.log('Selected label:', value.label);
-    console.log('Selected value:', value.value);
   };
 
-  // Находим текущий выбранный язык
   const currentSelectedOption =
     options.find((option) => option.value === language)?.label ||
     options[1].label;
@@ -32,12 +28,11 @@ const LanguageSelection = () => {
   return (
     !isLeadForm && (
       <CustomSelect
+        variant="compact"
         currentSelectedOption={currentSelectedOption}
         onSelect={handleSelectChange}
         options={options}
-        selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"
-        optionListClassName="top-full px-[5px] flex flex-col justify-center items-center"
-        optionClassName="py-[5px]"
+        selectClassName="text-primary"
         IconComponent={FaChevronDown}
       />
     )

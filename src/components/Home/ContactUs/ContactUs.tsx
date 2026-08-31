@@ -40,7 +40,7 @@ const ContactUs = () => {
               <span className="block">{texts.getConsultation}</span>
             </div>
             <a
-              href="tel:+380737727373"
+              href="tel:+380777767373"
               className="mobile:w-[215px] mobile:mx-auto desktop:mx-0 desktop:max-w-[315px] fullhd:w-[315px] h-[60px] flex items-center justify-center bg-gradient-red py-[18px] px-[20px] rounded-sub-block-12 text-primary text-18 transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
             >
               {texts.callNow}

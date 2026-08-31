@@ -1,31 +1,43 @@
 'use client';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
+import PhoneInputField from '@/components/UI/PhoneInputField/PhoneInputField';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
 import { sendMessage } from '@/app/utils/sendMessage';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/partForms.json';
+import translationsValidation from '../../../app/lang/formCall.json';
+import * as yup from 'yup';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 const initialValues = {
   phone: '',
-  telegram: '',
   name: '',
 };
 
 const UserContactsForm = () => {
-  const language = useStore(state => state.language);
+  const language = useStore((state) => state.language);
   const t = translations[language];
+  const tValidation = translationsValidation[language];
+
+  const validationSchema = yup.object({
+    phone: yup
+      .string()
+      .test(
+        'valid-phone',
+        tValidation.phone_invalid,
+        (value) => Boolean(value && isValidPhoneNumber(value))
+      )
+      .required(tValidation.phone_required),
+    name: yup.string(),
+  });
 
   const handleSubmit = (values: FormikValues) => {
-    console.log(values);
+    const { phone, name } = values;
+    const contactInfo = `Имя: ${name}, Телефон: ${phone}`;
 
-    const { phone, telegram, name } = values;
-    const contactInfo = `Имя: ${name}, Телефон: ${phone}, Telegram: ${telegram}`;
-
-    if (contactInfo.trim() !== '') {
-      sendMessage(`Заявка на сотрудничество. ${contactInfo}`);
-    }
+    sendMessage(`Заявка на сотрудничество. ${contactInfo}`);
   };
 
   return (
@@ -35,27 +47,20 @@ const UserContactsForm = () => {
         <span className="block">{t.form_heading_line2}</span>
         <span className="block">{t.form_heading_line3}</span>
       </h2>
-      <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
-        {(formikProps) => (
+      <DynamicForm
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {() => (
           <div className="flex flex-col items-center">
-            <div className="flex flex-col md:flex-row mobile:gap-2 tablet:gap-6 items-center mb-[24px] w-full">
-              <div className="flex-1 w-full">
-                <InputField
-                  type="tel"
-                  name="phone"
-                  placeholder={t.form_phone}
-                  inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
-                />
-              </div>
-              <div className="text-primary text-18 font-semibold">{t.form_or}</div>
-              <div className="flex-1 w-full">
-                <InputField
-                  type="text"
-                  name="telegram"
-                  placeholder={t.form_telegram}
-                  inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
-                />
-              </div>
+            <div className="mb-[24px] w-full">
+              <PhoneInputField
+                name="phone"
+                placeholder={t.form_phone}
+                inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
+                errorClassName="text-red-500 text-[12px] mt-1"
+              />
             </div>
             <div className="mb-[40px] w-full">
               <InputField

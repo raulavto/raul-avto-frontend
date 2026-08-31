@@ -1,6 +1,6 @@
 export const contactIcons = [
   {
-    href: 'https://t.me/RAUL_AVTO',
+    href: 'https://t.me/+380777767373',
     src: '/telegram.png',
     alt: 'icon telegram',
   },
@@ -10,12 +10,12 @@ export const contactIcons = [
     alt: 'icon messenger',
   },
   {
-    href: 'https://wa.me/+380737727373',
+    href: 'https://wa.me/+380777767373',
     src: '/WhatsApp.png',
     alt: 'icon whatsapp',
   },
   {
-    href: 'https://viber.com/+380737727373',
+    href: 'viber://chat?number=%2B380777767373',
     src: '/viber.png',
     alt: 'icon viber',
   },

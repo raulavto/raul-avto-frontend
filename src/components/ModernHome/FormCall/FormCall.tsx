@@ -20,6 +20,12 @@ import { sendMessage } from '@/app/utils/sendMessage';
 import Notification from '@/components/UI/Notification/Notification';
 import { usePathname } from 'next/navigation';
 
+const HIDDEN_WIDGET_PATHS = [
+  '/calculator',
+  '/lead-form',
+  '/lead-form-thanks',
+];
+
 interface FormCallValues {
   date: string;
   hour: string;
@@ -64,6 +70,8 @@ const FormCall = () => {
   }, [language]);
 
   useEffect(() => {
+    if (HIDDEN_WIDGET_PATHS.includes(pathname)) return;
+
     // Проверяем, если форма уже была показана, то не показываем снова
     if (!sessionStorage.getItem('formShown')) {
       const timer = setTimeout(() => {
@@ -73,7 +81,7 @@ const FormCall = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   const handleSubmit = (
     values: FormikValues,
@@ -132,9 +140,9 @@ const FormCall = () => {
 
   if (!isVisible) return null;
 
-  const isLeadForm = pathname === '/lead-form' || pathname === '/lead-form-thanks';
+  if (HIDDEN_WIDGET_PATHS.includes(pathname)) return null;
 
-  return ( !isLeadForm &&
+  return (
     <section className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn">
       <button
         onClick={handleClose}

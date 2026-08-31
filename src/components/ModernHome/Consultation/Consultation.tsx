@@ -79,7 +79,7 @@ const Consultation = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="mx-auto w-full max-w-[313px] pointuserbar:max-w-[205px]"
       >
-        <a href="tel:+380 73 772 73 73">
+        <a href="tel:+380777767373">
           <Button className="bg-gradient-red w-full h-[60px] pointuserbar:h-[40px] rounded-sub-block-12 text-[14px] text-white font-semibold">
             {t.consultation_button}
           </Button>

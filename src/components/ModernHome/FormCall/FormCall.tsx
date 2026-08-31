@@ -19,12 +19,15 @@ import { Select, SelectItem } from '@nextui-org/react';
 import { sendMessage } from '@/app/utils/sendMessage';
 import Notification from '@/components/UI/Notification/Notification';
 import { usePathname } from 'next/navigation';
+import {
+  canShowFeedbackModal,
+  markFeedbackModalShown,
+} from '@/utils/feedbackModalThrottle';
 
-const HIDDEN_WIDGET_PATHS = [
-  '/calculator',
-  '/lead-form',
-  '/lead-form-thanks',
-];
+// On the calculator the modal is not shown by the idle timer, but it may still
+// be opened deliberately 30s after a calculation.
+const NO_AUTO_SHOW_PATHS = ['/calculator', '/lead-form', '/lead-form-thanks'];
+const ALWAYS_HIDDEN_PATHS = ['/lead-form', '/lead-form-thanks'];
 
 interface FormCallValues {
   date: string;
@@ -70,11 +73,14 @@ const FormCall = () => {
   }, [language]);
 
   useEffect(() => {
-    if (HIDDEN_WIDGET_PATHS.includes(pathname)) return;
+    if (NO_AUTO_SHOW_PATHS.includes(pathname)) return;
 
     // Проверяем, если форма уже была показана, то не показываем снова
     if (!sessionStorage.getItem('formShown')) {
       const timer = setTimeout(() => {
+        if (!canShowFeedbackModal()) return;
+
+        markFeedbackModalShown();
         dispatch(openModalFeedback());
         sessionStorage.setItem('formShown', 'true'); // Сохраняем, что форма была показана
       }, 30000); // 30 секунд
@@ -140,7 +146,7 @@ const FormCall = () => {
 
   if (!isVisible) return null;
 
-  if (HIDDEN_WIDGET_PATHS.includes(pathname)) return null;
+  if (ALWAYS_HIDDEN_PATHS.includes(pathname)) return null;
 
   return (
     <section className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn">

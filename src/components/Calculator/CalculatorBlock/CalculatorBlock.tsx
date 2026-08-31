@@ -12,6 +12,7 @@ import CountrySelect, {
 import { generatePDF } from '../../PDFTemplate/PDFTemplate';
 import useStore from '@/app/zustand/useStore';
 import { DownloadPDFPopup } from '../DownloadPDFPopup/DownloadPDFPopup';
+import { useFeedbackModalAfterCalculation } from '@/hooks/useFeedbackModalAfterCalculation';
 
 type CalculatorBlockProps = {
   country: CalculatorCountry | null;
@@ -28,6 +29,8 @@ const CalculatorBlock = ({
   const [pdfData, setPdfData] = useState(null);
   const language = useStore((state) => state.language);
   const workspaceRef = useRef<HTMLDivElement>(null);
+
+  useFeedbackModalAfterCalculation(isDataGenerated);
 
   useEffect(() => {
     // Для Кореї PDF відкриваємо лише коли офіційні платежі пораховані (pdfData є)

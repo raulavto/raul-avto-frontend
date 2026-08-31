@@ -1,65 +1,200 @@
 {
   "en": {
+    "pageTitle": "About us",
     "adminName": "Raul Gobadze",
     "adminTitle": "Company Owner",
     "bio": [
-      "Welcome to RAUL_AVTO! My name is Raul, and I founded this company to provide you with the best solutions in car imports.",
-      "In 2012, I brought my first car from the USA, which marked a new chapter in my career. Since then, I have dedicated myself entirely to car imports, focusing on quality service and great deals for our customers.",
-      "Our company doesn't just import cars – we help people achieve their dreams of owning reliable, high-quality vehicles at affordable prices. In 2017, we began actively entering the Ukrainian market, and by 2018, our monthly sales exceeded 100 cars.",
-      "Today, RAUL_AVTO is an official partner of prestigious brands like Mercedes-Benz, Lexus, Maserati, Ducati, KIA Motors, and Hyundai. We pride ourselves on offering vehicles that meet the highest standards of quality and reliability.",
-      "Every deal with us is not just a car purchase. It's about care for every client, personalized service, and full support throughout all stages of the purchase, from selecting the car to delivering it ready to drive.",
-      "We understand how important a trusted partner is when buying a car from abroad. That's why our team always strives to provide maximum transparency, guarantees, and support to ensure our clients feel confident in their choice.",
-      "Thank you for trusting us. We are here to help you find the perfect car."
+      "Welcome to RAUL_AVTO!",
+      "My name is Raul, and I founded this company to provide you with the best solutions in car imports."
     ],
-    "contactPhone": "+380 73 772 73 73",
+    "highlights": [
+      { "value": "2013", "label": "first car from the USA" },
+      { "value": "100+", "label": "cars per month" },
+      { "value": "10+", "label": "years of experience" }
+    ],
+    "storyTitle": "Our journey",
+    "storyBlocks": [
+      {
+        "year": "2013",
+        "title": "The beginning",
+        "text": [
+          "In 2013, we brought our first car from the USA to Georgia. That first delivery marked the start of our journey in the automotive business.",
+          "This experience became the starting point for further growth and work in car imports."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "year": "2017–2018",
+        "title": "Scaling in Ukraine",
+        "text": [
+          "In 2017, we began actively developing car imports in Ukraine and significantly expanded the geography of our work.",
+          "In addition to the USA, we opened the used car markets of South Korea, Canada, and China for our clients, and also started actively importing cars from Georgia.",
+          "We wanted to give clients the chance to choose vehicles from different parts of the world, finding the best options by price, specification, and condition.",
+          "Already in 2018, our monthly volume exceeded 100 cars, which became an important stage in the company's growth and scaling of our work in Ukraine."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "title": "Official partners",
+        "text": "Today, RAUL_AVTO works with the leading car auctions. This lets us offer clients a wide selection of vehicles that meet high standards of quality and reliability.",
+        "brands": ["Copart", "Manheim", "Adesa", "IAA", "Impact", "CarMax", "Encar", "AutoHub Auction"],
+        "variant": "timeline"
+      },
+      {
+        "title": "Full support",
+        "text": "Every deal with us is not just a car purchase. It's about care for every client, personalized service, and full support throughout all stages of the purchase, from selecting the car to delivering it ready to drive.",
+        "variant": "card"
+      },
+      {
+        "title": "Transparency & trust",
+        "text": "We understand how important a trusted partner is when buying a car from abroad. That's why our team always strives to provide maximum transparency, guarantees, and support to ensure our clients feel confident in their choice.",
+        "variant": "card"
+      },
+      {
+        "title": "Thank you",
+        "text": "Thank you for trusting us. We are here to help you find the perfect car.",
+        "variant": "quote"
+      }
+    ],
+    "contactPhone": "+38 077 776 73 73",
     "telegramLink": "@raul_avto",
     "contactLinks": [
-      "https://t.me/RAUL_AVTO",
+      "https://t.me/+380777767373",
       "/",
-      "https://wa.me/380737727373",
-      "viber://chat?number=%2B380737727373"
+      "https://wa.me/+380777767373",
+      "viber://chat?number=%2B380777767373"
     ]
   },
   "ru": {
+    "pageTitle": "О нас",
     "adminName": "Рауль Гобадзе",
     "adminTitle": "Владелец компании",
     "bio": [
-      "Добро пожаловать в RAUL_AVTO! Меня зовут Рауль, и я основал эту компанию, чтобы предложить вам наилучшие решения в сфере автоимпорта.",
-      "В 2012 году я привез свой первый автомобиль из США, и этот опыт дал начало новому этапу в моей карьере. С тех пор я полностью посвятил себя автоимпорту, сосредоточив внимание на предоставлении качественного сервиса и выгодных предложений для наших клиентов.",
-      "Наша компания не просто привозит автомобили — мы помогаем людям осуществлять мечты о качественных и надёжных машинах по доступным ценам. В 2017 году мы начали активно выходить на украинский рынок, и уже к 2018 году наш ежемесячный объём продаж превысил 100 автомобилей.",
-      "Сегодня RAUL_AVTO является официальным партнёром таких престижных брендов, как Mercedes-Benz, Lexus, Maserati, Ducati, KIA Motors и Hyundai. Мы гордимся тем, что предлагаем клиентам автомобили, отвечающие самым высоким стандартам качества и надёжности.",
-      "Каждая сделка с нами — это не просто покупка автомобиля. Это забота о каждом клиенте, персонализированный подход и полное сопровождение на всех этапах покупки, начиная с выбора автомобиля и заканчивая доставкой под ключ.",
-      "Мы понимаем, насколько важен доверенный партнёр в таком серьёзном вопросе, как покупка авто из-за рубежа. Поэтому наша команда всегда стремится предоставить максимально прозрачный сервис, гарантии и поддержку, чтобы наши клиенты чувствовали уверенность в своём выборе.",
-      "Спасибо, что доверяете нам. Мы здесь, чтобы помочь вам найти идеальный автомобиль."
+      "Добро пожаловать в RAUL_AVTO!",
+      "Меня зовут Рауль, и я основал эту компанию, чтобы предложить вам наилучшие решения в сфере автоимпорта."
     ],
-    "contactPhone": "+380 73 772 73 73",
+    "highlights": [
+      { "value": "2013", "label": "первый автомобиль из США" },
+      { "value": "100+", "label": "авто в месяц" },
+      { "value": "10+", "label": "лет опыта" }
+    ],
+    "storyTitle": "Наш путь",
+    "storyBlocks": [
+      {
+        "year": "2013",
+        "title": "Начало пути",
+        "text": [
+          "В 2013 году мы привезли свой первый автомобиль из США в Грузию. Именно с этой первой доставки начался наш путь в автомобильном бизнесе.",
+          "Этот опыт стал отправной точкой для дальнейшего развития и работы в сфере автоимпорта."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "year": "2017–2018",
+        "title": "Масштабирование в Украине",
+        "text": [
+          "В 2017 году мы начали активно развивать направление автоимпорта в Украине и значительно расширили географию нашей работы.",
+          "Помимо США, мы открыли для наших клиентов автомобильные рынки Южной Кореи, Канады и Китая, а также начали активно ввозить автомобили из Грузии.",
+          "Мы стремились дать клиентам возможность выбирать автомобили из разных уголков мира, находя оптимальные варианты по цене, комплектации и состоянию.",
+          "Уже в 2018 году наш месячный объём превысил 100 автомобилей, что стало важным этапом в развитии компании и масштабировании нашей работы в Украине."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "title": "Официальные партнёры",
+        "text": "Сегодня RAUL_AVTO работает с ведущими автомобильными аукционами. Это позволяет предлагать клиентам широкий выбор автомобилей, отвечающих высоким стандартам качества и надёжности.",
+        "brands": ["Copart", "Manheim", "Adesa", "IAA", "Impact", "CarMax", "Encar", "AutoHub Auction"],
+        "variant": "timeline"
+      },
+      {
+        "title": "Полное сопровождение",
+        "text": "Каждая сделка с нами — это не просто покупка автомобиля. Это забота о каждом клиенте, персонализированный подход и полное сопровождение на всех этапах покупки, начиная с выбора автомобиля и заканчивая доставкой под ключ.",
+        "variant": "card"
+      },
+      {
+        "title": "Прозрачность и доверие",
+        "text": "Мы понимаем, насколько важен доверенный партнёр в таком серьёзном вопросе, как покупка авто из-за рубежа. Поэтому наша команда всегда стремится предоставить максимально прозрачный сервис, гарантии и поддержку, чтобы наши клиенты чувствовали уверенность в своём выборе.",
+        "variant": "card"
+      },
+      {
+        "title": "Спасибо",
+        "text": "Спасибо, что доверяете нам. Мы здесь, чтобы помочь вам найти идеальный автомобиль.",
+        "variant": "quote"
+      }
+    ],
+    "contactPhone": "+38 077 776 73 73",
     "telegramLink": "@raul_avto",
     "contactLinks": [
-      "https://t.me/RAUL_AVTO",
+      "https://t.me/+380777767373",
       "/",
-      "https://wa.me/380737727373",
-      "viber://chat?number=%2B380737727373"
+      "https://wa.me/+380777767373",
+      "viber://chat?number=%2B380777767373"
     ]
   },
   "ua": {
+    "pageTitle": "Про нас",
     "adminName": "Рауль Гобадзе",
     "adminTitle": "Власник компанії",
     "bio": [
-      "Ласкаво просимо до RAUL_AVTO! Мене звуть Рауль, і я заснував цю компанію, щоб запропонувати вам найкращі рішення у сфері автоімпорту.",
-      "У 2012 році я привіз свій перший автомобіль зі США, і цей досвід став початком нового етапу в моїй кар'єрі. Відтоді я повністю присвятив себе автоімпорту, зосередившись на якісному сервісі та вигідних пропозиціях для наших клієнтів.",
-      "Наша компанія не просто привозить автомобілі — ми допомагаємо людям здійснювати мрії про якісні та надійні машини за доступними цінами. У 2017 році ми почали активно виходити на український ринок, і вже у 2018 році наш місячний обсяг продажів перевищив 100 автомобілів.",
-      "Сьогодні RAUL_AVTO є офіційним партнером таких престижних брендів, як Mercedes-Benz, Lexus, Maserati, Ducati, KIA Motors та Hyundai. Ми пишаємося тим, що пропонуємо клієнтам автомобілі, які відповідають найвищим стандартам якості та надійності.",
-      "Кожна угода з нами — це не просто купівля автомобіля. Це турбота про кожного клієнта, персоналізований підхід і повний супровід на всіх етапах покупки, починаючи з вибору автомобіля та закінчуючи доставкою під ключ.",
-      "Ми розуміємо, наскільки важливим є довірений партнер у такому серйозному питанні, як купівля авто за кордоном. Тому наша команда завжди прагне надати максимально прозорий сервіс, гарантії та підтримку, щоб наші клієнти відчували впевненість у своєму виборі.",
-      "Дякуємо, що довіряєте нам. Ми тут, щоб допомогти вам знайти ідеальний автомобіль."
+      "Ласкаво просимо до RAUL_AVTO!",
+      "Мене звуть Рауль, і я заснував цю компанію, щоб запропонувати вам найкращі рішення у сфері автоімпорту."
     ],
-    "contactPhone": "+380 73 772 73 73",
+    "highlights": [
+      { "value": "2013", "label": "перший автомобіль з США" },
+      { "value": "100+", "label": "авто щомісяця" },
+      { "value": "10+", "label": "років досвіду" }
+    ],
+    "storyTitle": "Наш шлях",
+    "storyBlocks": [
+      {
+        "year": "2013",
+        "title": "Початок шляху",
+        "text": [
+          "У 2013 році ми привезли свій перший автомобіль зі США до Грузії. Саме з цієї першої доставки розпочався наш шлях в автомобільному бізнесі.",
+          "Цей досвід став відправною точкою для подальшого розвитку та роботи у сфері автоімпорту."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "year": "2017–2018",
+        "title": "Масштабування в Україні",
+        "text": [
+          "У 2017 році ми почали активно розвивати напрямок автоімпорту в Україні та значно розширили географію нашої роботи.",
+          "Окрім США, ми відкрили для наших клієнтів автомобільні ринки Південної Кореї, Канади та Китаю, а також почали активно ввозити автомобілі з Грузії.",
+          "Ми прагнули дати клієнтам можливість обирати автомобілі з різних куточків світу, знаходячи оптимальні варіанти за ціною, комплектацією та станом.",
+          "Уже у 2018 році наш місячний обсяг перевищив 100 автомобілів, що стало важливим етапом у розвитку компанії та масштабуванні нашої роботи в Україні."
+        ],
+        "variant": "timeline"
+      },
+      {
+        "title": "Офіційні партнери",
+        "text": "Сьогодні RAUL_AVTO працює з провідними автомобільними аукціонами. Це дозволяє пропонувати клієнтам широкий вибір автомобілів, які відповідають високим стандартам якості та надійності.",
+        "brands": ["Copart", "Manheim", "Adesa", "IAA", "Impact", "CarMax", "Encar", "AutoHub Auction"],
+        "variant": "timeline"
+      },
+      {
+        "title": "Повний супровід",
+        "text": "Кожна угода з нами — це не просто купівля автомобіля. Це турбота про кожного клієнта, персоналізований підхід і повний супровід на всіх етапах покупки, починаючи з вибору автомобіля та закінчуючи доставкою під ключ.",
+        "variant": "card"
+      },
+      {
+        "title": "Прозорість і довіра",
+        "text": "Ми розуміємо, наскільки важливим є довірений партнер у такому серйозному питанні, як купівля авто за кордоном. Тому наша команда завжди прагне надати максимально прозорий сервіс, гарантії та підтримку, щоб наші клієнти відчували впевненість у своєму виборі.",
+        "variant": "card"
+      },
+      {
+        "title": "Дякуємо",
+        "text": "Дякуємо, що довіряєте нам. Ми тут, щоб допомогти вам знайти ідеальний автомобіль.",
+        "variant": "quote"
+      }
+    ],
+    "contactPhone": "+38 077 776 73 73",
     "telegramLink": "@raul_avto",
     "contactLinks": [
-      "https://t.me/RAUL_AVTO",
+      "https://t.me/+380777767373",
       "/",
-      "https://wa.me/380737727373",
-      "viber://chat?number=%2B380737727373"
+      "https://wa.me/+380777767373",
+      "viber://chat?number=%2B380777767373"
     ]
   }
 }

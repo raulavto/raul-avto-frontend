@@ -51,6 +51,30 @@ const auctions = [
     height: 50,
     url: 'https://t.me/RaulAvto',
   },
+  {
+    id: 6,
+    key: 'carmax',
+    logo: '/carmax-auction.png',
+    width: 185,
+    height: 50,
+    url: 'https://t.me/RaulAvto',
+  },
+  {
+    id: 7,
+    key: 'encar',
+    logo: '/encar-auction.png',
+    width: 185,
+    height: 70,
+    url: 'https://t.me/RaulAvto',
+  },
+  {
+    id: 8,
+    key: 'autohub',
+    logo: '/autohub-auction.png',
+    width: 185,
+    height: 70,
+    url: 'https://t.me/RaulAvto',
+  },
 ];
 
 const AuctionsList = () => {

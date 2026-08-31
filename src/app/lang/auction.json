@@ -11,6 +11,12 @@
     "iaa_description": "Vehicles from insurance with a transparent history and detailed lot descriptions.",
     "impact_name": "Impact",
     "impact_description": "Impact is a popular auction and online platform offering various types of vehicles for sale.",
+    "carmax_name": "CarMax",
+    "carmax_description": "One of the largest US used car retailers with a transparent vehicle history and a wide selection of quality cars.",
+    "encar_name": "Encar",
+    "encar_description": "Korea's leading used car platform with a huge selection of vehicles and detailed inspection reports.",
+    "autohub_name": "AutoHub Auction",
+    "autohub_description": "A major Korean car auction with one of the highest submission volumes and successful bid rates in the country.",
     "view_details": "View Details"
   },
   "ua": {
@@ -25,6 +31,12 @@
     "iaa_description": "Представлені автомобілі від страховок та прозорою історією та детальним описом лоту.",
     "impact_name": "Impact",
     "impact_description": "Impact – популярний аукціон і за сумісництвом онлайн-майданчик, який пропонує для продажу всілякі транспортні засоби.",
+    "carmax_name": "CarMax",
+    "carmax_description": "Один із найбільших американських ритейлерів вживаних авто з прозорою історією та великим вибором якісних машин.",
+    "encar_name": "Encar",
+    "encar_description": "Провідна корейська платформа вживаних авто з величезним вибором машин та детальними звітами огляду.",
+    "autohub_name": "AutoHub Auction",
+    "autohub_description": "Великий корейський аукціон з одним із найвищих показників кількості лотів та успішних торгів у країні.",
     "view_details": "Переглянути"
   },
   "ru": {
@@ -39,6 +51,12 @@
     "iaa_description": "Автомобили от страховых компаний с прозрачной историей и детальными описаниями лотов.",
     "impact_name": "Impact",
     "impact_description": "Impact — популярный аукцион и онлайн-площадка, предлагающая к продаже различные транспортные средства.",
+    "carmax_name": "CarMax",
+    "carmax_description": "Один из крупнейших американских ритейлеров подержанных авто с прозрачной историей и большим выбором качественных машин.",
+    "encar_name": "Encar",
+    "encar_description": "Ведущая корейская платформа подержанных авто с огромным выбором машин и подробными отчётами осмотра.",
+    "autohub_name": "AutoHub Auction",
+    "autohub_description": "Крупный корейский аукцион с одним из самых высоких показателей количества лотов и успешных торгов в стране.",
     "view_details": "Посмотреть"
   }
 }

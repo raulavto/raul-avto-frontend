@@ -6,17 +6,21 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const data = JSON.parse(searchParams.get('data') || '{}');
     const language = searchParams.get('language') || 'en';
+    const countryParam = searchParams.get('country');
+    const country =
+      countryParam === 'korea' || data?.country === 'korea' ? 'korea' : 'usa';
     const carNameParam = searchParams.get('carName');
     const carName =
       carNameParam && carNameParam.trim() !== '' ? carNameParam : undefined;
 
-    console.log('PDF Template - carName:', carName);
+    console.log('PDF Template - carName:', carName, 'country:', country);
 
     // Use the server-side function to render the PDFTemplate
     const htmlContent = await renderPDFTemplateToString({
       data,
       language,
       carName,
+      country,
     });
 
     // Create a complete HTML document with Tailwind CSS
@@ -37,6 +41,13 @@ export async function GET(request: NextRequest) {
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
               background: white;
+              margin: 0;
+              padding: 0;
+            }
+            html, body {
+              height: auto !important;
+              min-height: 0 !important;
+              overflow: hidden;
             }
           </style>
         </head>

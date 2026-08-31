@@ -2,7 +2,10 @@ import translations from '../../app/lang/pdfTemplate.json';
 import contacts from '../../app/lang/contacts.json';
 import { FiPhone } from 'react-icons/fi';
 import { Inter } from 'next/font/google';
-import calculator from '../../app/lang/calculator.json';
+import {
+  KoreaPDFTemplate,
+  type KoreaPDFData,
+} from './KoreaPDFTemplate';
 
 const inter = Inter({
   weight: ['500', '700', '900'],
@@ -11,49 +14,84 @@ const inter = Inter({
 
 interface PDFTemplateProps {
   data: {
-    carType: string;
-    yearOfManufacture: number;
-    fuelType: string;
-    engineCapacity: number;
-    auctionCost: number;
-    auctionFee: number;
-    ourFee: number;
-    deliveryPort: string;
-    totalSeaDelivery: number;
-    port_complex: number;
-    port_parking: number;
-    broker: number;
-    groundDelivery: number;
-    customFees: number;
-    certification: number;
-    pension: number;
-  };
+    carType?: string;
+    yearOfManufacture?: number;
+    fuelType?: string;
+    engineCapacity?: number;
+    auctionCost?: number;
+    auctionFee?: number;
+    ourFee?: number;
+    deliveryPort?: string;
+    totalSeaDelivery?: number;
+    port_complex?: number;
+    port_parking?: number;
+    broker?: number;
+    groundDelivery?: number;
+    customFees?: number;
+    certification?: number;
+    pension?: number;
+    carMake?: string;
+    carModel?: string;
+    country?: 'usa' | 'korea';
+  } & Partial<KoreaPDFData>;
   language: string;
   carName?: string;
+  country?: 'usa' | 'korea';
 }
 
-export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
+export const PDFTemplate = ({
+  data,
+  language,
+  carName,
+  country,
+}: PDFTemplateProps) => {
+  const resolvedCountry = country || data?.country || 'usa';
+  if (resolvedCountry === 'korea') {
+    return (
+      <KoreaPDFTemplate
+        data={data as KoreaPDFData}
+        language={language}
+        carName={carName}
+      />
+    );
+  }
+
   const t = translations[language];
   const c = contacts[language];
-  const carData = calculator[language];
   const adminContacts = c.phone;
-  const carType = carData.options[data.carType];
-  const carFuel = carData.options.fuelOptions[data.fuelType];
+  const year = String(data.yearOfManufacture || '').trim();
+  const name = (
+    carName || `${data.carMake || ''} ${data.carModel || ''}`
+  ).trim();
+  // Strip year if already in name (start or end), then always put year AFTER the name
+  let nameOnly = name;
+  if (year && nameOnly) {
+    nameOnly = nameOnly
+      .replace(new RegExp(`^${year}\\b\\s*`), '')
+      .replace(new RegExp(`\\s*\\b${year}$`), '')
+      .trim();
+  }
+  const carTitle = [nameOnly, year].filter(Boolean).join(' ');
+
   const totalAmount =
-    data.auctionCost * 1 +
-    data.auctionFee * 1 +
-    data.ourFee * 1 +
-    data.totalSeaDelivery * 1 +
-    data.port_complex * 1 +
-    data.port_parking * 1 +
-    data.broker * 1 +
-    data.groundDelivery * 1 +
-    data.customFees * 1 +
-    data.certification * 1 +
-    data.pension * 1;
+    (data.auctionCost || 0) * 1 +
+    (data.auctionFee || 0) * 1 +
+    (data.ourFee || 0) * 1 +
+    (data.totalSeaDelivery || 0) * 1 +
+    (data.port_complex || 0) * 1 +
+    (data.port_parking || 0) * 1 +
+    (data.broker || 0) * 1 +
+    (data.groundDelivery || 0) * 1 +
+    (data.customFees || 0) * 1 +
+    (data.certification || 0) * 1 +
+    (data.pension || 0) * 1;
+
+  // Exact red sampled from reference header (#FF1919)
+  const accentRed = '#FF1919';
 
   return (
     <div
+      data-pdf-root
       className={`${inter.className} w-[792px] pl-[25px] pr-[54px] pt-[175px] box-sizing-border-box relative bg-white overflow-hidden z-100`}
     >
       <img
@@ -61,21 +99,21 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
         alt="logo"
         width={792}
         height={289}
-        className="absolute drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] top-0 left-0 z-20"
+        className="absolute drop-shadow-[0_8px_16px_rgba(255,45,45,0.45)] top-0 left-0 z-20"
       />
       <img
         src="/pdf/top-right-flag.png"
         alt="logo"
         width={241}
         height={163}
-        className="absolute top-[27px] -right-[1px] z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
+        className="absolute top-[27px] -right-[1px] z-10 drop-shadow-[0_8px_16px_rgba(255,45,45,0.45)]"
       />
       <img
         src="/pdf/bot-flag.png"
         alt="logo"
         width={792}
         height={144}
-        className="flex justify-center items-center absolute bottom-0 left-0 drop-shadow-[0_-10px_10px_rgba(0,0,0,0.6)] z-10"
+        className="flex justify-center items-center absolute bottom-0 left-0 drop-shadow-[0_-8px_12px_rgba(255,45,45,0.4)] z-10"
       />
       <img
         src="/pdf/bot-left-flag.png"
@@ -112,13 +150,13 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
         <h2
           className={`${inter.className} text-[24px] mb-[22px] leading-[24px] font-semibold text-center uppercase`}
         >
-          {data.yearOfManufacture} {carName}
+          {carTitle}
         </h2>
 
         <div className="pr-[12px] w-full">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-[#ef4444] text-white">
+              <tr style={{ backgroundColor: accentRed }} className="text-white">
                 <th className="px-[12px] pt-[6px] pb-[4px] text-left">
                   <p className="text-[20px] leading-[28px] font-bold tracking-[0.03em]">
                     {t?.operation || 'Operation'}
@@ -168,18 +206,6 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
-                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
-                  {t?.customFees?.title || 'Custom Fees'}
-                  <span className="text-[14px] lowercase leading-[12px]">
-                    {' '}
-                    {t?.customFees?.description}
-                  </span>
-                </td>
-                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
-                  {data?.customFees || '0'}
-                </td>
-              </tr>
-              <tr className="border-b border-[#d1d5db]">
                 <td className="px-[7px] pt-[7px] pb-[4px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
                   {t?.totalSeaDelivery?.title || 'Sea Delivery'}{' '}
                   {t?.portName?.[data?.deliveryPort] || ''}
@@ -191,6 +217,18 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
                 </td>
                 <td className="px-[10px] pt-[4px] pb-[4px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
                   {data?.totalSeaDelivery || '0'}
+                </td>
+              </tr>
+              <tr className="border-b border-[#d1d5db]">
+                <td className="px-[7px] pt-[7px] pb-[14px] text-[23px] leading-[20px] font-semibold tracking-[0.02em]">
+                  {t?.customFees?.title || 'Custom Fees'}
+                  <span className="text-[14px] lowercase leading-[12px]">
+                    {' '}
+                    {t?.customFees?.description}
+                  </span>
+                </td>
+                <td className="px-[10px] text-[24px] leading-[28px] font-semibold text-right -tracking-[0.05em]">
+                  {data?.customFees || '0'}
                 </td>
               </tr>
               <tr className="border-b border-[#d1d5db]">
@@ -267,7 +305,7 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
                   {data?.pension || '0'}
                 </td>
               </tr>
-              <tr className="bg-[#ef4444] text-white">
+              <tr style={{ backgroundColor: accentRed }} className="text-white">
                 <td className="px-[12px] pt-[10px] pb-[8px] text-[20px] leading-[20px] font-semibold tracking-[0.02em]">
                   {t?.totalAmount || 'Total Amount'}
                 </td>
@@ -277,7 +315,10 @@ export const PDFTemplate = ({ data, language, carName }: PDFTemplateProps) => {
               </tr>
             </tbody>
           </table>
-          <p className="px-[20px] pt-[12px] pb-[82px] text-center text-[14px] leading-[20px] font-extrabold tracking-[0.02em] text-[#ef4444] bg-white">
+          <p
+            className="px-[20px] pt-[12px] pb-[82px] text-center text-[14px] leading-[20px] font-extrabold tracking-[0.02em] bg-white"
+            style={{ color: accentRed }}
+          >
             {t?.flavorText || ''}
           </p>
         </div>
@@ -291,13 +332,19 @@ export const renderPDFTemplateToString = async ({
   data,
   language,
   carName,
+  country,
 }: PDFTemplateProps) => {
   // Import React and renderToString dynamically to avoid SSR issues
   const React = await import('react');
   const { renderToString } = await import('react-dom/server');
 
   // Create the component element
-  const element = React.createElement(PDFTemplate, { data, language, carName });
+  const element = React.createElement(PDFTemplate, {
+    data,
+    language,
+    carName,
+    country,
+  });
 
   // Render to string
   return renderToString(element);
@@ -307,15 +354,17 @@ export const generatePDF = async ({
   data,
   language,
   carName,
+  country,
 }: PDFTemplateProps) => {
   const t = translations[language];
+  const resolvedCountry = country || data?.country || 'usa';
   try {
     const response = await fetch('/api/generate-pdf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ data, language, carName }),
+      body: JSON.stringify({ data, language, carName, country: resolvedCountry }),
     });
 
     if (!response.ok) {
@@ -331,12 +380,26 @@ export const generatePDF = async ({
     link.href = url;
 
     // Create filename with car name if provided
-    const sanitizedCarName = carName
-      ? carName.replace(/[^a-z0-9]/gi, '_').toLowerCase()
-      : '';
-    const filename = sanitizedCarName
-      ? `${sanitizedCarName}_${Date.now()}.pdf`
-      : `${t?.title || 'Preliminary Calculation'}_${Date.now()}.pdf`;
+    // Keep letters (incl. Cyrillic) — old regex turned "Тойота" / title into "____"
+    const sanitizeFilename = (raw: string) =>
+      raw
+        .replace(/\n/g, ' ')
+        .trim()
+        .replace(/[<>:"/\\|?*\x00-\x1F]/g, '')
+        .replace(/\s+/g, '_')
+        .replace(/_+/g, '_')
+        .replace(/^_|_$/g, '');
+
+    const fromCar = sanitizeFilename(
+      carName ||
+        [data?.carMake, data?.carModel].filter(Boolean).join(' ') ||
+        ''
+    );
+    const fromTitle = sanitizeFilename(
+      t?.title || 'Preliminary_Calculation'
+    );
+    const baseName = fromCar || fromTitle || 'preliminary_calculation';
+    const filename = `${baseName}_${Date.now()}.pdf`;
 
     link.download = filename;
 

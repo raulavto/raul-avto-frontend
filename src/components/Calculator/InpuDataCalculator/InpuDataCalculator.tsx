@@ -1,14 +1,22 @@
 'use client';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import Button from '@/components/UI/Button/Button';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calculator.json';
+import carBrandsModels from '../../../data/carBrandsModels.json';
+import {
+  amountCursorAfterDigits,
+  formatAmountInput,
+  parseAmountInput,
+} from '@/utils/formatAmountInput';
 
 const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   const language = useStore((state) => state.language);
 
   const [formData, setFormData] = useState({
+    carMake: '',
+    carModel: '',
     auctionCost: '',
     transportType: 'sedan',
     fuelType: 'petrol',
@@ -24,6 +32,25 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   const [errors, setErrors] = useState({});
   const [auctionLocOptions, setAuctionLocOptions] = useState([]);
   const [departPorts, setDepartPorts] = useState([]);
+
+  const makeOptions = useMemo(
+    () =>
+      Object.keys(carBrandsModels).map((make) => ({
+        label: make,
+        value: make,
+      })),
+    []
+  );
+
+  const modelOptions = useMemo(() => {
+    if (!formData.carMake || !carBrandsModels[formData.carMake]) {
+      return [];
+    }
+    return carBrandsModels[formData.carMake].map((model) => ({
+      label: model,
+      value: model,
+    }));
+  }, [formData.carMake]);
 
   const fetchAuctionData = async (selectedAuction: string) => {
     try {
@@ -71,12 +98,11 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
 
       setAuctionLocOptions(locations);
 
-      // Якщо локація ще не вибрана, встановлюємо першу доступну
       if (locations.length > 0 && !formData.auctionLoc) {
         setFormData((prevState) => ({
           ...prevState,
-          auctionLoc: locations[0].value, // Оновлюємо auctionLoc
-          departPort: locations[0].departOptions[0]?.label || '', // Встановлюємо перший порт
+          auctionLoc: locations[0].value,
+          departPort: locations[0].departOptions[0]?.label || '',
         }));
       }
     } catch (error) {
@@ -86,7 +112,6 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
 
   useEffect(() => {
     const updateAuctionData = async () => {
-      // Завантаження нових даних залежно від обраної платформи
       await fetchAuctionData(formData.auction);
     };
 
@@ -94,7 +119,6 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   }, [formData.auction]);
 
   useEffect(() => {
-    // Якщо платформа аукціону змінилася, скидаємо локацію до першої в списку
     if (formData.auction && auctionLocOptions.length > 0) {
       const firstLocation = auctionLocOptions[0];
       setFormData((prevState) => ({
@@ -132,6 +156,13 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
     inputData,
     calculatePayments,
     auctionCost,
+    carMake,
+    carModel,
+    selectMake,
+    selectModel,
+    selectMakeFirst,
+    searchMake,
+    searchModel,
     transportType,
     fuelType,
     engineCapacity,
@@ -144,16 +175,36 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   } = translations[language];
 
   const engineCapacityLabel =
-  formData.fuelType === 'electric'
-    ? translations[language].engineCapacityElectro
-    : translations[language].engineCapacity;
+    formData.fuelType === 'electric'
+      ? translations[language].engineCapacityElectro
+      : translations[language].engineCapacity;
 
   const fields = [
+    {
+      key: 'carMake',
+      label: carMake,
+      type: 'select',
+      searchable: true,
+      placeholder: selectMake,
+      searchPlaceholder: searchMake,
+      options: makeOptions,
+    },
+    {
+      key: 'carModel',
+      label: carModel,
+      type: 'select',
+      searchable: true,
+      disabled: !formData.carMake,
+      placeholder: formData.carMake ? selectModel : selectMakeFirst,
+      searchPlaceholder: searchModel,
+      options: modelOptions,
+    },
     {
       key: 'auctionCost',
       label: auctionCost,
       type: 'input',
-      placeholder: '2000',
+      placeholder: '2 000',
+      formatAmount: true,
     },
     {
       key: 'transportType',
@@ -187,8 +238,8 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
       key: 'yearOfManufacture',
       label: yearOfManufacture,
       type: 'select',
-      options: Array.from({ length: 2024 - 2009 + 1 }, (_, i) => {
-        const year = 2024 - i;
+      options: Array.from({ length: 2026 - 2009 + 1 }, (_, i) => {
+        const year = 2026 - i;
         return { label: `${year}`, value: `${year}` };
       }),
     },
@@ -227,7 +278,14 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
 
   const handleChange = (key, value) => {
     setFormData((prevState) => {
-      // Якщо змінюється платформа аукціону, скидаємо вибрану локацію до першої з списку
+      if (key === 'carMake') {
+        return {
+          ...prevState,
+          carMake: value,
+          carModel: '',
+        };
+      }
+
       if (key === 'auction') {
         const firstLocation = auctionLocOptions[0];
         return {
@@ -249,28 +307,76 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
     setErrors((prevState) => ({
       ...prevState,
       [key]: !value,
+      ...(key === 'carMake' ? { carModel: true } : {}),
     }));
   };
 
+  const handleAmountChange = (key, event) => {
+    const input = event.target;
+    const cursor = input.selectionStart ?? input.value.length;
+    const digitsBeforeCursor = input.value
+      .slice(0, cursor)
+      .replace(/\D/g, '').length;
+    const formatted = formatAmountInput(input.value);
+
+    handleChange(key, formatted);
+
+    requestAnimationFrame(() => {
+      const pos = amountCursorAfterDigits(formatted, digitsBeforeCursor);
+      input.setSelectionRange(pos, pos);
+    });
+  };
+
   const handleSubmit = () => {
-    // Знаходимо відповідну локацію для cityCost
     const selectedLocation = auctionLocOptions.find(
       (loc) => loc.value === formData.auctionLoc
     );
 
+    const selectedPortOption = selectedLocation?.departOptions.find(
+      (opt) => opt.label === formData.departPort
+    );
+
+    const numericAuctionCost = parseAmountInput(formData.auctionCost);
+
     const updatedFormData = selectedLocation
       ? {
           ...formData,
-          cityCost: selectedLocation.departOptions[0]?.value || '',
+          auctionCost: numericAuctionCost,
+          cityCost:
+            selectedPortOption?.value ??
+            selectedLocation.departOptions[0]?.value ??
+            '',
         }
-      : formData;
+      : {
+          ...formData,
+          auctionCost: numericAuctionCost,
+        };
 
-    const newErrors = Object.keys(updatedFormData).reduce((acc, key) => {
+    const requiredKeys = [
+      'carMake',
+      'carModel',
+      'auctionCost',
+      'transportType',
+      'fuelType',
+      'engineCapacity',
+      'yearOfManufacture',
+      'auction',
+      'auctionLoc',
+      'departPort',
+      'deliveryPort',
+      'cityCost',
+    ];
+
+    const newErrors = requiredKeys.reduce((acc, key) => {
       if (!updatedFormData[key]) {
         acc[key] = true;
       }
       return acc;
     }, {});
+
+    if (!numericAuctionCost || numericAuctionCost <= 0) {
+      newErrors.auctionCost = true;
+    }
 
     setErrors(newErrors);
 
@@ -283,37 +389,53 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
   };
 
   return (
-    <div className="container mx-auto mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[40px] desktop:p-[80px] max-w-[832px] w-full bg-gradient-sub-block self-start">
+    <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[40px] desktop:p-[80px] w-full bg-gradient-sub-block self-stretch">
       <h2 className="text-primary mobile:text-28 tablet:text-40 font-bold mb-[72px] text-center">
         {inputData}
       </h2>
       <ul className="grid grid-cols-1 tablet:grid-cols-2 gap-6 justify-items-center">
         {fields.map((item, index) => (
-          <li key={index} className="w-full flex flex-col space-y-6">
+          <li key={index} className="w-full flex flex-col space-y-2">
             {item.type === 'input' ? (
               <>
-                <label className="text-secondary text-16 font-semibold mb-[8px] truncate">
+                <label className="text-secondary text-16 font-medium truncate">
                   {item.label}
                 </label>
                 <input
+                  type="text"
+                  inputMode={item.formatAmount ? 'numeric' : undefined}
+                  autoComplete="off"
                   placeholder={item.placeholder}
                   value={formData[item.key] || ''}
-                  onChange={(e) => handleChange(item.key, e.target.value)}
-                  className={`border ${
+                  onChange={(e) =>
+                    item.formatAmount
+                      ? handleAmountChange(item.key, e)
+                      : handleChange(item.key, e.target.value)
+                  }
+                  className={`border box-border ${
                     errors[item.key] ? 'border-red-500' : 'border-primary'
-                  } rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold focus:outline-focus outline-none`}
+                  } rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-16 font-semibold focus:outline-focus outline-none`}
                 />
               </>
             ) : (
               <CustomSelect
-                currentSelectedOption={item.options && item.options[0]?.label}
+                currentSelectedOption={
+                  formData[item.key]
+                    ? item.options?.find((o) => o.value === formData[item.key])
+                        ?.label || formData[item.key]
+                    : item.placeholder ||
+                      (item.options && item.options[0]?.label) ||
+                      ''
+                }
                 label={item.label}
                 options={item.options || []}
                 containerClassName="w-full flex-1"
-                labelClassName="text-secondary text-16 mb-[8px] truncate"
-                selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold"
+                labelClassName="text-secondary text-16 font-medium truncate"
+                selectClassName={`border box-border ${
+                  errors[item.key] ? 'border-red-500' : 'border-primary'
+                } rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] pl-[20px] pr-[10px] text-primary text-16 font-semibold`}
                 optionClassName="text-primary w-full"
-                optionListClassName="max-h-[100px]"
+                optionListClassName="max-h-[220px]"
                 onSelect={(option) =>
                   handleChange(
                     item.key,
@@ -322,6 +444,9 @@ const InpuDataCalculator = ({ setData, setIsDataGenerated }) => {
                 }
                 isLocationSelect={item.key === 'auctionLoc'}
                 isPortSelect={item.key === 'departPort'}
+                isSearchable={Boolean(item.searchable)}
+                disabled={Boolean(item.disabled)}
+                searchPlaceholder={item.searchPlaceholder}
               />
             )}
           </li>

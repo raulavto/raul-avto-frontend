@@ -1,17 +1,51 @@
 import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { getMockSheetRows } from './mockAuctionData';
+
+async function loadLocalAuctionRows(auction) {
+  const fileName =
+    String(auction).toLowerCase() === 'iaai' ? 'iaai.json' : 'copart.json';
+  const filePath = path.join(process.cwd(), 'src/app/api/getSheetData/data', fileName);
+
+  try {
+    const raw = await readFile(filePath, 'utf8');
+    const rows = JSON.parse(raw);
+    if (Array.isArray(rows) && rows.length > 0) {
+      return rows;
+    }
+  } catch {
+    // file missing or invalid — fall through
+  }
+
+  return null;
+}
 
 export async function GET(request) {
-  // визначення ID таблиці в залежності від аукціону
-  const auction = request.url.split('?auction=')[1] || 'copart';
+  const { searchParams } = new URL(request.url);
+  const auction = (searchParams.get('auction') || 'copart').toLowerCase();
   let spreadsheetId;
 
   try {
+    // 1) Prefer local JSON (exported from Excel)
+    const localRows = await loadLocalAuctionRows(auction);
+    if (localRows) {
+      return NextResponse.json(
+        { data: localRows, source: 'local' },
+        { status: 200 }
+      );
+    }
+
     const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
-    const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY.replace(
+    const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(
       /\\n/g,
       '\n'
     );
+    const useMock =
+      process.env.USE_MOCK_AUCTION_DATA === 'true' ||
+      !clientEmail ||
+      !privateKey;
 
     switch (auction) {
       case 'iaai':
@@ -23,16 +57,18 @@ export async function GET(request) {
         break;
     }
 
-    if (!clientEmail || !privateKey || !spreadsheetId) {
+    // 2) Small mock fallback when no local file and no Google credentials
+    if (useMock || !spreadsheetId) {
+      console.warn(
+        `[getSheetData] Using mock auction locations for "${auction}".`
+      );
       return NextResponse.json(
-        {
-          error:
-            'Змінні оточення GOOGLE_SHEETS_CLIENT_EMAIL, GOOGLE_SHEETS_PRIVATE_KEY або GOOGLE_SHEETS_SPREADSHEET_ID не знайдені.',
-        },
-        { status: 500 }
+        { data: getMockSheetRows(auction), source: 'mock' },
+        { status: 200 }
       );
     }
 
+    // 3) Google Sheets (production)
     const auth = new google.auth.JWT({
       email: clientEmail,
       key: privateKey,
@@ -55,11 +91,11 @@ export async function GET(request) {
       );
     }
 
-    return NextResponse.json({ data: rows }, { status: 200 });
+    return NextResponse.json({ data: rows, source: 'google' }, { status: 200 });
   } catch (error) {
-    console.error('Помилка отримання даних з Google Sheets:', error);
+    console.error('Помилка отримання даних аукціонів:', error);
     return NextResponse.json(
-      { error: 'Помилка отримання даних з Google Sheets.' },
+      { error: 'Помилка отримання даних аукціонів.' },
       { status: 500 }
     );
   }

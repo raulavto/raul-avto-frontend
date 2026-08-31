@@ -9,9 +9,11 @@ export const maxDuration = 60; // Allow up to 60 seconds for PDF generation
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { data, language, carName } = body;
+    const { data, language, carName, country } = body;
+    const resolvedCountry =
+      country === 'korea' || data?.country === 'korea' ? 'korea' : 'usa';
 
-    console.log('Generate PDF - carName received:', carName);
+    console.log('Generate PDF - carName received:', carName, 'country:', resolvedCountry);
 
     // Determine if we're running on Vercel (serverless) vs local
     const isVercel = process.env.VERCEL === '1';
@@ -47,12 +49,19 @@ export async function POST(request: NextRequest) {
       deviceScaleFactor: 2, // Higher DPI for better quality
     });
 
-    // Navigate to the PDF template route
-    const baseUrl = 'https://www.raul-avto.com';
+    // Prefer current host so local/Vercel deploys use their own template
+    const host = request.headers.get('host');
+    const proto = request.headers.get('x-forwarded-proto') || 'http';
+    const baseUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      (host ? `${proto}://${host}` : null) ||
+      request.headers.get('origin') ||
+      'https://www.raul-avto.com';
 
     const urlParams = new URLSearchParams({
       data: JSON.stringify(data),
       language: language,
+      country: resolvedCountry,
     });
     if (carName) {
       urlParams.append('carName', carName);
@@ -67,27 +76,28 @@ export async function POST(request: NextRequest) {
     // Wait for images to load
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Get the actual content height
+    // Measure the template root only — viewport clientHeight (1123) was padding white under the footer
     const contentHeight = await page.evaluate(() => {
-      const body = document.body;
-      return Math.max(
-        body.scrollHeight,
-        body.offsetHeight,
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      );
+      const root =
+        (document.querySelector('[data-pdf-root]') as HTMLElement | null) ||
+        (document.body.firstElementChild as HTMLElement | null) ||
+        document.body;
+      const rect = root.getBoundingClientRect();
+      return Math.ceil(Math.max(root.scrollHeight, root.offsetHeight, rect.height));
     });
 
-    // Calculate page dimensions (792px width = 209.55mm)
-    const pageWidth = 209.55; // mm
-    const pageHeight = (contentHeight * 25.4) / 96; // Convert px to mm
+    await page.setViewport({
+      width: 792,
+      height: Math.max(contentHeight, 1),
+      deviceScaleFactor: 2,
+    });
 
-    // Generate PDF with dynamic height
+    // Use CSS px directly so page height matches the footer flush to the bottom
     const pdfBuffer = await page.pdf({
-      width: `${pageWidth}mm`,
-      height: `${pageHeight}mm`,
+      width: '792px',
+      height: `${contentHeight}px`,
       printBackground: true,
+      preferCSSPageSize: false,
       margin: {
         top: '0',
         right: '0',

@@ -23,7 +23,19 @@
     "pension_fund": "Pension Fund",
     "total_cost": "Total Cost",
     "disclaimer": "The preliminary amount may slightly change depending on the currency rate and the global situation.",
-    "more_details": "More Details"
+    "more_details": "More Details",
+    "stage": "Stage",
+    "korea_inspection": "Car inspection",
+    "korea_car_cost": "Auction cost",
+    "korea_delivery_europe": "Delivery to Europe port",
+    "korea_loading_export": "Loading and export documents",
+    "korea_port_complex": "Port complex",
+    "korea_delivery_pickup": "Delivery to pickup point",
+    "korea_missing_customs": "This make/model/year is not in the Ukrainian customs table for Korea. Please contact a manager to calculate official payments.",
+    "korea_pdf_blocked": "PDF is unavailable until official payments can be calculated.",
+    "korea_price_fallback": "This make/model/year is not in the customs table, so official payments are calculated from the entered car price.",
+    "korea_not_in_tables": "Car not found in the tables, the calculation may have a margin of error",
+    "korea_purchase": "Buying a car in Korea"
   },
   "ru": {
     "total": "Покупка на аукционе",
@@ -49,7 +61,19 @@
     "pension_fund": "Пенсионный фонд",
     "total_cost": "Общая стоимость",
     "disclaimer": "Предварительная сумма может незначительно меняться в зависимости от курса валюты и ситуации в мире.",
-    "more_details": "Подробнее"
+    "more_details": "Подробнее",
+    "stage": "Этап",
+    "korea_inspection": "Осмотр автомобиля",
+    "korea_car_cost": "Стоимость аукциона",
+    "korea_delivery_europe": "Доставка в порт Европы",
+    "korea_loading_export": "Погрузка и экспортные документы",
+    "korea_port_complex": "Комплекс в порту",
+    "korea_delivery_pickup": "Доставка до пункта выдачи",
+    "korea_missing_customs": "Этой марки/модели/года нет в таможенной таблице Украины для авто из Кореи. Уточните сумму официальных платежей у менеджера.",
+    "korea_pdf_blocked": "PDF недоступен, пока не рассчитаны официальные платежи.",
+    "korea_price_fallback": "Этой марки/модели/года нет в таможенной таблице, поэтому официальные платежи рассчитаны по введённой стоимости авто.",
+    "korea_not_in_tables": "Машина не найдена в таблицах, расчёт может иметь погрешность",
+    "korea_purchase": "Покупка автомобиля в Корее"
   },
   "ua": {
     "total": "Купівля на аукционі",
@@ -75,6 +99,18 @@
     "pension_fund": "Пенсійний фонд",
     "total_cost": "Загальна вартість",
     "disclaimer": "Попередня сума може трохи змінюватися в залежності від курсу валюти та ситуації у світі.",
-    "more_details": "Докладніше"
+    "more_details": "Докладніше",
+    "stage": "Етап",
+    "korea_inspection": "Огляд автомобіля",
+    "korea_car_cost": "Вартість аукціону",
+    "korea_delivery_europe": "Доставка в порт Європи",
+    "korea_loading_export": "Погрузка та експортні документи",
+    "korea_port_complex": "Комплекс у порту",
+    "korea_delivery_pickup": "Доставка до пункту видачі",
+    "korea_missing_customs": "Цієї марки/моделі/року немає в митній таблиці України для авто з Кореї. Уточніть суму офіційних платежів у менеджера.",
+    "korea_pdf_blocked": "PDF недоступний, поки не розраховані офіційні платежі.",
+    "korea_price_fallback": "Цієї марки/моделі/року немає в митній таблиці, тому офіційні платежі розраховані за введеною вартістю авто.",
+    "korea_not_in_tables": "Машина не знайдена в таблицях, розрахунок може мати погрішність",
+    "korea_purchase": "Купівля автомобіля в Кореї"
   }
 }

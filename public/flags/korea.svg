@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice">
+  <rect width="900" height="600" fill="#fff"/>
+  <!-- Simplified Taeguk center -->
+  <circle cx="450" cy="300" r="120" fill="#CD2E3A"/>
+  <path d="M450,180 A60,60 0 0,1 450,300 A60,60 0 0,0 450,420 A120,120 0 0,1 450,180" fill="#0047A0"/>
+  <!-- Trigrams (simplified bars) -->
+  <g fill="#000" transform="translate(450 300)">
+    <g transform="rotate(-55) translate(0 -210)">
+      <rect x="-70" y="-8" width="140" height="16"/>
+      <rect x="-70" y="12" width="140" height="16"/>
+      <rect x="-70" y="32" width="140" height="16"/>
+    </g>
+    <g transform="rotate(125) translate(0 -210)">
+      <rect x="-70" y="-8" width="60" height="16"/>
+      <rect x="10" y="-8" width="60" height="16"/>
+      <rect x="-70" y="12" width="140" height="16"/>
+      <rect x="-70" y="32" width="60" height="16"/>
+      <rect x="10" y="32" width="60" height="16"/>
+    </g>
+    <g transform="rotate(35) translate(0 -210)">
+      <rect x="-70" y="-8" width="140" height="16"/>
+      <rect x="-70" y="12" width="60" height="16"/>
+      <rect x="10" y="12" width="60" height="16"/>
+      <rect x="-70" y="32" width="140" height="16"/>
+    </g>
+    <g transform="rotate(-145) translate(0 -210)">
+      <rect x="-70" y="-8" width="60" height="16"/>
+      <rect x="10" y="-8" width="60" height="16"/>
+      <rect x="-70" y="12" width="60" height="16"/>
+      <rect x="10" y="12" width="60" height="16"/>
+      <rect x="-70" y="32" width="60" height="16"/>
+      <rect x="10" y="32" width="60" height="16"/>
+    </g>
+  </g>
+</svg>

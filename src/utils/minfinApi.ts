@@ -24,10 +24,25 @@ export const getMinfinApi = async (): Promise<MinfinRate[] | null> => {
   }
 };
 
+function getLatestAsk(
+  data: MinfinRate[],
+  currency: string
+): number | null {
+  const entries = data
+    .filter((entry) => entry.currency === currency)
+    .sort(
+      (a, b) =>
+        new Date(b.pointDate).getTime() - new Date(a.pointDate).getTime()
+    );
+
+  if (entries.length === 0) return null;
+  const ask = parseFloat(entries[0].ask);
+  return Number.isFinite(ask) && ask > 0 ? ask : null;
+}
+
 /**
  * Get the most recent EUR/USD exchange rate from MinFin API
  * MinFin API returns rates in UAH, so we calculate EUR/USD = (EUR in UAH) / (USD in UAH)
- * @returns The EUR/USD exchange rate or null if not available
  */
 export const getEurExchangeRate = async (): Promise<number | null> => {
   try {
@@ -36,44 +51,32 @@ export const getEurExchangeRate = async (): Promise<number | null> => {
       return null;
     }
 
-    // Filter for EUR and USD entries and sort by pointDate (most recent first)
-    const eurEntries = data
-      .filter((entry: MinfinRate) => entry.currency === 'eur')
-      .sort((a: MinfinRate, b: MinfinRate) => {
-        const dateA = new Date(a.pointDate).getTime();
-        const dateB = new Date(b.pointDate).getTime();
-        return dateB - dateA; // Most recent first
-      });
+    const eurInUah = getLatestAsk(data, 'eur');
+    const usdInUah = getLatestAsk(data, 'usd');
 
-    const usdEntries = data
-      .filter((entry: MinfinRate) => entry.currency === 'usd')
-      .sort((a: MinfinRate, b: MinfinRate) => {
-        const dateA = new Date(a.pointDate).getTime();
-        const dateB = new Date(b.pointDate).getTime();
-        return dateB - dateA; // Most recent first
-      });
-
-    if (eurEntries.length === 0 || usdEntries.length === 0) {
+    if (!eurInUah || !usdInUah) {
       return null;
     }
 
-    // Get the most recent EUR and USD entries
-    const mostRecentEur = eurEntries[0];
-    const mostRecentUsd = usdEntries[0];
-
-    const eurInUah = parseFloat(mostRecentEur.ask);
-    const usdInUah = parseFloat(mostRecentUsd.ask);
-
-    if (isNaN(eurInUah) || isNaN(usdInUah) || usdInUah === 0) {
-      return null;
-    }
-
-    // Calculate EUR/USD = (EUR in UAH) / (USD in UAH)
-    const eurToUsdRate = eurInUah / usdInUah;
-
-    return eurToUsdRate;
+    return eurInUah / usdInUah;
   } catch (error) {
     console.error('Error getting EUR exchange rate:', error);
+    return null;
+  }
+};
+
+/**
+ * Get the most recent USD→UAH ask rate from MinFin (for pension brackets).
+ */
+export const getUsdUahRate = async (): Promise<number | null> => {
+  try {
+    const data = await getMinfinApi();
+    if (!data || !Array.isArray(data)) {
+      return null;
+    }
+    return getLatestAsk(data, 'usd');
+  } catch (error) {
+    console.error('Error getting USD/UAH exchange rate:', error);
     return null;
   }
 };

@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Choose country",
+    "usa": "Cars from the USA",
+    "korea": "Cars from Korea"
+  },
+  "ua": {
+    "title": "Оберіть країну",
+    "usa": "Авто з США",
+    "korea": "Авто з Кореї"
+  },
+  "ru": {
+    "title": "Выберите страну",
+    "usa": "Авто из США",
+    "korea": "Авто из Кореи"
+  }
+}

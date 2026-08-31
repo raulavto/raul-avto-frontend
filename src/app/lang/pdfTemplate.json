@@ -46,7 +46,64 @@
     },
     "totalAmount": "Vehicle without repairs in Ukraine with license plates:",
     "flavorText": "Vehicle price/Auction fee/Vehicle delivery is paid within 2 days after confirmation of winning the vehicle!",
-    "portName": { "kl": "Klaipeda", "bt": "Batumi", "adesa": "Odesa" }
+    "portName": { "kl": "Klaipeda", "bt": "Batumi", "adesa": "Odesa" },
+    "korea": {
+      "title": "PRELIMINARY CALCULATION\nOF A CAR FROM SOUTH KOREA",
+      "operation": "Operation Name",
+      "price": "Price",
+      "stageCol": "Stage",
+      "stage1": "Stage 1",
+      "stage2": "Stage 2",
+      "stage3": "Stage 3",
+      "stage4": "Stage 4",
+      "stage5": "Stage 5",
+      "inspection": {
+        "title": "Car inspection",
+        "description": "(preliminary check of 1 car by our specialists)"
+      },
+      "carCost": {
+        "title": "Car cost in Korea",
+        "description": ""
+      },
+      "ourFee": {
+        "title": "Our services",
+        "description": "(search/selection/document check/car inspection/purchase/delivery/customs clearance)"
+      },
+      "deliveryEurope": {
+        "title": "Delivery to Odesa/Europe port",
+        "description": "(overland delivery in Korea to departure port/photo and video before loading/container loading/container on ship/arrival at Odesa/Europe port)"
+      },
+      "loadingExport": {
+        "title": "Loading and export documents",
+        "description": ""
+      },
+      "customFees": {
+        "title": "Official payments amount",
+        "description": "(for customs clearance of the car at the exchange rate on the purchase day)"
+      },
+      "portComplex": {
+        "title": "Port complex",
+        "description": "(container opening / car unloading)"
+      },
+      "broker": {
+        "title": "Broker",
+        "description": "(customs clearance service upon arrival in Ukraine)"
+      },
+      "deliveryPickup": {
+        "title": "Delivery to pickup point",
+        "description": ""
+      },
+      "certification": {
+        "title": "Certification",
+        "description": ""
+      },
+      "pension": {
+        "title": "Pension fund upon registration",
+        "description": ""
+      },
+      "totalAmount": "Vehicle in Ukraine with license plates:",
+      "flavorText": "Car price / auction fee / car delivery is paid within 2 days after confirmation of winning the car!"
+    }
   },
   "ua": {
     "title": "Попередній\nрозрахунок",
@@ -91,11 +148,68 @@
     },
     "pension": {
       "title": "Пенсійний фонд після реєстрація",
-      "опис": ""
+      "description": ""
     },
     "totalAmount": "ТЗ без ремонту в Україні з номерними знаками:",
     "flavorText": "Ціна транспортного засобу/Аукціонний збір/Доставка транспортного засобу сплачується протягом 2 днів після підтвердження виграшу транспортного засобу!",
-    "portName": { "kl": "Клайпеда", "bt": "Батумі", "adesa": "Одеса" }
+    "portName": { "kl": "Клайпеда", "bt": "Батумі", "adesa": "Одеса" },
+    "korea": {
+      "title": "ПОПЕРЕДНІЙ РОЗРАХУНОК\nАВТОМОБІЛЯ З ПІВДЕННОЇ КОРЕЇ",
+      "operation": "Назва операції",
+      "price": "Ціна",
+      "stageCol": "Етап",
+      "stage1": "Етап 1",
+      "stage2": "Етап 2",
+      "stage3": "Етап 3",
+      "stage4": "Етап 4",
+      "stage5": "Етап 5",
+      "inspection": {
+        "title": "Огляд автомобіля",
+        "description": "(попередня перевірка 1 автомобіля нашими спеціалістами)"
+      },
+      "carCost": {
+        "title": "Вартість автомобіля в Кореї",
+        "description": ""
+      },
+      "ourFee": {
+        "title": "Наші послуги",
+        "description": "(пошук/підбір/перевірка документів/перевірка автомобіля/купівля/доставка/митне оформлення)"
+      },
+      "deliveryEurope": {
+        "title": "Доставка в порт Одеси/Європи",
+        "description": "(доставка суходолом у Кореї до порту відправлення/фото та відео до погрузки/погрузка в контейнер/погрузка контейнера на судно/прибуття в порт Одеси/Європи)"
+      },
+      "loadingExport": {
+        "title": "Погрузка та експортні документи",
+        "description": ""
+      },
+      "customFees": {
+        "title": "Сума офіційних платежів",
+        "description": "(за митне оформлення автомобіля за курсом на день купівлі авто)"
+      },
+      "portComplex": {
+        "title": "Комплекс у порту",
+        "description": "(відкриття контейнера / вивантаження авто)"
+      },
+      "broker": {
+        "title": "Брокер",
+        "description": "(послуга митного оформлення автомобіля після прибуття в Україну)"
+      },
+      "deliveryPickup": {
+        "title": "Доставка до пункту видачі",
+        "description": ""
+      },
+      "certification": {
+        "title": "Сертифікація",
+        "description": ""
+      },
+      "pension": {
+        "title": "Пенсійний фонд при постановці на облік",
+        "description": ""
+      },
+      "totalAmount": "ТЗ в Україні на номерах:",
+      "flavorText": "Ціна автомобіля/Аукціонний збір/Доставка автомобіля сплачується протягом 2 днів після підтвердження виграшу автомобіля!"
+    }
   },
   "ru": {
     "title": "Предварительный расчет",
@@ -148,6 +262,63 @@
       "kl": "Клайпеда",
       "bt": "Батуми",
       "adesa": "Одесса"
+    },
+    "korea": {
+      "title": "ПРЕДВАРИТЕЛЬНЫЙ РАСЧЕТ\nАВТОМОБИЛЯ ИЗ ЮЖНОЙ КОРЕИ",
+      "operation": "Название операции",
+      "price": "Цена",
+      "stageCol": "Этап",
+      "stage1": "Этап 1",
+      "stage2": "Этап 2",
+      "stage3": "Этап 3",
+      "stage4": "Этап 4",
+      "stage5": "Этап 5",
+      "inspection": {
+        "title": "Осмотр автомобиля",
+        "description": "(предварительная проверка 1 автомобиля нашими специалистами)"
+      },
+      "carCost": {
+        "title": "Стоимость автомобиля в Корее",
+        "description": ""
+      },
+      "ourFee": {
+        "title": "Наши услуги",
+        "description": "(поиск/ подбор/ проверка документальной стороны/ проверка автомобиля/ покупка/ доставка/таможенная очистка)"
+      },
+      "deliveryEurope": {
+        "title": "Доставка в порт Одессы/Европы",
+        "description": "(доставка по суши в Кореи до порта отправление/фото и видео материалы до погрузки/погрузка в контейнер/погрузка контейнера на судно/прибытие в порт Одессы/Европы)"
+      },
+      "loadingExport": {
+        "title": "Погрузка и экспортные документы",
+        "description": ""
+      },
+      "customFees": {
+        "title": "Сумма официальных платежей",
+        "description": "(за таможенную очистку автомобиля по курсу на день покупки авто)"
+      },
+      "portComplex": {
+        "title": "Комплекс в порту",
+        "description": "(открытие контейнера /выгрузка авто)"
+      },
+      "broker": {
+        "title": "Брокер",
+        "description": "(услуга таможеного оформления автомобиля по приезду в Украину)"
+      },
+      "deliveryPickup": {
+        "title": "Доставка в пункт выдачи",
+        "description": ""
+      },
+      "certification": {
+        "title": "Сертификация",
+        "description": ""
+      },
+      "pension": {
+        "title": "Пенсионный фонд при постановке на учет",
+        "description": ""
+      },
+      "totalAmount": "ТС в Украине на номерах:",
+      "flavorText": "Цена автомобиля/Аукционный сбор/ Доставка автомобиля оплачивается в течении 2-х дней, после подтверждения выигрыша автомобиля!"
     }
   }
 }

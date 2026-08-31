@@ -1,167 +1,164 @@
 /**
  * Customs, Taxes, Pension and Fees Calculator
  *
- * Extracted from TotalAmountCalculator.tsx
- * This module calculates customs fees, taxes, pension, and other related fees.
- *
- * Based on Ukrainian customs regulations for vehicle import.
+ * Based on Ukrainian Tax Code (Art. 215) and 2026 first-registration rules.
  */
 
 export type FuelType = 'petrol' | 'diesel' | 'hybrid' | 'electric';
 
 export interface CustomsTaxResult {
-  // Base calculations
-  carCost: number; // auctionCost + auctionFee + baseFee (1600)
-
-  // Customs fees
-  importDuty: number; // 10% of carCost (or engineCapacity for electric)
-  exciseTax: number; // Based on engine capacity, fuel type, and vehicle age
-  vat: number; // 20% of (carCost + importDuty + exciseTax) for non-electric
-  customFees: number; // importDuty + exciseTax + vat
-  totalCustomsFees: number; // customFees + 150 (broker fee)
-
-  // Registration fees
-  pension: number; // 3% of carCost
-  certification: number; // Fixed: 150
-
-  // Additional info
+  carCost: number;
+  importDuty: number;
+  exciseTax: number;
+  vat: number;
+  customFees: number;
+  totalCustomsFees: number;
+  pension: number;
+  certification: number;
   vehicleAge: number;
-  euroToDollar: number; // Exchange rate: 1.08
+  ageCoefficient: number;
+  euroToDollar: number;
 }
 
+/** 2026 living wage for working-age persons (UAH) — used for pension brackets */
+export const LIVING_WAGE_UAH_2026 = 3328;
+export const PENSION_BRACKET_3_UAH = 165 * LIVING_WAGE_UAH_2026; // 549 120
+export const PENSION_BRACKET_4_UAH = 290 * LIVING_WAGE_UAH_2026; // 965 120
+
+const BROKER_FEE_USD = 150;
+const CERTIFICATION_FEE_USD = 150;
+
 /**
- * Calculate vehicle age based on manufacture year
+ * Full calendar years from the year AFTER manufacture to the tax year.
+ * Квік (ПКУ ст. 215): min 1, max 15.
+ * Example (2026): car 2021 → Квік = 4
  */
-function calculateVehicleAge(yearOfManufacture: number): number {
+export function calculateAgeCoefficient(yearOfManufacture: number): number {
   const currentYear = new Date().getFullYear();
-  return currentYear - yearOfManufacture;
+  const years = currentYear - yearOfManufacture - 1;
+  return Math.min(15, Math.max(1, years));
+}
+
+export function calculateVehicleAge(yearOfManufacture: number): number {
+  return new Date().getFullYear() - yearOfManufacture;
 }
 
 /**
- * Calculate Import Duty
- *
- * For electric vehicles: engineCapacity * 1 (1 kW = 1 EUR)
- * For other vehicles: 10% of carCost
+ * Import duty (ввізне мито)
+ * - ICE / hybrid: 10% of customs value
+ * - Electric: 0%
  */
 export function calculateImportDuty(
   fuelType: FuelType,
-  carCost: number,
-  engineCapacity: number
+  carCost: number
 ): number {
   if (fuelType === 'electric') {
-    return engineCapacity * 1; // 1 kW = 1 EUR
-  } else {
-    return parseFloat((carCost * 0.1).toFixed(0)); // 10%
+    return 0;
   }
+  return parseFloat((carCost * 0.1).toFixed(0));
 }
 
 /**
- * Calculate Excise Tax
+ * Excise tax (акциз)
  *
- * Formula: (engineCapacity / 1000) * rate * euroToDollar * ageMultiplier
- *
- * Rates by fuel type:
- * - Petrol: 50 EUR per liter (≤3000cc) or 100 EUR per liter (>3000cc)
- * - Diesel: 75 EUR per liter (≤3500cc) or 150 EUR per liter (>3500cc)
- * - Hybrid: 50 EUR per liter (≤3000cc) or 100 EUR per liter (>3000cc)
- * - Electric: 0 (no excise tax)
- *
- * Age multiplier:
- * - If vehicle age ≤ 5 years: multiplier = 1
- * - If vehicle age > 5 years: multiplier = vehicleAge - 1
+ * ICE / hybrid: Ставка_базова × (см³ / 1000) × Квік × EUR→USD
+ * Electric: 1 EUR × battery kWh × EUR→USD
  */
 export function calculateExciseTax(
   fuelType: FuelType,
   engineCapacity: number,
-  vehicleAge: number
+  yearOfManufacture: number,
+  eurToUsdRate: number = 1.08
 ): number {
   if (fuelType === 'electric') {
-    return 0;
+    // engineCapacity for EV = battery capacity in kWh
+    return parseFloat((engineCapacity * eurToUsdRate).toFixed(0));
   }
 
-  const euroToDollar = 1.08;
   let rate = 0;
-
-  if (fuelType === 'petrol') {
+  if (fuelType === 'petrol' || fuelType === 'hybrid') {
     rate = engineCapacity <= 3000 ? 50 : 100;
   } else if (fuelType === 'diesel') {
     rate = engineCapacity <= 3500 ? 75 : 150;
-  } else if (fuelType === 'hybrid') {
-    rate = engineCapacity <= 3000 ? 50 : 100;
   }
 
-  const baseExcise = (engineCapacity / 1000) * rate * euroToDollar;
-  const ageMultiplier = vehicleAge <= 5 ? 1 : vehicleAge - 1;
+  const ageCoefficient = calculateAgeCoefficient(yearOfManufacture);
+  const baseExcise = (engineCapacity / 1000) * rate * eurToUsdRate * ageCoefficient;
 
-  return parseFloat((baseExcise * ageMultiplier).toFixed(0));
+  return parseFloat(baseExcise.toFixed(0));
 }
 
 /**
- * Calculate VAT (Value-Added Tax)
- *
- * Formula: (carCost + importDuty + exciseTax) * 0.2
- *
- * Note: VAT is NOT applied to electric vehicles
+ * VAT 20% of (customs value + import duty + excise).
+ * Applies to all fuel types from 01.01.2026 (EV VAT benefit cancelled).
  */
 export function calculateVAT(
-  fuelType: FuelType,
   carCost: number,
   importDuty: number,
   exciseTax: number
 ): number {
-  if (fuelType === 'electric') {
-    return 0;
-  }
-
   return parseFloat(((carCost + importDuty + exciseTax) * 0.2).toFixed(0));
 }
 
 /**
- * Calculate Pension Fund contribution
- *
- * Formula: carCost * 0.03 (3%)
+ * Pension fund on first registration (3% / 4% / 5%).
+ * Base = vehicle cost without VAT (customs value), converted to UAH for brackets.
+ * Pure electric (not hybrid): max $100.
  */
-export function calculatePension(carCost: number): number {
-  return parseFloat((carCost * 0.03).toFixed(0));
+export function calculatePension(
+  carCostUsd: number,
+  usdToUahRate: number = 41,
+  fuelType?: FuelType
+): number {
+  const costUah = carCostUsd * usdToUahRate;
+
+  let rate = 0.03;
+  if (costUah > PENSION_BRACKET_4_UAH) {
+    rate = 0.05;
+  } else if (costUah > PENSION_BRACKET_3_UAH) {
+    rate = 0.04;
+  }
+
+  const pension = parseFloat((carCostUsd * rate).toFixed(0));
+  if (fuelType === 'electric') {
+    return Math.min(pension, 100);
+  }
+  return pension;
 }
 
 /**
- * Calculate all customs, taxes, and fees
+ * Calculate all customs, taxes, and fees.
  *
- * @param auctionCost - Initial bid cost in auction
- * @param auctionFee - Auction fee
- * @param baseFee - Base fee (default: 1600)
- * @param fuelType - Type of fuel (petrol, diesel, hybrid, electric)
- * @param engineCapacity - Engine capacity in cm³ (or kW for electric)
- * @param yearOfManufacture - Year the vehicle was manufactured
- * @returns CustomsTaxResult object with all calculated fees
+ * @param engineCapacity - cm³ for ICE/hybrid, or battery kWh for electric
  */
 export function calculateCustomsTaxes(
   auctionCost: number,
   auctionFee: number,
-  baseFee: number = 1600,
+  baseFee: number = 1800,
   fuelType: FuelType,
   engineCapacity: number,
-  yearOfManufacture: number
+  yearOfManufacture: number,
+  eurToUsdRate: number = 1.08,
+  usdToUahRate: number = 41
 ): CustomsTaxResult {
-  // Calculate car cost
   const carCost = Number(auctionCost) + Number(auctionFee) + baseFee;
-
-  // Calculate vehicle age
   const vehicleAge = calculateVehicleAge(yearOfManufacture);
+  const ageCoefficient = calculateAgeCoefficient(yearOfManufacture);
 
-  // Calculate customs fees
-  const importDuty = calculateImportDuty(fuelType, carCost, engineCapacity);
-  const exciseTax = calculateExciseTax(fuelType, engineCapacity, vehicleAge);
-  const vat = calculateVAT(fuelType, carCost, importDuty, exciseTax);
+  const importDuty = calculateImportDuty(fuelType, carCost);
+  const exciseTax = calculateExciseTax(
+    fuelType,
+    engineCapacity,
+    yearOfManufacture,
+    eurToUsdRate
+  );
+  const vat = calculateVAT(carCost, importDuty, exciseTax);
 
-  // Calculate totals
   const customFees = importDuty + exciseTax + vat;
-  const totalCustomsFees = customFees + 150; // +150 broker fee
+  const totalCustomsFees = customFees + BROKER_FEE_USD;
 
-  // Calculate registration fees
-  const pension = calculatePension(carCost);
-  const certification = 150; // Fixed fee
+  const pension = calculatePension(carCost, usdToUahRate, fuelType);
+  const certification = CERTIFICATION_FEE_USD;
 
   return {
     carCost,
@@ -173,53 +170,51 @@ export function calculateCustomsTaxes(
     pension,
     certification,
     vehicleAge,
-    euroToDollar: 1.08,
+    ageCoefficient,
+    euroToDollar: eurToUsdRate,
   };
 }
 
 /**
- * Get detailed breakdown of excise tax calculation
- * Useful for debugging or displaying calculation steps
+ * Detailed excise breakdown (debug / UI).
  */
 export function getExciseTaxBreakdown(
   fuelType: FuelType,
   engineCapacity: number,
-  vehicleAge: number
+  yearOfManufacture: number,
+  eurToUsdRate: number = 1.08
 ): {
   rate: number;
   baseAmount: number;
-  ageMultiplier: number;
+  ageCoefficient: number;
   finalAmount: number;
 } {
   if (fuelType === 'electric') {
+    const finalAmount = parseFloat((engineCapacity * eurToUsdRate).toFixed(0));
     return {
-      rate: 0,
-      baseAmount: 0,
-      ageMultiplier: 0,
-      finalAmount: 0,
+      rate: 1,
+      baseAmount: parseFloat((engineCapacity * eurToUsdRate).toFixed(2)),
+      ageCoefficient: 1,
+      finalAmount,
     };
   }
 
-  const euroToDollar = 1.08;
   let rate = 0;
-
-  if (fuelType === 'petrol') {
+  if (fuelType === 'petrol' || fuelType === 'hybrid') {
     rate = engineCapacity <= 3000 ? 50 : 100;
   } else if (fuelType === 'diesel') {
     rate = engineCapacity <= 3500 ? 75 : 150;
-  } else if (fuelType === 'hybrid') {
-    rate = engineCapacity <= 3000 ? 50 : 100;
   }
 
+  const ageCoefficient = calculateAgeCoefficient(yearOfManufacture);
   const liters = engineCapacity / 1000;
-  const baseAmount = liters * rate * euroToDollar;
-  const ageMultiplier = vehicleAge <= 5 ? 1 : vehicleAge - 1;
-  const finalAmount = parseFloat((baseAmount * ageMultiplier).toFixed(0));
+  const baseAmount = liters * rate * eurToUsdRate;
+  const finalAmount = parseFloat((baseAmount * ageCoefficient).toFixed(0));
 
   return {
     rate,
     baseAmount: parseFloat(baseAmount.toFixed(2)),
-    ageMultiplier,
+    ageCoefficient,
     finalAmount,
   };
 }

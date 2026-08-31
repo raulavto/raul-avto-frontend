@@ -1,17 +1,29 @@
 {
-    "en": {
-        "hero_title_line1": "Delivery and customs",
-        "hero_title_line2": "calculator for cars",
-        "hero_title_line3": "from the USA"
-    },
-    "ua": {
-        "hero_title_line1": "Калькулятор доставки",
-        "hero_title_line2": "і митного оформлення",
-        "hero_title_line3": "авто з США"
-    },
-    "ru": {
-        "hero_title_line1": "Калькулятор доставки",
-        "hero_title_line2": "и таможенного оформления",
-        "hero_title_line3": "авто из США"
+  "en": {
+    "hero_title_line1": "Delivery and customs",
+    "hero_title_line2": "calculator for cars",
+    "hero_title_line3": {
+      "none": "from USA or Korea",
+      "usa": "from the USA",
+      "korea": "from Korea"
     }
+  },
+  "ua": {
+    "hero_title_line1": "Калькулятор доставки",
+    "hero_title_line2": "і митного оформлення",
+    "hero_title_line3": {
+      "none": "авто",
+      "usa": "авто з США",
+      "korea": "авто з Кореї"
+    }
+  },
+  "ru": {
+    "hero_title_line1": "Калькулятор доставки",
+    "hero_title_line2": "и таможенного оформления",
+    "hero_title_line3": {
+      "none": "авто",
+      "usa": "авто из США",
+      "korea": "авто из Кореи"
+    }
+  }
 }

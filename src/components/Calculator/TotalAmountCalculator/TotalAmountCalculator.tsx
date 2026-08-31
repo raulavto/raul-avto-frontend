@@ -4,20 +4,19 @@ import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/calcResult.json';
 import { getTotalAuctionFee } from '../../../utils/auctionFeeCalculator';
 import {
-  calculateImportDuty,
-  calculateExciseTax,
-  calculateVAT,
-  calculatePension,
+  calculateCustomsTaxes,
+  type FuelType,
 } from '../../../utils/customsTaxCalculator';
-import { getEurExchangeRate } from '../../../utils/minfinApi';
+import { getEurExchangeRate, getUsdUahRate } from '../../../utils/minfinApi';
 
-const baseFee = 1600;
+const baseFee = 1800;
 
 const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   console.log('🚀 ~ TotalAmountCalculator ~ data:', data);
   const language = useStore((state) => state.language);
   const t = translations[language];
   const [eurExchangeRate, setEurExchangeRate] = useState<number | null>(null);
+  const [usdUahRate, setUsdUahRate] = useState<number | null>(null);
   const {
     auction,
     auctionCost,
@@ -28,6 +27,8 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
     auctionLoc,
     departPort,
     deliveryPort,
+    carMake,
+    carModel,
   } = data;
 
   // New auction fee calculation using extracted logic
@@ -37,7 +38,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
     return parseFloat(getTotalAuctionFee(auctionType, auctionCost).toFixed(0));
   };
 
-  const auctionFee = getNewAuctionFee() + 290; // base fee of 290
+  const auctionFee = getNewAuctionFee() + 300; // base fee of 300
 
   const auctionTotal = auctionCost * 1 + auctionFee;
 
@@ -55,79 +56,60 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
   // delivery
   let usaDelivery = 150 + auctionLoc * 1;
 
+  // Klaipeda sea freight tariffs (USD): SEDAN / SUV; LARGE = SUV × 1.5
+  // Keys match Port columns in towing table (copart.json / iaai.json)
+  const klaipedaSeaRates: Record<string, { sedan: number; suv: number }> = {
+    NJ: { sedan: 1290, suv: 1402 },
+    GA: { sedan: 1290, suv: 1390 },
+    FL: { sedan: 1365, suv: 1465 },
+    TX: { sedan: 1440, suv: 1540 },
+    CA: { sedan: 1790, suv: 1940 },
+    WA: { sedan: 1790, suv: 1940 }, // same west-coast band as CA
+  };
+
   let seaDelivery = 0;
 
   if (deliveryPort === 'kl') {
-    if (departPort === 'NJ') {
-      // motorcyle isnt specified initially
+    const rates = klaipedaSeaRates[departPort];
+    if (rates) {
       if (transportType === 'sedan' || transportType === 'motorcycle') {
-        seaDelivery = 1275;
+        seaDelivery = rates.sedan;
       } else if (transportType === 'suv') {
-        seaDelivery = 1387;
+        seaDelivery = rates.suv;
       } else if (transportType === 'mediumSuv') {
-        seaDelivery = 1587;
-      }
-    } else if (departPort === 'Savannah') {
-      if (transportType === 'sedan' || transportType === 'motorcycle') {
-        seaDelivery = 1275;
-      } else if (transportType === 'suv') {
-        seaDelivery = 1375;
-      } else if (transportType === 'mediumSuv') {
-        seaDelivery = 1575;
-      }
-    } else if (departPort === 'FL') {
-      if (transportType === 'sedan' || transportType === 'motorcycle') {
-        seaDelivery = 1350;
-      } else if (transportType === 'suv') {
-        seaDelivery = 1450;
-      } else if (transportType === 'mediumSuv') {
-        seaDelivery = 1650;
-      }
-    } else if (departPort === 'TX') {
-      if (transportType === 'sedan' || transportType === 'motorcycle') {
-        seaDelivery = 1425;
-      } else if (transportType === 'suv') {
-        seaDelivery = 1525;
-      } else if (transportType === 'mediumSuv') {
-        seaDelivery = 1725;
-      }
-    } else if (departPort === 'CA') {
-      if (transportType === 'sedan' || transportType === 'motorcycle') {
-        seaDelivery = 1775;
-      } else if (transportType === 'suv') {
-        seaDelivery = 1925;
-      } else if (transportType === 'mediumSuv') {
-        seaDelivery = 2125;
+        // LARGE / OVERSIZE = SUV tariff × 1.5, rounded to whole USD
+        seaDelivery = Math.round(rates.suv * 1.5);
       }
     }
   } else if (deliveryPort === 'bt') {
-    if (departPort === 'NJ') {
+    if (departPort === 'NJ' || departPort === 'GA') {
       seaDelivery = 1200;
-    } else if (departPort === 'CA') {
+    } else if (departPort === 'CA' || departPort === 'WA') {
       seaDelivery = 1800;
     } else if (departPort === 'TX') {
       seaDelivery = 1500;
-    } else if (departPort === 'Savannah') {
-      seaDelivery = 1200;
     } else if (departPort === 'FL') {
       seaDelivery = 1350;
     }
   } else {
-    if (departPort === 'NJ') {
+    if (departPort === 'NJ' || departPort === 'GA') {
       seaDelivery = 1925;
-    } else if (departPort === 'CA') {
+    } else if (departPort === 'CA' || departPort === 'WA') {
       seaDelivery = 2625;
     } else if (departPort === 'TX') {
       seaDelivery = 2025;
-    } else if (departPort === 'Savannah') {
-      seaDelivery = 1925;
     } else if (departPort === 'FL') {
       seaDelivery = 1800;
     }
   }
 
-  // Sea delivery total
-  const totalSeaDelivery = seaDelivery * 1 + data.cityCost * 1;
+  // Extra fee for all shipments departing from FL
+  if (departPort === 'FL' && seaDelivery > 0) {
+    seaDelivery += 250;
+  }
+
+  // Sea delivery total (+$100 flat surcharge)
+  const totalSeaDelivery = seaDelivery * 1 + data.cityCost * 1 + 100;
 
   let groundDelivery = 0;
 
@@ -139,85 +121,46 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
 
   const totalDelivery = totalSeaDelivery + groundDelivery * 1;
 
-  const carCost = Number(auctionCost) + Number(auctionFee) + baseFee;
-  // customs
+  // Live rates from Minfin, with fallbacks
+  const eurToUsdRate = eurExchangeRate || 1.08;
+  const usdToUah = usdUahRate || 41;
 
-  let importDuty = 0;
-  if (fuelType === 'electric') {
-    importDuty = engineCapacity * 1; // 1 kW = 1 EUR
-  } else {
-    importDuty = parseFloat((carCost * 0.1).toFixed(0));
-  }
+  const customs = calculateCustomsTaxes(
+    Number(auctionCost) || 0,
+    Number(auctionFee) || 0,
+    baseFee,
+    (fuelType || 'petrol') as FuelType,
+    Number(engineCapacity) || 0,
+    parseInt(yearOfManufacture, 10) || new Date().getFullYear(),
+    eurToUsdRate,
+    usdToUah
+  );
 
-  const currentYear = new Date().getFullYear();
-  const vehicleAge = currentYear - parseInt(yearOfManufacture, 10);
+  const {
+    customFees,
+    totalCustomsFees,
+    pension,
+    certification,
+  } = customs;
 
-  let exciseTax = 0;
-  const euroToDollar = 1.08;
-
-  if (fuelType === 'petrol') {
-    exciseTax = parseFloat(
-      (
-        (engineCapacity / 1000) *
-        (engineCapacity <= 3000 ? 50 : 100) *
-        euroToDollar
-      ).toFixed(0)
-    );
-  } else if (fuelType === 'diesel') {
-    exciseTax = parseFloat(
-      (
-        (engineCapacity / 1000) *
-        (engineCapacity <= 3500 ? 75 : 150) *
-        euroToDollar
-      ).toFixed(0)
-    );
-  } else if (fuelType === 'hybrid') {
-    exciseTax = parseFloat(
-      (
-        (engineCapacity / 1000) *
-        (engineCapacity <= 3000 ? 50 : 100) *
-        euroToDollar
-      ).toFixed(0)
-    );
-  }
-
-  exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 1;
-
-  let vat = 0;
-  if (fuelType !== 'electric') {
-    vat = parseFloat(
-      ((carCost + importDuty * 1 + exciseTax * 1) * 0.2).toFixed(0)
-    );
-  }
-
-  const customFees = importDuty * 1 + exciseTax * 1 + vat * 1;
-
-  const totalCustomsFees = customFees + 150;
-
-  // Port Complex and Port Parking (in EUR)
+  // Port Complex and Port Parking (in EUR → USD)
   const portComplexEur = 310;
   const portParkingEur = 50;
-
-  // Convert EUR to USD using exchange rate, fallback to 1.08 if rate not available
-  // Round up to nearest integer
-  const eurToUsdRate = eurExchangeRate || 1.08;
   const portComplex = Math.ceil(portComplexEur * eurToUsdRate);
   const portParking = Math.ceil(portParkingEur * eurToUsdRate);
   const totalDeliveryWithParking = totalDelivery + portComplex + portParking;
 
-  const pension = parseFloat(
-    (0.03 * (carCost + totalDeliveryWithParking + ourFee)).toFixed(0)
-  );
-
-  // Fetch EUR exchange rate on component mount
+  // Fetch exchange rates on mount
   useEffect(() => {
-    const fetchExchangeRate = async () => {
-      const rate = await getEurExchangeRate();
-      if (rate) {
-        setEurExchangeRate(rate);
-      }
+    const fetchExchangeRates = async () => {
+      const [eurRate, uahRate] = await Promise.all([
+        getEurExchangeRate(),
+        getUsdUahRate(),
+      ]);
+      if (eurRate) setEurExchangeRate(eurRate);
+      if (uahRate) setUsdUahRate(uahRate);
     };
-    fetchExchangeRate();
+    fetchExchangeRates();
   }, []);
 
   useEffect(() => {
@@ -232,13 +175,16 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
         port_parking: portParking,
         broker: 150,
         groundDelivery: groundDelivery,
-        customFees: totalCustomsFees,
-        certification: 150,
+        // Without broker — PDF adds broker separately (avoids +$150 double count)
+        customFees: customFees,
+        certification: certification,
         pension: pension,
         yearOfManufacture: yearOfManufacture,
         carType: transportType,
         fuelType: fuelType,
         engineCapacity: engineCapacity,
+        carMake: carMake || '',
+        carModel: carModel || '',
       });
     }
   }, [
@@ -252,17 +198,20 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
     portComplex,
     portParking,
     groundDelivery,
-    totalCustomsFees,
+    customFees,
+    certification,
     pension,
     yearOfManufacture,
     transportType,
     fuelType,
     engineCapacity,
+    carMake,
+    carModel,
     setPdfData,
   ]);
 
   return (
-    <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] max-w-[940px] w-full bg-gradient-sub-block">
+    <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] w-full max-w-none bg-gradient-sub-block self-stretch">
       <ul className="flex flex-col">
         <li className="border-b-[1px] border-solid border-primary">
           <div className="flex justify-between items-center">
@@ -444,7 +393,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
               {t.registration}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
-              $ {pension ? 150 + pension : 0}
+              $ {pension ? certification + pension : 0}
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">
@@ -454,7 +403,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ 150
+                $ {certification}
               </div>
             </li>
             <li className="flex items-center justify-between">
@@ -477,7 +426,7 @@ const TotalAmountCalculator = ({ data, setPdfData, isDataGenerated }) => {
           <div className="text-primary text-20 font-semibold">
             ${' '}
             {totalCustomsFees
-              ? +150 +
+              ? certification +
                 pension +
                 totalCustomsFees +
                 totalDeliveryWithParking +

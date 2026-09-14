@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelection';
 import { Squash as Hamburger } from 'hamburger-react';
 import { usePathname } from 'next/navigation';
@@ -15,9 +14,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
   const isActive = 'text-red-600 text-[20px]';
 
   const pathname = usePathname();
-  const language = useStore((state) => state.language); // Берем текущий язык из Zustand
-  const isActiveClass = 'text-red-600 text-[16px]';
-  const t = translations[language]; // Достаем переводы для выбранного языка
+  const language = useStore((state) => state.language);
+  const t = translations[language];
 
   useEffect(() => {
     if (isOpen) {
@@ -40,72 +38,27 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="mb-[50px]">
           <LanguageSelection />
         </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/calculator' ? isActive : ''
-            }`}
-            href="/calculator"
-          >
-            {t.calculator}
-          </Link>
-        </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/partnership' ? isActive : ''
-            }`}
-            href="/partnership"
-          >
-            {t.partnership}
-          </Link>
-        </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/contacts' ? isActive : ''
-            }`}
-            href="/contacts"
-          >
-            {t.contacts}
-          </Link>
-        </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/about' ? isActive : ''
-            }`}
-            href="/about"
-          >
-            {t.about}
-          </Link>
-        </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/blog' ? isActive : ''
-            }`}
-            href="/blog"
-          >
-            {t.blog}
-          </Link>
-        </li>
-        <li className="p-2">
-          <Link
-            onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/faq' ? isActive : ''
-            }`}
-            href="/faq"
-          >
-            {t.faq}
-          </Link>
-        </li>
+        {[
+          { href: '/calculator', label: t.calculator },
+          { href: '/terms', label: t.terms },
+          { href: '/contacts', label: t.contacts },
+          { href: '/about', label: t.about },
+          { href: '/partnership', label: t.partnership },
+          { href: '/blog', label: t.blog },
+          { href: '/faq', label: t.faq },
+        ].map((link) => (
+          <li key={link.href} className="p-2">
+            <Link
+              onClick={onClose}
+              className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
+                pathname === link.href ? isActive : ''
+              }`}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
 
         {/* <li className="p-2">
           <Link

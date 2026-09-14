@@ -79,9 +79,15 @@ const AboutStory = ({ title, blocks }: AboutStoryProps) => {
               </div>
 
               <div className="rounded-sub-block-16 border border-primary/20 bg-gradient-sub-block p-5 tablet:p-6">
-                <div className="mb-3 flex flex-wrap items-center gap-3">
+                <div className="mb-3 flex flex-wrap items-center gap-3 tablet:gap-4">
                   {block.year && (
-                    <span className="rounded-sub-block-8 bg-[#ea001c]/15 px-3 py-1 text-12 font-bold uppercase tracking-wide text-[#ea001c]">
+                    <span
+                      className={
+                        index < 2
+                          ? 'text-[28px] tablet:text-[40px] font-bold leading-none tracking-tight text-[#ea001c]'
+                          : 'rounded-sub-block-8 bg-[#ea001c]/15 px-3 py-1 text-12 font-bold uppercase tracking-wide text-[#ea001c]'
+                      }
+                    >
                       {block.year}
                     </span>
                   )}

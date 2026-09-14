@@ -1,0 +1,605 @@
+{
+  "ua": {
+    "pageTitle": "Умови співпраці",
+    "title": "Умови співпраці з RAUL AVTO",
+    "intro": "Ми зробили процес придбання автомобіля максимально зрозумілим, прозорим та поетапним. Ще до початку роботи ви знаєте орієнтовний бюджет, вартість наших послуг, порядок участі в аукціоні, умови оплати та основні етапи доставки автомобіля в Україну.",
+    "moreDetails": "Детальніше",
+    "hideDetails": "Згорнути",
+    "sections": [
+      {
+        "id": "application",
+        "number": "01",
+        "title": "Заявка на підбір автомобіля",
+        "summary": "Ви залишаєте заявку з побажаннями щодо автомобіля — марка, модель, рік, комплектація, пробіг, колір, тип салону та бюджет. На їх основі ми формуємо критерії пошуку й починаємо підбір.",
+        "details": [
+          "Ви залишаєте заявку та розповідаєте менеджеру, який автомобіль шукаєте: марка, модель, рік випуску, комплектація, пробіг, колір, тип салону та бажаний бюджет.",
+          "На основі ваших побажань ми формуємо критерії пошуку та починаємо підбір автомобіля."
+        ]
+      },
+      {
+        "id": "selection",
+        "number": "02",
+        "title": "Підбір та попередній розрахунок вартості",
+        "summary": "Перед розрахунком кінцевої вартості в Україні ми аналізуємо статистику продажів аналогічних авто на аукціонах за останні 4 місяці та показуємо орієнтовну ціну «під ключ» без урахування ремонту.",
+        "details": [
+          "Перш ніж назвати орієнтовну кінцеву вартість автомобіля в Україні, ми аналізуємо реальну статистику продажів аналогічних автомобілів на аукціонах за останні 4 місяці.",
+          "Для максимально точного аналізу задаємо конкретні параметри: марку та модель, роки випуску, двигун, тип приводу, пробіг та інші характеристики. Наприклад: Mercedes-Benz E-Class 2018–2020 року, двигун 2.0, повний привід, пробіг до 100 000 км.",
+          "Система показує, за яку вартість аналогічні автомобілі фактично продавалися на аукціонах. Ми фільтруємо результати та визначаємо середню статистичну ціну покупки.",
+          "Наприклад, якщо середня ціна такого автомобіля на аукціоні становить $10 000, саме від цієї суми ми робимо повний попередній розрахунок та показуємо, скільки автомобіль орієнтовно коштуватиме в Україні, на обліку та без урахування ремонту.",
+          "Після цього починаємо пошук конкретного автомобіля — з мінімальними пошкодженнями, оптимальним пробігом та відповідно до ваших особистих побажань щодо кольору кузова, салону, комплектації та інших параметрів. Усі знайдені варіанти обов’язково погоджуються з вами."
+        ]
+      },
+      {
+        "id": "fees",
+        "number": "03",
+        "title": "Вартість послуг RAUL AVTO",
+        "summary": "Вартість послуг залежить від фактичної ціни покупки на аукціоні разом з аукціонним збором, а не від кінцевої вартості автомобіля в Україні.",
+        "pricing": [
+          {
+            "amount": "$400",
+            "condition": "автомобіль разом з аукціонним збором коштує до $10 000"
+          },
+          {
+            "amount": "$500",
+            "condition": "автомобіль разом з аукціонним збором коштує до $15 000"
+          },
+          {
+            "amount": "$600",
+            "condition": "автомобіль разом з аукціонним збором коштує понад $15 000"
+          }
+        ],
+        "details": [
+          "Вартість послуг RAUL AVTO залежить саме від фактичної ціни покупки автомобіля на аукціоні разом з аукціонним збором, а не від кінцевої вартості автомобіля в Україні.",
+          "Таким чином, ще до початку роботи ви розумієте принцип формування вартості наших послуг."
+        ]
+      },
+      {
+        "id": "guarantee",
+        "number": "04",
+        "title": "Гарантійний платіж для участі в торгах",
+        "summary": "Для участі в аукціонах потрібен гарантійний платіж: мінімум $1 000 при сумі до $10 000, або 10% від погодженої суми, якщо покупка дорожча. Після оплати ви отримуєте гарантійний лист.",
+        "details": [
+          "Для початку участі в аукціонах необхідно внести гарантійний платіж.",
+          "При сумі покупки автомобіля до $10 000 мінімальний гарантійний платіж становить $1 000.",
+          "Якщо передбачувана сума покупки автомобіля разом з аукціонним збором перевищує $10 000, гарантійний платіж становить 10% від погодженої суми.",
+          "Після отримання гарантійного платежу RAUL AVTO видає клієнту гарантійний лист, який підтверджує отримання коштів та умови їх внесення."
+        ],
+        "linkKey": "guaranteeLetter",
+        "linkLabel": "Переглянути приклад гарантійного листа"
+      },
+      {
+        "id": "guarantee-payment",
+        "number": "05",
+        "title": "Як внести гарантійний платіж",
+        "summary": "Платіж можна внести у гривні за актуальним курсом, іншим погодженим способом або в офісі в Києві. Це не доплата за послуги — сума зараховується в рахунок наступних платежів і повертається повністю, якщо авто ще не придбано.",
+        "details": [
+          "Гарантійний платіж можна здійснити у гривні за актуальним курсом або іншим способом, попередньо погодженим з менеджером.",
+          "Якщо ви знаходитесь у Києві, кошти також можна внести безпосередньо в офісі RAUL AVTO.",
+          "Важливо: гарантійний платіж не є додатковою оплатою за наші послуги. Після придбання автомобіля ця сума зараховується в рахунок ваших наступних платежів.",
+          "Внесення гарантійного платежу також не обмежує кількість аукціонів. Ви можете брати участь у торгах стільки разів, скільки буде потрібно для придбання відповідного автомобіля.",
+          "Якщо автомобіль ще не був придбаний і ви вирішили припинити пошук — наприклад, змінили рішення або придбали автомобіль в Україні — гарантійний платіж повертається вам у повному обсязі."
+        ],
+        "linkKey": "officeRoute",
+        "linkLabel": "Прокласти маршрут до офісу RAUL AVTO"
+      },
+      {
+        "id": "auction",
+        "number": "06",
+        "title": "Участь в аукціоні",
+        "summary": "Перед торгами створюється спільна група з менеджером у Telegram, WhatsApp або Viber. Максимальну ставку погоджуємо заздалегідь, а фінальне рішення під час аукціону залишається за вами. Для прозорості ведемо запис екрана.",
+        "details": [
+          "Перед початком торгів створюється спільна група з клієнтом та менеджером у Telegram, WhatsApp або Viber. У ній ви отримуєте всю інформацію щодо автомобіля та можете в реальному часі спостерігати за перебігом аукціону.",
+          "Максимальну ставку ми попередньо погоджуємо з вами. Але безпосередньо під час торгів ви також можете прийняти рішення збільшити її — наприклад, ще на $100–200, якщо бачите, що автомобіль дійсно вартий покупки.",
+          "Таким чином, клієнт фактично бере участь в аукціоні разом із нашим менеджером та самостійно приймає фінальне рішення щодо максимальної ставки.",
+          "Для максимальної прозорості ми ведемо запис екрана під час аукціону. Це дозволяє зафіксувати перебіг торгів, ставки та рішення, які приймалися безпосередньо під час покупки автомобіля."
+        ]
+      },
+      {
+        "id": "purchased",
+        "number": "07",
+        "title": "Автомобіль придбано",
+        "summary": "Після успішного аукціону менеджер одразу повідомляє вас і надсилає підтвердження з аукціонного кабінету: фактична ціна, збір та інші нарахування.",
+        "details": [
+          "Після успішного завершення аукціону менеджер одразу повідомляє вам, що автомобіль придбано.",
+          "У спільну групу надсилається підтвердження з аукціонного кабінету, де ви можете побачити фактичну вартість покупки автомобіля, аукціонний збір та інші нарахування.",
+          "Таким чином, ви самостійно бачите, за яку суму був придбаний автомобіль і з чого складається платіж.",
+          "З цього моменту починається наступний етап — оплата автомобіля та підготовка до його доставки."
+        ]
+      },
+      {
+        "id": "payment-after",
+        "number": "08",
+        "title": "Оплата після покупки",
+        "summary": "Оплату потрібно здійснити протягом 2 робочих днів. Затримка може призвести до штрафу від аукціону.",
+        "details": [
+          "Після придбання автомобіля оплату необхідно здійснити протягом 2 робочих днів.",
+          "Міжнародні платежі та переказ коштів потребують часу, тому важливо максимально оперативно здійснити оплату після покупки автомобіля.",
+          "Це також є важливою умовою аукціону: у разі несвоєчасної оплати аукціон може нарахувати додатковий штраф за затримку платежу."
+        ]
+      },
+      {
+        "id": "payment-methods",
+        "number": "09",
+        "title": "Способи оплати",
+        "summary": "Менеджер надає інвойс і реквізити. Можна оплатити самостійно міжнародним платежем або іншим погодженим способом.",
+        "details": [
+          "Після покупки автомобіля менеджер надає вам інвойс та необхідні реквізити для здійснення платежу.",
+          "Якщо у вас є можливість самостійно здійснити міжнародний платіж, ми надаємо інвойс, за яким ви можете напряму оплатити автомобіль за кордон.",
+          "Також доступні інші погоджені способи розрахунку. Детальну інформацію щодо доступних варіантів оплати ви можете отримати у свого менеджера."
+        ]
+      },
+      {
+        "id": "transfer-fee",
+        "number": "10",
+        "title": "Комісія за переказ коштів",
+        "summary": "Якщо міжнародна оплата зі США або Кореї йде через RAUL AVTO, комісія становить 4% лише від суми, яка фактично переказується за межі України.",
+        "details": [
+          "Якщо міжнародна оплата автомобіля зі США або Кореї здійснюється через RAUL AVTO, комісія за переказ становить 4%.",
+          "Важливо: комісія 4% нараховується лише на ту частину коштів, яка фактично переказується за межі України.",
+          "Для автомобілів зі США до такої суми можуть входити: вартість автомобіля + аукціонний збір + транспортні витрати за кордоном.",
+          "Для автомобілів із Кореї: вартість автомобіля + доставка + оформлення необхідної експортної документації в Кореї.",
+          "Точну суму платежу та комісії менеджер повідомляє перед здійсненням переказу."
+        ]
+      },
+      {
+        "id": "delivery",
+        "number": "11",
+        "title": "Доставка автомобіля",
+        "summary": "Після оплати організовуємо повну логістику: забір з аукціону, склад з фотофіксацією, контейнер і морське перевезення до погодженого порту. На основних етапах менеджер інформує про статус.",
+        "details": [
+          "Після оплати ми організовуємо повний логістичний процес.",
+          "Автомобіль забирають з аукціону та доставляють на наш склад або логістичний майданчик. Після прибуття автомобіля на склад ми робимо фотографії та фіксуємо його стан.",
+          "Далі автомобіль готується до морського перевезення: подається контейнер, автомобіль завантажується та закріплюється в ньому. Після цього контейнер повертається до порту, завантажується на судно та відправляється до погодженого порту прибуття.",
+          "Залежно від маршруту та країни призначення це може бути порт в Україні, Румунії, Грузії або іншій країні Європи.",
+          "На основних етапах маршруту менеджер інформує вас про статус та місцезнаходження автомобіля."
+        ]
+      },
+      {
+        "id": "customs",
+        "number": "12",
+        "title": "Прибуття автомобіля та митне оформлення",
+        "summary": "Після розвантаження в порту надсилаємо фото стану, організовуємо доставку в Україну та митне оформлення. Митні платежі клієнт сплачує самостійно в гривні.",
+        "details": [
+          "Після прибуття судна та розформування контейнера в порту ми отримуємо автомобіль та надсилаємо клієнту фотографії його стану одразу після відкриття контейнера.",
+          "Далі організовується транспортування автомобіля в Україну та його митне оформлення.",
+          "Митні платежі клієнт здійснює безпосередньо до митної служби України у гривні відповідно до актуального розрахунку.",
+          "Якщо автомобіль прибуває через європейський порт, клієнт також оформлює необхідну довіреність на водія, який транспортуватиме автомобіль із порту в Україну. Якщо автомобіль прибув безпосередньо до Одеси, така довіреність на міжнародне перевезення не потрібна.",
+          "Менеджер супроводжує клієнта та повідомляє, що необхідно зробити на кожному наступному етапі."
+        ]
+      },
+      {
+        "id": "receiving",
+        "number": "13",
+        "title": "Отримання автомобіля",
+        "summary": "Після митного оформлення автомобіль передається клієнту. За потреби допомагаємо з ремонтом, сертифікацією, документами та реєстрацією.",
+        "details": [
+          "Після завершення митного оформлення та всіх необхідних процедур автомобіль передається клієнту.",
+          "За необхідності команда RAUL AVTO також може допомогти з ремонтом автомобіля, сертифікацією, підготовкою документів та подальшою реєстрацією.",
+          "Наша задача — супроводити клієнта від моменту першої заявки до моменту, коли автомобіль буде готовий до експлуатації в Україні."
+        ]
+      }
+    ],
+    "contract": {
+      "title": "Договір та гарантії",
+      "summary": "Основні умови співпраці, порядок оплати, відповідальність та зобов’язання сторін фіксуються в договорі. Перед початком співпраці ви можете заздалегідь ознайомитися з його умовами.",
+      "details": [
+        "Основні умови співпраці, порядок оплати, відповідальність та зобов’язання сторін фіксуються в договорі.",
+        "Перед початком співпраці ви можете заздалегідь ознайомитися з його умовами."
+      ],
+      "linkKey": "contract",
+      "linkLabel": "Переглянути договір"
+    },
+    "cta": {
+      "title": "Готові підібрати автомобіль?",
+      "button": "Залишити заявку на підбір"
+    },
+    "links": {
+      "guaranteeLetter": "/pdf/guarantee-letter.pdf",
+      "officeRoute": "https://www.google.com/maps/place/RAUL+AVTO/@50.3521665,30.5592367,797m/data=!3m2!1e3!4b1!4m6!3m5!1s0x40d4c7e202860701:0x19d1cf1158fe732!8m2!3d50.3521665!4d30.5592367!16s%2Fg%2F11y1y10jj_?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D",
+      "contract": "/pdf/contract.pdf",
+      "leaveRequest": "/#order-form"
+    }
+  },
+  "en": {
+    "pageTitle": "Terms of cooperation",
+    "title": "Terms of cooperation with RAUL AVTO",
+    "intro": "We made the car purchase process as clear, transparent and step-by-step as possible. Before we start, you already know the estimated budget, our service fees, auction participation flow, payment terms and the main delivery stages to Ukraine.",
+    "moreDetails": "More details",
+    "hideDetails": "Show less",
+    "sections": [
+      {
+        "id": "application",
+        "number": "01",
+        "title": "Car selection request",
+        "summary": "You leave a request with your preferences — make, model, year, trim, mileage, color, interior and budget. Based on that, we set search criteria and start selecting a car.",
+        "details": [
+          "You leave a request and tell the manager what car you are looking for: make, model, year, trim, mileage, color, interior type and desired budget.",
+          "Based on your preferences, we form search criteria and begin selecting a car."
+        ]
+      },
+      {
+        "id": "selection",
+        "number": "02",
+        "title": "Selection and preliminary cost estimate",
+        "summary": "Before quoting the final cost in Ukraine, we analyze sales statistics of similar cars at auctions over the last 4 months and show an estimated turnkey price excluding repairs.",
+        "details": [
+          "Before naming the estimated final cost of the car in Ukraine, we analyze real sales statistics of similar cars at auctions over the last 4 months.",
+          "For the most accurate analysis we set specific parameters: make and model, years, engine, drivetrain, mileage and other characteristics. For example: Mercedes-Benz E-Class 2018–2020, 2.0 engine, AWD, mileage up to 100,000 km.",
+          "The system shows the prices at which similar cars were actually sold at auctions. We filter the results and determine the average statistical purchase price.",
+          "For example, if the average auction price of such a car is $10,000, we use that figure for a full preliminary calculation and show how much the car would approximately cost in Ukraine, registered and excluding repairs.",
+          "After that we start searching for a specific car — with minimal damage, optimal mileage and according to your preferences for body color, interior, trim and other parameters. All found options are always approved with you."
+        ]
+      },
+      {
+        "id": "fees",
+        "number": "03",
+        "title": "RAUL AVTO service fees",
+        "summary": "Our service fee depends on the actual auction purchase price including the auction fee, not on the final car cost in Ukraine.",
+        "pricing": [
+          {
+            "amount": "$400",
+            "condition": "car with auction fee costs up to $10,000"
+          },
+          {
+            "amount": "$500",
+            "condition": "car with auction fee costs up to $15,000"
+          },
+          {
+            "amount": "$600",
+            "condition": "car with auction fee costs over $15,000"
+          }
+        ],
+        "details": [
+          "The RAUL AVTO service fee depends on the actual auction purchase price of the car including the auction fee, not on the final car cost in Ukraine.",
+          "This way, before we start working, you already understand how our service fee is formed."
+        ]
+      },
+      {
+        "id": "guarantee",
+        "number": "04",
+        "title": "Guarantee payment for bidding",
+        "summary": "To participate in auctions, a guarantee payment is required: minimum $1,000 for purchases up to $10,000, or 10% of the agreed amount for higher purchases. After payment you receive a guarantee letter.",
+        "details": [
+          "To start participating in auctions, a guarantee payment is required.",
+          "For a car purchase amount up to $10,000, the minimum guarantee payment is $1,000.",
+          "If the expected purchase amount including the auction fee exceeds $10,000, the guarantee payment is 10% of the agreed amount.",
+          "After receiving the guarantee payment, RAUL AVTO issues a guarantee letter confirming receipt of funds and the terms of the deposit."
+        ],
+        "linkKey": "guaranteeLetter",
+        "linkLabel": "View a sample guarantee letter"
+      },
+      {
+        "id": "guarantee-payment",
+        "number": "05",
+        "title": "How to make the guarantee payment",
+        "summary": "You can pay in UAH at the current rate, another agreed method, or at the Kyiv office. This is not an extra service fee — the amount is credited toward later payments and is fully refundable if the car has not been purchased yet.",
+        "details": [
+          "The guarantee payment can be made in UAH at the current exchange rate or by another method previously agreed with the manager.",
+          "If you are in Kyiv, funds can also be deposited directly at the RAUL AVTO office.",
+          "Important: the guarantee payment is not an additional fee for our services. After the car is purchased, this amount is credited toward your subsequent payments.",
+          "Making the guarantee payment also does not limit the number of auctions. You can bid as many times as needed to purchase a suitable car.",
+          "If the car has not yet been purchased and you decide to stop the search — for example, you changed your mind or bought a car in Ukraine — the guarantee payment is refunded in full."
+        ],
+        "linkKey": "officeRoute",
+        "linkLabel": "Get directions to the RAUL AVTO office"
+      },
+      {
+        "id": "auction",
+        "number": "06",
+        "title": "Auction participation",
+        "summary": "Before bidding, a shared group with the manager is created in Telegram, WhatsApp or Viber. The max bid is agreed in advance, and the final decision during the auction remains yours. For transparency, we record the screen.",
+        "details": [
+          "Before bidding starts, a shared group with the client and manager is created in Telegram, WhatsApp or Viber. There you receive all car information and can watch the auction in real time.",
+          "We agree on the maximum bid with you in advance. But during the auction you can also decide to raise it — for example by another $100–200 if you see the car is truly worth buying.",
+          "This way, the client actually participates in the auction together with our manager and independently makes the final decision on the maximum bid.",
+          "For maximum transparency, we record the screen during the auction. This captures the bidding process, bids and decisions made during the purchase."
+        ]
+      },
+      {
+        "id": "purchased",
+        "number": "07",
+        "title": "Car purchased",
+        "summary": "After a successful auction, the manager notifies you immediately and sends confirmation from the auction account: actual price, fees and other charges.",
+        "details": [
+          "After a successful auction, the manager immediately notifies you that the car has been purchased.",
+          "Confirmation from the auction account is sent to the shared group, where you can see the actual purchase price, auction fee and other charges.",
+          "This way you can see for yourself the amount the car was purchased for and what the payment consists of.",
+          "From this moment the next stage begins — paying for the car and preparing it for delivery."
+        ]
+      },
+      {
+        "id": "payment-after",
+        "number": "08",
+        "title": "Payment after purchase",
+        "summary": "Payment must be made within 2 business days. A delay may result in an auction penalty.",
+        "details": [
+          "After purchasing the car, payment must be made within 2 business days.",
+          "International payments and money transfers take time, so it is important to pay as promptly as possible after the purchase.",
+          "This is also an important auction condition: late payment may result in an additional penalty from the auction."
+        ]
+      },
+      {
+        "id": "payment-methods",
+        "number": "09",
+        "title": "Payment methods",
+        "summary": "The manager provides an invoice and payment details. You can pay via an international transfer yourself or use another agreed method.",
+        "details": [
+          "After purchasing the car, the manager provides you with an invoice and the necessary payment details.",
+          "If you can make an international payment yourself, we provide an invoice so you can pay for the car abroad directly.",
+          "Other agreed payment methods are also available. Detailed information about available options can be obtained from your manager."
+        ]
+      },
+      {
+        "id": "transfer-fee",
+        "number": "10",
+        "title": "Money transfer commission",
+        "summary": "If an international payment from the USA or Korea goes through RAUL AVTO, the commission is 4% only on the amount actually transferred outside Ukraine.",
+        "details": [
+          "If an international payment for a car from the USA or Korea is made through RAUL AVTO, the transfer commission is 4%.",
+          "Important: the 4% commission is charged only on the portion of funds that is actually transferred outside Ukraine.",
+          "For cars from the USA, this amount may include: car cost + auction fee + transport expenses abroad.",
+          "For cars from Korea: car cost + delivery + arranging the required export documentation in Korea.",
+          "The exact payment and commission amounts are provided by the manager before the transfer."
+        ]
+      },
+      {
+        "id": "delivery",
+        "number": "11",
+        "title": "Car delivery",
+        "summary": "After payment we arrange full logistics: pickup from auction, warehouse with photo documentation, container and sea shipping to the agreed port. At key stages the manager updates you on status.",
+        "details": [
+          "After payment we organize the full logistics process.",
+          "The car is picked up from the auction and delivered to our warehouse or logistics yard. After arrival at the warehouse we take photos and document its condition.",
+          "Then the car is prepared for sea shipping: a container is provided, the car is loaded and secured. After that the container returns to the port, is loaded onto a vessel and shipped to the agreed arrival port.",
+          "Depending on the route and destination country, this may be a port in Ukraine, Romania, Georgia or another European country.",
+          "At the main stages of the route, the manager informs you about the status and location of the car."
+        ]
+      },
+      {
+        "id": "customs",
+        "number": "12",
+        "title": "Arrival and customs clearance",
+        "summary": "After unloading at the port we send condition photos, arrange transport to Ukraine and customs clearance. Customs payments are made by the client in UAH.",
+        "details": [
+          "After the vessel arrives and the container is unpacked at the port, we receive the car and send the client photos of its condition immediately after opening the container.",
+          "Then transport of the car to Ukraine and its customs clearance are arranged.",
+          "Customs payments are made by the client directly to the Ukrainian customs service in UAH according to the current calculation.",
+          "If the car arrives via a European port, the client also issues the required power of attorney for the driver transporting the car from the port to Ukraine. If the car arrived directly in Odesa, such a power of attorney for international transport is not needed.",
+          "The manager accompanies the client and explains what needs to be done at each next stage."
+        ]
+      },
+      {
+        "id": "receiving",
+        "number": "13",
+        "title": "Receiving the car",
+        "summary": "After customs clearance the car is handed over to the client. If needed, we help with repair, certification, documents and registration.",
+        "details": [
+          "After customs clearance and all required procedures are completed, the car is handed over to the client.",
+          "If necessary, the RAUL AVTO team can also help with car repair, certification, document preparation and further registration.",
+          "Our job is to accompany the client from the first request until the car is ready for use in Ukraine."
+        ]
+      }
+    ],
+    "contract": {
+      "title": "Contract and guarantees",
+      "summary": "The main terms of cooperation, payment procedure, liability and obligations of the parties are fixed in the contract. Before starting, you can review its terms in advance.",
+      "details": [
+        "The main terms of cooperation, payment procedure, liability and obligations of the parties are fixed in the contract.",
+        "Before starting cooperation, you can review its terms in advance."
+      ],
+      "linkKey": "contract",
+      "linkLabel": "View the contract"
+    },
+    "cta": {
+      "title": "Ready to select a car?",
+      "button": "Leave a selection request"
+    },
+    "links": {
+      "guaranteeLetter": "/pdf/guarantee-letter.pdf",
+      "officeRoute": "https://www.google.com/maps/place/RAUL+AVTO/@50.3521665,30.5592367,797m/data=!3m2!1e3!4b1!4m6!3m5!1s0x40d4c7e202860701:0x19d1cf1158fe732!8m2!3d50.3521665!4d30.5592367!16s%2Fg%2F11y1y10jj_?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D",
+      "contract": "/pdf/contract.pdf",
+      "leaveRequest": "/#order-form"
+    }
+  },
+  "ru": {
+    "pageTitle": "Условия сотрудничества",
+    "title": "Условия сотрудничества с RAUL AVTO",
+    "intro": "Мы сделали процесс покупки автомобиля максимально понятным, прозрачным и поэтапным. Ещё до начала работы вы знаете ориентировочный бюджет, стоимость наших услуг, порядок участия в аукционе, условия оплаты и основные этапы доставки автомобиля в Украину.",
+    "moreDetails": "Подробнее",
+    "hideDetails": "Свернуть",
+    "sections": [
+      {
+        "id": "application",
+        "number": "01",
+        "title": "Заявка на подбор автомобиля",
+        "summary": "Вы оставляете заявку с пожеланиями по автомобилю — марка, модель, год, комплектация, пробег, цвет, тип салона и бюджет. На их основе мы формируем критерии поиска и начинаем подбор.",
+        "details": [
+          "Вы оставляете заявку и рассказываете менеджеру, какой автомобиль ищете: марка, модель, год выпуска, комплектация, пробег, цвет, тип салона и желаемый бюджет.",
+          "На основе ваших пожеланий мы формируем критерии поиска и начинаем подбор автомобиля."
+        ]
+      },
+      {
+        "id": "selection",
+        "number": "02",
+        "title": "Подбор и предварительный расчёт стоимости",
+        "summary": "Перед расчётом конечной стоимости в Украине мы анализируем статистику продаж аналогичных авто на аукционах за последние 4 месяца и показываем ориентировочную цену «под ключ» без учёта ремонта.",
+        "details": [
+          "Прежде чем назвать ориентировочную конечную стоимость автомобиля в Украине, мы анализируем реальную статистику продаж аналогичных автомобилей на аукционах за последние 4 месяца.",
+          "Для максимально точного анализа задаём конкретные параметры: марку и модель, годы выпуска, двигатель, тип привода, пробег и другие характеристики. Например: Mercedes-Benz E-Class 2018–2020 года, двигатель 2.0, полный привод, пробег до 100 000 км.",
+          "Система показывает, по какой стоимости аналогичные автомобили фактически продавались на аукционах. Мы фильтруем результаты и определяем среднюю статистическую цену покупки.",
+          "Например, если средняя цена такого автомобиля на аукционе составляет $10 000, именно от этой суммы мы делаем полный предварительный расчёт и показываем, сколько автомобиль ориентировочно будет стоить в Украине, на учёте и без учёта ремонта.",
+          "После этого начинаем поиск конкретного автомобиля — с минимальными повреждениями, оптимальным пробегом и в соответствии с вашими личными пожеланиями по цвету кузова, салону, комплектации и другим параметрам. Все найденные варианты обязательно согласовываются с вами."
+        ]
+      },
+      {
+        "id": "fees",
+        "number": "03",
+        "title": "Стоимость услуг RAUL AVTO",
+        "summary": "Стоимость услуг зависит от фактической цены покупки на аукционе вместе с аукционным сбором, а не от конечной стоимости автомобиля в Украине.",
+        "pricing": [
+          {
+            "amount": "$400",
+            "condition": "автомобиль вместе с аукционным сбором стоит до $10 000"
+          },
+          {
+            "amount": "$500",
+            "condition": "автомобиль вместе с аукционным сбором стоит до $15 000"
+          },
+          {
+            "amount": "$600",
+            "condition": "автомобиль вместе с аукционным сбором стоит свыше $15 000"
+          }
+        ],
+        "details": [
+          "Стоимость услуг RAUL AVTO зависит именно от фактической цены покупки автомобиля на аукционе вместе с аукционным сбором, а не от конечной стоимости автомобиля в Украине.",
+          "Таким образом, ещё до начала работы вы понимаете принцип формирования стоимости наших услуг."
+        ]
+      },
+      {
+        "id": "guarantee",
+        "number": "04",
+        "title": "Гарантийный платёж для участия в торгах",
+        "summary": "Для участия в аукционах нужен гарантийный платёж: минимум $1 000 при сумме до $10 000, или 10% от согласованной суммы, если покупка дороже. После оплаты вы получаете гарантийное письмо.",
+        "details": [
+          "Для начала участия в аукционах необходимо внести гарантийный платёж.",
+          "При сумме покупки автомобиля до $10 000 минимальный гарантийный платёж составляет $1 000.",
+          "Если предполагаемая сумма покупки автомобиля вместе с аукционным сбором превышает $10 000, гарантийный платёж составляет 10% от согласованной суммы.",
+          "После получения гарантийного платежа RAUL AVTO выдаёт клиенту гарантийное письмо, которое подтверждает получение средств и условия их внесения."
+        ],
+        "linkKey": "guaranteeLetter",
+        "linkLabel": "Посмотреть пример гарантийного письма"
+      },
+      {
+        "id": "guarantee-payment",
+        "number": "05",
+        "title": "Как внести гарантийный платёж",
+        "summary": "Платёж можно внести в гривне по актуальному курсу, другим согласованным способом или в офисе в Киеве. Это не доплата за услуги — сумма засчитывается в счёт следующих платежей и возвращается полностью, если авто ещё не куплено.",
+        "details": [
+          "Гарантийный платёж можно осуществить в гривне по актуальному курсу или другим способом, предварительно согласованным с менеджером.",
+          "Если вы находитесь в Киеве, средства также можно внести непосредственно в офисе RAUL AVTO.",
+          "Важно: гарантийный платёж не является дополнительной оплатой за наши услуги. После покупки автомобиля эта сумма засчитывается в счёт ваших следующих платежей.",
+          "Внесение гарантийного платежа также не ограничивает количество аукционов. Вы можете участвовать в торгах столько раз, сколько потребуется для покупки подходящего автомобиля.",
+          "Если автомобиль ещё не был куплен и вы решили прекратить поиск — например, изменили решение или купили автомобиль в Украине — гарантийный платёж возвращается вам в полном объёме."
+        ],
+        "linkKey": "officeRoute",
+        "linkLabel": "Проложить маршрут до офиса RAUL AVTO"
+      },
+      {
+        "id": "auction",
+        "number": "06",
+        "title": "Участие в аукционе",
+        "summary": "Перед торгами создаётся общая группа с менеджером в Telegram, WhatsApp или Viber. Максимальную ставку согласовываем заранее, а финальное решение во время аукциона остаётся за вами. Для прозрачности ведём запись экрана.",
+        "details": [
+          "Перед началом торгов создаётся общая группа с клиентом и менеджером в Telegram, WhatsApp или Viber. В ней вы получаете всю информацию об автомобиле и можете в реальном времени наблюдать за ходом аукциона.",
+          "Максимальную ставку мы предварительно согласовываем с вами. Но непосредственно во время торгов вы также можете принять решение увеличить её — например, ещё на $100–200, если видите, что автомобиль действительно стоит покупки.",
+          "Таким образом, клиент фактически участвует в аукционе вместе с нашим менеджером и самостоятельно принимает финальное решение по максимальной ставке.",
+          "Для максимальной прозрачности мы ведём запись экрана во время аукциона. Это позволяет зафиксировать ход торгов, ставки и решения, которые принимались непосредственно во время покупки автомобиля."
+        ]
+      },
+      {
+        "id": "purchased",
+        "number": "07",
+        "title": "Автомобиль куплен",
+        "summary": "После успешного аукциона менеджер сразу сообщает вам и присылает подтверждение из аукционного кабинета: фактическая цена, сбор и другие начисления.",
+        "details": [
+          "После успешного завершения аукциона менеджер сразу сообщает вам, что автомобиль куплен.",
+          "В общую группу отправляется подтверждение из аукционного кабинета, где вы можете увидеть фактическую стоимость покупки автомобиля, аукционный сбор и другие начисления.",
+          "Таким образом, вы самостоятельно видите, за какую сумму был куплен автомобиль и из чего состоит платёж.",
+          "С этого момента начинается следующий этап — оплата автомобиля и подготовка к его доставке."
+        ]
+      },
+      {
+        "id": "payment-after",
+        "number": "08",
+        "title": "Оплата после покупки",
+        "summary": "Оплату нужно произвести в течение 2 рабочих дней. Задержка может привести к штрафу от аукциона.",
+        "details": [
+          "После покупки автомобиля оплату необходимо произвести в течение 2 рабочих дней.",
+          "Международные платежи и перевод средств требуют времени, поэтому важно максимально оперативно произвести оплату после покупки автомобиля.",
+          "Это также важное условие аукциона: в случае несвоевременной оплаты аукцион может начислить дополнительный штраф за задержку платежа."
+        ]
+      },
+      {
+        "id": "payment-methods",
+        "number": "09",
+        "title": "Способы оплаты",
+        "summary": "Менеджер предоставляет инвойс и реквизиты. Можно оплатить самостоятельно международным платежом или другим согласованным способом.",
+        "details": [
+          "После покупки автомобиля менеджер предоставляет вам инвойс и необходимые реквизиты для осуществления платежа.",
+          "Если у вас есть возможность самостоятельно осуществить международный платёж, мы предоставляем инвойс, по которому вы можете напрямую оплатить автомобиль за границей.",
+          "Также доступны другие согласованные способы расчёта. Подробную информацию о доступных вариантах оплаты вы можете получить у своего менеджера."
+        ]
+      },
+      {
+        "id": "transfer-fee",
+        "number": "10",
+        "title": "Комиссия за перевод средств",
+        "summary": "Если международная оплата из США или Кореи идёт через RAUL AVTO, комиссия составляет 4% только от суммы, которая фактически переводится за пределы Украины.",
+        "details": [
+          "Если международная оплата автомобиля из США или Кореи осуществляется через RAUL AVTO, комиссия за перевод составляет 4%.",
+          "Важно: комиссия 4% начисляется только на ту часть средств, которая фактически переводится за пределы Украины.",
+          "Для автомобилей из США в такую сумму могут входить: стоимость автомобиля + аукционный сбор + транспортные расходы за границей.",
+          "Для автомобилей из Кореи: стоимость автомобиля + доставка + оформление необходимой экспортной документации в Корее.",
+          "Точную сумму платежа и комиссии менеджер сообщает перед осуществлением перевода."
+        ]
+      },
+      {
+        "id": "delivery",
+        "number": "11",
+        "title": "Доставка автомобиля",
+        "summary": "После оплаты организуем полную логистику: забор с аукциона, склад с фотофиксацией, контейнер и морскую перевозку до согласованного порта. На основных этапах менеджер информирует о статусе.",
+        "details": [
+          "После оплаты мы организуем полный логистический процесс.",
+          "Автомобиль забирают с аукциона и доставляют на наш склад или логистическую площадку. После прибытия автомобиля на склад мы делаем фотографии и фиксируем его состояние.",
+          "Далее автомобиль готовится к морской перевозке: подаётся контейнер, автомобиль загружается и закрепляется в нём. После этого контейнер возвращается в порт, загружается на судно и отправляется в согласованный порт прибытия.",
+          "В зависимости от маршрута и страны назначения это может быть порт в Украине, Румынии, Грузии или другой стране Европы.",
+          "На основных этапах маршрута менеджер информирует вас о статусе и местонахождении автомобиля."
+        ]
+      },
+      {
+        "id": "customs",
+        "number": "12",
+        "title": "Прибытие автомобиля и таможенное оформление",
+        "summary": "После разгрузки в порту отправляем фото состояния, организуем доставку в Украину и таможенное оформление. Таможенные платежи клиент оплачивает самостоятельно в гривне.",
+        "details": [
+          "После прибытия судна и расформирования контейнера в порту мы получаем автомобиль и отправляем клиенту фотографии его состояния сразу после открытия контейнера.",
+          "Далее организуется транспортировка автомобиля в Украину и его таможенное оформление.",
+          "Таможенные платежи клиент осуществляет непосредственно в таможенную службу Украины в гривне в соответствии с актуальным расчётом.",
+          "Если автомобиль прибывает через европейский порт, клиент также оформляет необходимую доверенность на водителя, который будет транспортировать автомобиль из порта в Украину. Если автомобиль прибыл непосредственно в Одессу, такая доверенность на международную перевозку не нужна.",
+          "Менеджер сопровождает клиента и сообщает, что необходимо сделать на каждом следующем этапе."
+        ]
+      },
+      {
+        "id": "receiving",
+        "number": "13",
+        "title": "Получение автомобиля",
+        "summary": "После таможенного оформления автомобиль передаётся клиенту. При необходимости помогаем с ремонтом, сертификацией, документами и регистрацией.",
+        "details": [
+          "После завершения таможенного оформления и всех необходимых процедур автомобиль передаётся клиенту.",
+          "При необходимости команда RAUL AVTO также может помочь с ремонтом автомобиля, сертификацией, подготовкой документов и дальнейшей регистрацией.",
+          "Наша задача — сопроводить клиента от момента первой заявки до момента, когда автомобиль будет готов к эксплуатации в Украине."
+        ]
+      }
+    ],
+    "contract": {
+      "title": "Договор и гарантии",
+      "summary": "Основные условия сотрудничества, порядок оплаты, ответственность и обязательства сторон фиксируются в договоре. Перед началом сотрудничества вы можете заранее ознакомиться с его условиями.",
+      "details": [
+        "Основные условия сотрудничества, порядок оплаты, ответственность и обязательства сторон фиксируются в договоре.",
+        "Перед началом сотрудничества вы можете заранее ознакомиться с его условиями."
+      ],
+      "linkKey": "contract",
+      "linkLabel": "Посмотреть договор"
+    },
+    "cta": {
+      "title": "Готовы подобрать автомобиль?",
+      "button": "Оставить заявку на подбор"
+    },
+    "links": {
+      "guaranteeLetter": "/pdf/guarantee-letter.pdf",
+      "officeRoute": "https://www.google.com/maps/place/RAUL+AVTO/@50.3521665,30.5592367,797m/data=!3m2!1e3!4b1!4m6!3m5!1s0x40d4c7e202860701:0x19d1cf1158fe732!8m2!3d50.3521665!4d30.5592367!16s%2Fg%2F11y1y10jj_?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D",
+      "contract": "/pdf/contract.pdf",
+      "leaveRequest": "/#order-form"
+    }
+  }
+}

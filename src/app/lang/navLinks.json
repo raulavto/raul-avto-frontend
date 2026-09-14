@@ -1,30 +1,32 @@
 {
   "en": {
     "calculator": "Calculator",
-    "partnership": "Partnership",
+    "terms": "Terms of cooperation",
     "contacts": "Contacts",
     "about": "About Us",
+    "partnership": "For dealers",
     "blog": "Blog",
     "faq": "FAQ",
-    "competition":"Competition"
-
+    "competition": "Competition"
   },
   "ua": {
     "calculator": "Калькулятор",
-    "partnership": "Співпраця",
+    "terms": "Умови співпраці",
     "contacts": "Контакти",
     "about": "Про нас",
+    "partnership": "Для дилерів",
     "blog": "Блог",
     "faq": "FAQ",
-    "competition":"Конкурс"
+    "competition": "Конкурс"
   },
   "ru": {
     "calculator": "Калькулятор",
-    "partnership": "Сотрудничество",
+    "terms": "Условия сотрудничества",
     "contacts": "Контакты",
     "about": "О нас",
+    "partnership": "Для дилеров",
     "blog": "Блог",
     "faq": "FAQ",
-    "competition":"Конкурс"
+    "competition": "Конкурс"
   }
 }

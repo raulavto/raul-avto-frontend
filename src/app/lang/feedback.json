@@ -1,20 +1,50 @@
 {
   "en": {
     "feedback_title": "Reviews",
-    "time_year_ago": "year ago",
-    "time_months_ago": "months ago",
-    "time_years_ago": "years ago"
+    "powered_by_google": "Reviews from Google",
+    "loading": "Loading reviews...",
+    "just_now": "just now",
+    "minute": "minute ago",
+    "minutes": "minutes ago",
+    "hour": "hour ago",
+    "hours": "hours ago",
+    "day": "day ago",
+    "days": "days ago",
+    "month": "month ago",
+    "months": "months ago",
+    "year": "year ago",
+    "years": "years ago"
   },
   "ua": {
     "feedback_title": "Відгуки",
-    "time_year_ago": "рік тому",
-    "time_months_ago": "місяців тому",
-    "time_years_ago": "роки тому"
+    "powered_by_google": "Відгуки з Google",
+    "loading": "Завантаження відгуків...",
+    "just_now": "щойно",
+    "minute": "хвилину тому",
+    "minutes": "хвилин тому",
+    "hour": "годину тому",
+    "hours": "годин тому",
+    "day": "день тому",
+    "days": "днів тому",
+    "month": "місяць тому",
+    "months": "місяців тому",
+    "year": "рік тому",
+    "years": "років тому"
   },
   "ru": {
     "feedback_title": "Отзывы",
-    "time_year_ago": "год назад",
-    "time_months_ago": "месяцев назад",
-    "time_years_ago": "лет назад"
+    "powered_by_google": "Отзывы из Google",
+    "loading": "Загрузка отзывов...",
+    "just_now": "только что",
+    "minute": "минуту назад",
+    "minutes": "минут назад",
+    "hour": "час назад",
+    "hours": "часов назад",
+    "day": "день назад",
+    "days": "дней назад",
+    "month": "месяц назад",
+    "months": "месяцев назад",
+    "year": "год назад",
+    "years": "лет назад"
   }
 }

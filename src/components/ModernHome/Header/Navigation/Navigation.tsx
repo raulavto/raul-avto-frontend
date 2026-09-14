@@ -14,6 +14,16 @@ const Navigation = () => {
   const isLeadForm =
     pathname === '/lead-form' || pathname === '/lead-form-thanks';
 
+  const links = [
+    { href: '/calculator', label: t.calculator },
+    { href: '/terms', label: t.terms },
+    { href: '/contacts', label: t.contacts },
+    { href: '/about', label: t.about },
+    { href: '/partnership', label: t.partnership },
+    { href: '/blog', label: t.blog },
+    { href: '/faq', label: t.faq },
+  ];
+
   return (
     <nav className="flex items-center">
       <Link
@@ -30,77 +40,18 @@ const Navigation = () => {
       </Link>
       {!isLeadForm && (
         <ul className="mobile:hidden pointnav:flex items-center gap-10">
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/calculator' ? isActiveClass : ''
-              }`}
-              href="/calculator"
-            >
-              {t.calculator}
-            </Link>
-          </li>
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/partnership' ? isActiveClass : ''
-              }`}
-              href="/partnership"
-            >
-              {t.partnership}
-            </Link>
-          </li>
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/contacts' ? isActiveClass : ''
-              }`}
-              href="/contacts"
-            >
-              {t.contacts}
-            </Link>
-          </li>
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/about' ? isActiveClass : ''
-              }`}
-              href="/about"
-            >
-              {t.about}
-            </Link>
-          </li>
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/blog' ? isActiveClass : ''
-              }`}
-              href="/blog"
-            >
-              {t.blog}
-            </Link>
-          </li>
-          <li className="text-primary text-[16px] font-medium">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-                pathname === '/faq' ? isActiveClass : ''
-              }`}
-              href="/faq"
-            >
-              {t.faq}
-            </Link>
-          </li>
-          {/* <li className="text-red-600 text-[16px] font-bold">
-            <Link
-              className={`transition-colors duration-300 ease-in-out hover:text-white focus:text-white outline-none ${
-                pathname === '/competition' ? isActiveClass : ''
-              }`}
-              href="/competition"
-            >
-              {t.competition}
-            </Link>
-           
-          </li> */}
+          {links.map((link) => (
+            <li key={link.href} className="text-primary text-[16px] font-medium">
+              <Link
+                className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
+                  pathname === link.href ? isActiveClass : ''
+                }`}
+                href={link.href}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </nav>

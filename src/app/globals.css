@@ -104,6 +104,85 @@ button {
     #000000;
 }
 
+.terms-page-glow {
+  position: absolute;
+  width: min(1400px, 175vw);
+  height: min(1400px, 175vw);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(102, 0, 0, 0.95) 0%, transparent 68%);
+}
+
+.terms-page-glow-left {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.terms-page-glow-left-inward {
+  left: 0;
+  transform: translateX(-20%);
+}
+
+.terms-page-glow-right {
+  right: 0;
+  transform: translateX(50%);
+}
+
+.terms-page-glow-center {
+  left: 58%;
+  transform: translateX(-50%);
+  width: min(1125px, 138vw);
+  height: min(1125px, 138vw);
+}
+
+.terms-cta-btn {
+  background-image: linear-gradient(
+    110deg,
+    #8f0008 0%,
+    #b9000b 18%,
+    #ea001c 36%,
+    #ff5a63 50%,
+    #ea001c 64%,
+    #b9000b 82%,
+    #8f0008 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition:
+    background-position 0.45s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.terms-cta-btn:hover {
+  background-position: 100% 50%;
+  animation: terms-cta-shimmer 2.8s ease-in-out infinite;
+}
+
+@keyframes terms-cta-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes terms-typewriter-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .mobile-block-gradient-proposition {
   background: radial-gradient(circle at center, #660000 0%, transparent 70%),
     radial-gradient(circle at bottom right, #660000 0%, transparent 50%),

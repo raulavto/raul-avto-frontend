@@ -13,6 +13,14 @@ export default {
         protocol: 'https',
         hostname: 'www.datocms-assets.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com',
+      },
     ],
   },
 };

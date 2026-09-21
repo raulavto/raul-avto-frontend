@@ -35,3 +35,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local docs / credentials materials
+SmartCRM-How-to-create-a-request-through-the-Public-API-ua.pdf

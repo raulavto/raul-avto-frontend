@@ -16,7 +16,7 @@ import { isValidPhoneNumber } from 'libphonenumber-js';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/formCall.json';
 import { Select, SelectItem } from '@nextui-org/react';
-import { sendMessage } from '@/app/utils/sendMessage';
+import { submitLead } from '@/app/utils/submitLead';
 import Notification from '@/components/UI/Notification/Notification';
 import { usePathname } from 'next/navigation';
 import {
@@ -89,22 +89,28 @@ const FormCall = () => {
     }
   }, [dispatch, pathname]);
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: FormikValues,
     formikHelpers: FormikHelpers<FormCallValues>
   ) => {
     const { resetForm } = formikHelpers;
-    const message = `
-    Запрос на звонок:дата: ${values.date},время: ${values.hour}:${values.minute},телефон: ${values.phoneNumber}
-  `;
-    sendMessage(message);
+    const time = `${values.hour}:${values.minute}`;
+
+    await submitLead({
+      source: 'callback',
+      phone: values.phoneNumber,
+      title: 'Запит на дзвінок',
+      details: {
+        Дата: values.date,
+        Час: time,
+      },
+    });
 
     setSelectedDate(initialValues.date);
     setSelectedHour(Number(initialValues.hour));
     setSelectedMinute(Number(initialValues.minute));
     resetForm();
 
-    // Показываем уведомление
     setNotificationVisible(true);
   };
 

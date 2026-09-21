@@ -4,7 +4,7 @@ import PhoneInputField from '@/components/UI/PhoneInputField/PhoneInputField';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
-import { sendMessage } from '@/app/utils/sendMessage';
+import { submitLead } from '@/app/utils/submitLead';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/partForms.json';
 import translationsValidation from '../../../app/lang/formCall.json';
@@ -33,11 +33,15 @@ const UserContactsForm = () => {
     name: yup.string(),
   });
 
-  const handleSubmit = (values: FormikValues) => {
+  const handleSubmit = async (values: FormikValues) => {
     const { phone, name } = values;
-    const contactInfo = `Имя: ${name}, Телефон: ${phone}`;
 
-    sendMessage(`Заявка на сотрудничество. ${contactInfo}`);
+    await submitLead({
+      source: 'partnership',
+      name,
+      phone,
+      title: 'Заявка для дилерів',
+    });
   };
 
   return (

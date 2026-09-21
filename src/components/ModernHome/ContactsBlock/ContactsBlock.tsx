@@ -9,7 +9,7 @@ import { isValidPhoneNumber } from 'libphonenumber-js';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/contactBlock.json';
 import translationsValidation from '../../../app/lang/formCall.json';
-import { sendMessage } from '@/app/utils/sendMessage';
+import { submitLead } from '@/app/utils/submitLead';
 import { useState } from 'react';
 import Notification from '@/components/UI/Notification/Notification';
 
@@ -38,18 +38,19 @@ const ContactsBlock = () => {
       .required(`${tValidation.phone_required}`),
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: FormikValues,
     formikHelpers: FormikHelpers<FormCallValues>
   ) => {
     const { resetForm } = formikHelpers;
-    const message = `
-    Запрос на звонок: телефон: ${values.phoneNumber}
-  `;
-    sendMessage(message);
+
+    await submitLead({
+      source: 'callback',
+      phone: values.phoneNumber,
+      title: 'Запит на дзвінок',
+    });
 
     resetForm();
-
     setNotificationVisible(true);
   };
 

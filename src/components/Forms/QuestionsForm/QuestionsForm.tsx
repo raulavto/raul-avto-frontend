@@ -5,7 +5,7 @@ import PhoneInputField from '@/components/UI/PhoneInputField/PhoneInputField';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
-import { sendMessage } from '@/app/utils/sendMessage';
+import { submitLead } from '@/app/utils/submitLead';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/partForms.json';
 import translationsValidation from '../../../app/lang/formCall.json';
@@ -40,16 +40,18 @@ const QuestionsForm = ({ link }) => {
   const handleSubmit = async (values: FormikValues, { resetForm }) => {
     const { phone, name, comment } = values;
 
-    let contactInfo = `Имя: ${name}, Телефон: ${phone}, Комментарий: ${comment}`;
-    let message = `Заявка с вопросом.`;
-
-    if (link) {
-      message = ` Заявка на консультацию по автомобилю: ${link}\n`;
-    }
-
-    message += contactInfo;
-
-    await sendMessage(message);
+    await submitLead({
+      source: 'partnership-question',
+      name,
+      phone,
+      title: link
+        ? 'Консультація по автомобілю'
+        : 'Заявка з питанням',
+      details: {
+        ...(link ? { Авто: link } : {}),
+        ...(comment ? { Коментар: comment } : {}),
+      },
+    });
 
     setIsSubmitted(true);
     resetForm();

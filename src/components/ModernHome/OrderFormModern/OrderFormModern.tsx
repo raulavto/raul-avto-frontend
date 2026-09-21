@@ -9,7 +9,7 @@ import { Slider } from '@nextui-org/react';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/orderFormModern.json';
 import translationsValidation from '../../../app/lang/formCall.json';
-import { sendMessage } from '@/app/utils/sendMessage';
+import { submitLead } from '@/app/utils/submitLead';
 import Notification from '@/components/UI/Notification/Notification';
 import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
@@ -61,22 +61,34 @@ const OrderFormModern = ({ variant = "common" }: VariantProps) => {
     model: yup.string().required(`${tValidation.model_required}`),
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: FormikValues,
     formikHelpers: FormikHelpers<FormCallValues>
   ) => {
     const { resetForm } = formikHelpers;
-    const message = `
-      Заявка на подбор авто ${ variant!=="common"?'со служебной страницы':""}: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
-    `;
-    sendMessage(message);
+    const isLeadForm = variant !== 'common';
+
+    await submitLead({
+      source: isLeadForm ? 'lead-form' : 'order',
+      name: values.name,
+      phone: values.phoneNumber,
+      title: isLeadForm
+        ? 'Заявка на підбір авто (lead-form)'
+        : 'Заявка на підбір авто',
+      brand: values.brand,
+      model: values.model,
+      year: `${values.year[0]} - ${values.year[1]}`,
+      details: {
+        Пробіг: `${values.mileage[0]} - ${values.mileage[1]} км`,
+      },
+    });
+
     resetForm();
-    // Сброс значений ползунков
     setMileage([50000, 200000]);
     setYear([2000, new Date().getFullYear()]);
     setNotificationVisible(true);
 
-    if (variant !== "common") {
+    if (isLeadForm) {
       sendClick_submitForm();
       router.push('/lead-form-thanks');
     }
